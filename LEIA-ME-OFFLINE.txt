@@ -1,0 +1,17 @@
+DADOSLAB - BANCO DE DADOS - Prof. Fabrício Rodrigues
+1. Extraia todo o ZIP para uma pasta do computador ou do pendrive.
+2. No VS Code, escolha Arquivo > Abrir Pasta. Abra index.html com Live Server.
+   Instale essa extensão antes de ficar sem internet. Ela serve o portal;
+   o SQL é processado pela cópia SQLite incluída no laboratório.
+3. A primeira aula é aulas.html?id=aula-01. A ficha é diagnostico.html.
+4. Responda às questões antes da discussão. Mantenha a ficha aberta.
+5. Abra laboratorio.html em outra aba. O banco fictício já vem carregado.
+6. Baixe o TXT da ficha e o SQL do laboratório, com nome e turma.
+7. Entregue os arquivos ao professor na aula. Não há envio automático.
+8. A digitação e o banco temporário não são salvos automaticamente.
+9. O ZIP da prática tem somente base-biblioteca.sql e consultas.sql.
+10. Os PDFs podem ser abertos e impressos separadamente.
+Proposta de encontros: 19/10 a 14/12/2026, às segundas; sem aula em 02/11.
+Avaliação em 07/12; devolutiva, correções e recuperação em 14/12.
+O SQLite e sua licença estão incluídos. Referências externas exigem internet.
+Este pacote não contém gabarito, roteiro do professor nem notas privadas.

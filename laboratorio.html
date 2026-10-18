@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#183e35">
+    <title>Laboratório SQL · DadosLab · Prof. Fabrício Rodrigues</title>
+    <meta name="description" content="Banco de Dados no curso técnico em Informática: diagnóstico, aulas às segundas, consultas e materiais para estudar.">
+    <link rel="icon" href="favicon.svg">
+    <link rel="stylesheet" href="styles.css">
+    <script src="dados.js" defer></script>
+    
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <a class="skip" href="#conteudo">Pular para o conteúdo</a>
+  <header class="site-header sub-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="index.html" aria-label="DadosLab, início">
+        <span class="brand-mark" aria-hidden="true">BD</span>
+        <span>Dados<span class="brand-light">Lab</span><small>BANCO DE DADOS</small></span>
+      </a>
+      <a class="button secondary" href="index.html">← Voltar ao início</a>
+      <span class="teacher">Prof. <strong>Fabrício Rodrigues</strong></span>
+    </div>
+  </header>
+    <main id="conteudo" class="detail-wrap">
+      <header class="detail-hero"><p class="eyebrow">SQL NO NAVEGADOR / SQLITE</p><h1>Laboratório da biblioteca</h1><p class="lead">O banco fictício já vem carregado. Preveja um resultado, execute uma consulta e confira. O banco é temporário: baixe suas consultas antes de fechar ou reiniciar.</p><div class="detail-actions"><a class="button secondary" href="aulas.html?id=aula-01">← Voltar à aula</a><a class="button secondary" href="diagnostico.html" target="_blank" rel="noopener">Ficha em outra aba ↗</a><a class="button secondary" href="Pratica-Banco-de-Dados.zip" download>Baixar os dois scripts SQL ↓</a></div></header>
+      <article class="lesson-content">
+        <h2>Base inicial</h2><p>livros(id, titulo, area, quantidade) e emprestimos(id, livro_id, leitor, data_emprestimo, data_devolucao). PK: id em cada tabela. FK: emprestimos.livro_id referencia livros.id. As datas são textos ISO nesta base SQLite.</p><div id="db-base"></div>
+        <h2>Prática de diagnóstico</h2><ol><li>Execute a consulta inicial e compare o resultado com sua previsão.</li><li>Investigue: <code>SELECT titulo FROM livros WHERE categoria = 'Redes';</code></li><li>Escreva uma consulta que mostre título e quantidade dos livros com pelo menos dois exemplares.</li><li>Registre a tentativa e os testes na ficha. Desafio opcional: relacione os livros aos empréstimos ainda sem devolução.</li></ol>
+        <fieldset class="diagnostic-question"><legend>Identificação do arquivo SQL</legend><label for="nome-lab">Nome do estudante</label><input id="nome-lab" autocomplete="name"><label for="turma-lab">Turma</label><input id="turma-lab"></fieldset>
+        <label class="db-label" for="sql-editor">Sua consulta SQL</label><textarea class="db-editor" id="sql-editor" spellcheck="false">SELECT *
+FROM livros;
+</textarea>
+        <div class="detail-actions lab-controls"><button class="button primary" id="run-sql" disabled>Executar SQL</button><button class="button secondary" id="save-sql">Baixar minhas consultas ↓</button><button class="button secondary" id="reset-db" disabled>Reiniciar base fictícia</button></div>
+        <p id="db-status" class="db-status" role="status" aria-live="polite">Preparando o SQLite local…</p>
+        <section id="db-results" aria-live="polite" aria-label="Resultado da consulta"></section>
+        <h2>Meu histórico desta sessão</h2><p>O download inclui o texto atual do editor e as consultas executadas, com resultado ou erro em comentários. A página não entrega o arquivo ao professor.</p><ol id="db-log" class="db-log"></ol>
+        <p class="proposal-note">Cada execução tem limite de tempo e exibe até 200 linhas por resultado. Consultas e alterações afetam somente a cópia temporária desta aba. Reiniciar restaura a base e limpa o histórico desta sessão.</p>
+        <h2>Referências para consultar depois da primeira tentativa</h2><ul><li><a href="https://sqlite.org/lang_select.html" target="_blank" rel="noopener">SQLite: SELECT ↗</a></li><li><a href="https://sqlite.org/lang_expr.html" target="_blank" rel="noopener">SQLite: operadores e NULL ↗</a></li><li><a href="guia.html">Como estudar e entregar ↗</a></li></ul>
+      </article>
+      <nav class="return-nav"><a class="button secondary" href="aulas.html?id=aula-01">← Voltar à aula</a><a class="button secondary" href="index.html">← Voltar ao início</a></nav>
+    </main>
+    <footer class="site-footer">
+      <div class="wrap footer-inner">
+        <a class="button secondary" href="index.html">← Voltar ao início</a>
+        <p>Prof. Fabrício Rodrigues<br>Curso Técnico em Informática</p>
+        <a href="https://fabricio-rodrigues-ifpa.github.io/programacao-web/">Portal de Programação Web ↗</a>
+      </div>
+    </footer>
+  </body>
+</html>

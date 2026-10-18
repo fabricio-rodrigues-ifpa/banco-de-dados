@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#183e35">
+    <title>Como usar, baixar e entregar · DadosLab · Prof. Fabrício Rodrigues</title>
+    <meta name="description" content="Banco de Dados no curso técnico em Informática: diagnóstico, aulas às segundas, consultas e materiais para estudar.">
+    <link rel="icon" href="favicon.svg">
+    <link rel="stylesheet" href="styles.css">
+    <script src="dados.js" defer></script>
+    
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <a class="skip" href="#conteudo">Pular para o conteúdo</a>
+  <header class="site-header sub-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="index.html" aria-label="DadosLab, início">
+        <span class="brand-mark" aria-hidden="true">BD</span>
+        <span>Dados<span class="brand-light">Lab</span><small>BANCO DE DADOS</small></span>
+      </a>
+      <a class="button secondary" href="index.html">← Voltar ao início</a>
+      <span class="teacher">Prof. <strong>Fabrício Rodrigues</strong></span>
+    </div>
+  </header>
+    <main id="conteudo" class="detail-wrap">
+      <header class="detail-hero"><p class="eyebrow">GUIA DO ESTUDANTE</p><h1>Abrir, praticar e entregar</h1><p class="lead">Na primeira aula, o diagnóstico e o laboratório funcionam pelo navegador. A base usa SQLite. Você não precisa instalar um servidor de banco de dados para participar.</p><div class="detail-actions"><a class="button primary" href="diagnostico.html">Responder ao diagnóstico ↗</a><a class="button primary" href="laboratorio.html">Abrir o laboratório ↗</a></div></header>
+      <article class="lesson-content guide-content">
+        <h2>1. Primeiro, sua tentativa</h2><p>Abra a ficha, informe nome e turma e responda individualmente. Use as tabelas fornecidas. Se não conhece um assunto, indique isso. O professor mostrará quando começar a prática e quando discutir as soluções.</p>
+        <h2>2. Depois, a prática no SQL</h2><p>Abra o laboratório em outra aba e mantenha a ficha aberta. O banco já vem carregado. Antes de executar, escreva sua previsão. Compare o resultado e registre sua consulta e os testes no campo Registro da prática.</p>
+        <h2>3. Baixar e entregar os arquivos</h2><p>Na ficha, clique em Baixar meu diagnóstico em TXT. No laboratório, clique em Baixar minhas consultas. Confira os dois arquivos na pasta Downloads e entregue ao professor durante a aula, pelo meio combinado. Baixar um arquivo não envia a atividade.</p><p>Se responder em papel, identifique e entregue a ficha impressa. Os dados digitados não são salvos automaticamente. Você pode baixar uma cópia inicial antes da discussão e outra ao terminar.</p>
+        <h2>4. Prática com poucos arquivos</h2><p>O ZIP da prática contém somente base-biblioteca.sql e consultas.sql, indentados. O primeiro cria e carrega a base no SQLite; execute uma vez em um banco de estudo vazio. O segundo reúne as tarefas para editar. VS Code pode editar os scripts, mas o Live Server não executa SQL por conta própria.</p><p>O laboratório do portal executa SQLite de verdade no navegador. MySQL e PostgreSQL têm diferenças de sintaxe e configuração; o professor alinhará o programa da turma antes de pedir sua instalação.</p><a class="button secondary" href="Pratica-Banco-de-Dados.zip" download>Baixar a prática: dois arquivos SQL ↓</a>
+        <h2>5. Pacote para pendrive</h2><p>Baixe DadosLab-Aluno-Offline.zip e extraia. No VS Code, escolha Arquivo → Abrir Pasta e abra index.html com Open with Live Server. O pacote inclui o SQLite local, sem chamadas a uma biblioteca externa. Os PDFs podem ser abertos separadamente para ler e imprimir. As referências externas precisam de conexão.</p><p>A abertura direta por arquivo local pode variar entre navegadores; para usar o laboratório do pacote, siga o fluxo com Live Server instalado previamente.</p>
+        <h2>Calendário e avaliação</h2><p>Proposta: segundas-feiras de 19/10 a 14/12/2026. Sem encontro em 02/11. Avaliação em 07/12; devolutiva, correções e recuperação em 14/12. O planejamento será ajustado conforme as evidências da turma.</p>
+        <h2>Referências com links</h2><p>Consulte os links depois da primeira tentativa do diagnóstico. Use a dúvida concreta para procurar um exemplo e teste uma alteração pequena.</p><div id="db-references"></div>
+        <h2>Créditos do laboratório</h2><p>O laboratório usa sql.js 1.15.0, sob licença MIT, com SQLite. A biblioteca está incluída no pacote; veja <a href="SQLITE-LICENSE.txt">a licença</a> e <a href="https://github.com/sql-js/sql.js" target="_blank" rel="noopener">o projeto original ↗</a>.</p>
+      </article>
+      <nav class="return-nav"><a class="button secondary" href="aulas.html?id=aula-01">← Voltar à aula</a><a class="button secondary" href="index.html">← Voltar ao início</a></nav>
+    </main>
+    <footer class="site-footer">
+      <div class="wrap footer-inner">
+        <a class="button secondary" href="index.html">← Voltar ao início</a>
+        <p>Prof. Fabrício Rodrigues<br>Curso Técnico em Informática</p>
+        <a href="https://fabricio-rodrigues-ifpa.github.io/programacao-web/">Portal de Programação Web ↗</a>
+      </div>
+    </footer>
+  </body>
+</html>
