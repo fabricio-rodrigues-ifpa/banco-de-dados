@@ -1,17 +1,20 @@
-DADOSLAB - BANCO DE DADOS - Prof. Fabrício Rodrigues
-1. Extraia todo o ZIP para uma pasta do computador ou do pendrive.
-2. No VS Code, escolha Arquivo > Abrir Pasta. Abra index.html com Live Server.
-   Instale essa extensão antes de ficar sem internet. Ela serve o portal;
-   o SQL é processado pela cópia SQLite incluída no laboratório.
-3. A primeira aula é aulas.html?id=aula-01. A ficha é diagnostico.html.
-4. Responda às questões antes da discussão. Mantenha a ficha aberta.
-5. Abra laboratorio.html em outra aba. O banco fictício já vem carregado.
-6. Baixe o TXT da ficha e o SQL do laboratório, com nome e turma.
-7. Entregue os arquivos ao professor na aula. Não há envio automático.
-8. A digitação e o banco temporário não são salvos automaticamente.
-9. O ZIP da prática tem somente base-biblioteca.sql e consultas.sql.
-10. Os PDFs podem ser abertos e impressos separadamente.
-Proposta de encontros: 19/10 a 14/12/2026, às segundas; sem aula em 02/11.
-Avaliação em 07/12; devolutiva, correções e recuperação em 14/12.
-O SQLite e sua licença estão incluídos. Referências externas exigem internet.
-Este pacote não contém gabarito, roteiro do professor nem notas privadas.
+DADOSLAB - BANCO DE DADOS COM MYSQL - Prof. Fabrício Rodrigues
+1. Extraia todo o pacote para uma pasta do computador ou pendrive.
+2. Abra a pasta no VS Code e index.html com Live Server previamente instalado.
+3. A primeira aula está em aulas.html?id=aula-01 e a ficha em diagnostico.html.
+4. Responda F1 a O3 antes de consultar scripts ou referências. Baixe o TXT inicial.
+5. Depois abra laboratorio.html, a área de prática MySQL.
+6. O ZIP de prática contém somente 01-base-mysql.sql e 02-diagnostico.sql.
+7. MySQL Server executa SQL. Workbench ou phpMyAdmin é o cliente do servidor.
+8. Use a conexão e o esquema fictício de estudo indicados pelo professor.
+9. Execute a base uma vez em esquema vazio, com orientação do professor.
+10. Escreva P1 a P3 no cliente MySQL ou VS Code. Salve seu SQL identificado.
+11. Live Server exibe o portal. O pacote não instala nem inclui MySQL Server.
+12. Sem acesso ao MySQL, escreva SQL e previsões e indique que não executou.
+13. Complete a ficha, escolha cópia final, baixe o TXT e entregue junto do inicial e do SQL.
+14. As páginas não salvam automaticamente nem enviam respostas ao professor.
+15. PDFs e arquivos locais funcionam sem internet; referências externas precisam de conexão.
+16. Para executar SQL sem internet, o MySQL deve estar disponível no computador ou rede local.
+Calendário: oito segundas, de 19/10 a 14/12/2026, sem 02/11.
+Duas aulas de 50 minutos. Avaliação em 07/12; devolutiva e recuperação em 14/12.
+Este pacote do aluno não contém roteiro privado, notas do professor ou gabarito.

@@ -1,14 +1,20 @@
-# DadosLab — Banco de Dados
+# DadosLab — Banco de Dados com MySQL
 
 Portal do Prof. Fabrício Rodrigues para o Curso Técnico em Informática.
 
-Primeira aula: diagnóstico em 19/10/2026. Percurso proposto às segundas-feiras
-até 14/12, sem encontro em 02/11. Avaliação em 07/12 e devolutiva em 14/12.
+Diagnóstico de 19/10/2026: 16 situações justificadas e três tarefas SQL, com
+modelagem, integridade, consultas, transações, operação, segurança e desempenho.
+O professor interpreta evidências por dimensão, sem nota somativa no diagnóstico.
 
-O diagnóstico baixa um TXT identificado. O laboratório executa SQLite local
-com sql.js 1.15.0 e baixa o SQL da tentativa. Os estudantes entregam os arquivos
-na aula. Não há envio automático nem persistência de respostas de estudantes.
+O portal não executa SQL nem se conecta a um banco. A prática usa MySQL Server
+com o cliente do laboratório, como Workbench ou phpMyAdmin. VS Code edita o SQL;
+Live Server exibe a cópia local do portal. Os dois scripts da prática são para
+MySQL 8.0/8.4 com InnoDB, usando apenas dados fictícios em esquema de estudo.
 
-Para a cópia offline, extraia o ZIP e abra index.html com Live Server.
-O projeto sql.js e sua licença MIT estão identificados em SQLITE-LICENSE.txt.
-Material do professor e gabarito ficam fora deste repositório público.
+Os estudantes entregam TXT inicial, TXT final e SQL identificados na aula.
+Não há envio automático nem armazenamento das respostas de estudantes no servidor.
+Sem acesso ao MySQL, registram SQL e previsões com execução não observada.
+
+Encontros confirmados às segundas, de 19/10 a 14/12, sem 02/11, duas aulas de
+50 minutos. Avaliação em 07/12 e devolutiva em 14/12.
+O material do professor e o gabarito ficam fora deste repositório público.

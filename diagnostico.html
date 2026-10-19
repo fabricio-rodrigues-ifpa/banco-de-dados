@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#183e35">
-    <title>Responder e entregar o diagnóstico · DadosLab · Prof. Fabrício Rodrigues</title>
+    <title>Diagnóstico de conhecimentos em Banco de Dados · DadosLab · Prof. Fabrício Rodrigues</title>
     <meta name="description" content="Banco de Dados no curso técnico em Informática: diagnóstico, aulas às segundas, consultas e materiais para estudar.">
     <link rel="icon" href="favicon.svg">
     <link rel="stylesheet" href="styles.css">
@@ -25,17 +25,17 @@
     </div>
   </header>
     <main id="conteudo" class="detail-wrap">
-      <header class="detail-hero"><p class="eyebrow">19/10/2026 / PRIMEIRA TENTATIVA</p><h1>Meu diagnóstico de Banco de Dados</h1><p class="lead">Responda com suas palavras. Se um assunto for novo, indique isso. Baixe o TXT antes de fechar: a página não salva automaticamente nem envia ao professor.</p><div class="detail-actions"><a class="button secondary" href="aulas.html?id=aula-01">← Voltar à aula</a><a class="button secondary" href="Ficha-Diagnostico-BD.pdf">Ficha para imprimir ↗</a></div></header>
+      <header class="detail-hero"><p class="eyebrow">19/10/2026 / DIAGNÓSTICO MYSQL</p><h1>O quanto entendo de Banco de Dados?</h1><p class="lead">Explique suas decisões e registre o que consegue fazer. São 16 situações e três tarefas SQL. Se um tema ainda não foi estudado, marque isso. A tentativa orienta as próximas aulas e não recebe nota somativa.</p><div class="detail-actions"><a class="button secondary" href="aulas.html?id=aula-01">← Voltar à aula</a><a class="button secondary" href="Ficha-Diagnostico-BD.pdf">Ficha para imprimir ↗</a></div></header>
+      <div class="soft-box"><h2>Como responder</h2><p>Faça a primeira tentativa individual, sem consultar o caderno, os scripts da base, referências ou soluções. Nas questões sobre a biblioteca, use a base inicial abaixo. Registre uma hipótese, mesmo quando não tiver certeza. A familiaridade declarada não substitui sua explicação.</p><p>Baixe uma cópia inicial antes da prática e uma final com seus registros. A página não salva automaticamente e não envia respostas ao professor.</p></div>
       <form id="db-diagnostic" class="diagnostic-form">
-        <fieldset class="diagnostic-question"><legend>Identificação</legend><label for="nome">Nome do estudante</label><input id="nome" name="nome" autocomplete="name" required><label for="turma">Turma</label><input id="turma" name="turma" required><label for="experiencia">O que você já estudou e qual programa de banco de dados já usou?</label><textarea id="experiencia" name="experiencia" rows="3"></textarea></fieldset>
-        <section class="lesson-content"><h2>Base fictícia da biblioteca</h2><p>Em livros, quantidade indica exemplares cadastrados. Em emprestimos, NULL em data_devolucao indica devolução ainda não registrada.</p><div id="db-base"></div></section>
+        <fieldset class="diagnostic-question"><legend>Identificação e experiência anterior</legend><label for="nome">Nome do estudante</label><input id="nome" name="nome" autocomplete="name" required><label for="turma">Turma</label><input id="turma" name="turma" required><label for="experiencia">O que você já estudou? Qual programa usou e o que conseguiu fazer nele?</label><textarea id="experiencia" name="experiencia" rows="4"></textarea><label for="etapa">Qual cópia você está entregando?</label><select id="etapa" name="etapa"><option value="inicial">Tentativa inicial, antes da prática</option><option value="final">Versão final, com registro da prática</option></select><button class="button primary" type="submit">Baixar minha cópia em TXT ↓</button></fieldset>
+        <section class="lesson-content"><h2>Base inicial: biblioteca</h2><p id="base-note"></p><div id="db-base"></div></section>
         <div id="db-questions"></div>
-        <fieldset class="diagnostic-question"><legend>Registro da prática</legend><label for="pratica">Registre sua consulta, o resultado esperado, o observado e o que você mudou ou ainda não conseguiu.</label><textarea id="pratica" name="pratica" rows="7"></textarea><a class="text-link" href="laboratorio.html" target="_blank" rel="noopener">Abrir o laboratório em outra aba ↗</a></fieldset>
-        <fieldset id="bilhete-saida" class="diagnostic-question"><legend>Bilhete de saída</legend><label for="facilidade">Uma facilidade de hoje</label><textarea id="facilidade" name="facilidade" rows="2"></textarea><label for="duvida">Uma dúvida</label><textarea id="duvida" name="duvida" rows="2"></textarea><label for="chave">O que uma chave primária identifica?</label><textarea id="chave" name="chave" rows="2"></textarea></fieldset>
-        <button class="button primary" type="submit">Baixar meu diagnóstico em TXT ↓</button>
-        <p id="diagnostic-status" class="db-status" role="status" aria-live="polite"></p>
-      </form>
-      <nav class="return-nav"><a class="button secondary" href="aulas.html?id=aula-01">← Voltar à aula</a><a class="button secondary" href="index.html">← Voltar ao início</a></nav>
+        <section class="lesson-content"><h2>Produção de SQL: P1 a P3</h2><p>Depois de guardar a cópia inicial, abra a área de prática. Registre previsão, consulta escrita, resultado observado e apoio recebido. Sem acesso ao MySQL, escreva o SQL e marque que não executou. Uma barreira de acesso não é evidência de desconhecimento.</p><a class="button secondary" href="laboratorio.html" target="_blank" rel="noopener">Abrir a prática em outra aba ↗</a></section>
+        <div id="db-practice-questions"></div>
+        <fieldset class="diagnostic-question"><legend>Registro final</legend><label for="apoio">Que ajuda você recebeu? Diferencie apoio para conectar ao MySQL de ajuda para resolver o conteúdo.</label><textarea id="apoio" name="apoio" rows="3"></textarea><label for="saida">Que decisão de modelagem ou de SQL você consegue justificar agora? Qual dúvida precisa retomar?</label><textarea id="saida" name="saida" rows="4"></textarea></fieldset>
+        <button class="button primary" type="submit">Baixar minha cópia em TXT ↓</button><p id="diagnostic-status" class="db-status" role="status" aria-live="polite"></p>
+      </form><nav class="return-nav"><a class="button secondary" href="aulas.html?id=aula-01">← Voltar à aula</a><a class="button secondary" href="index.html">← Voltar ao início</a></nav>
     </main>
     <footer class="site-footer">
       <div class="wrap footer-inner">

@@ -55,7 +55,7 @@
         ${s.codigo ? `<pre><code>${esc(s.codigo)}</code></pre>` : ''}</section>`).join('')}</section>
       <section id="atividade"><h2>Prática da aula</h2><ol>${a.atividade.map((x) => `<li>${esc(x)}</li>`).join('')}</ol>
       <p><strong>Resultado esperado:</strong> ${esc(a.produto)}</p>
-      <div class="detail-actions"><a class="button primary" href="laboratorio.html">Abrir o Laboratório SQL ↗</a><a class="button secondary" href="Pratica-Banco-de-Dados.zip" download>Baixar os dois scripts SQL ↓</a></div></section>
+      <div class="detail-actions"><a class="button primary" href="laboratorio.html">Abrir a prática MySQL ↗</a><a class="button secondary" href="Pratica-Banco-de-Dados.zip" download>Baixar os dois scripts SQL ↓</a></div></section>
       ${a.etapas ? `<section><h2>Etapas da aula</h2><ol>${a.etapas.map((x) => `<li>${esc(x)}</li>`).join('')}</ol></section>` : ''}
       <section id="conferencia"><h2>Checklist de conferência</h2><div class="checklist">${a.checklist.map((x) => `<label class="check-item"><input type="checkbox"><span>${esc(x)}</span></label>`).join('')}</div><p class="storage-note">As marcações não são salvas e não enviam uma entrega.</p></section>
       <section class="soft-box"><h3>Uma descoberta útil</h3><p>${esc(a.curiosidade)}</p></section>
@@ -76,15 +76,36 @@
   if ($('#db-references')) $('#db-references').innerHTML = referenceList(D.referencias.map((r) => r.id));
   if ($('#db-base')) {
     $('#db-base').innerHTML = '<h3>livros</h3>' + table(['id', 'titulo', 'area', 'quantidade'], D.livros)
-      + '<h3>emprestimos</h3>' + table(['id', 'livro_id', 'leitor', 'data_emprestimo', 'data_devolucao'], D.emprestimos);
+      + '<h3>leitores</h3>' + table(['id', 'nome', 'turma'], D.leitores)
+      + '<h3>emprestimos</h3>' + table(['id', 'livro_id', 'leitor_id', 'data_emprestimo', 'data_devolucao'], D.emprestimos);
   }
 
+  if ($('#base-note')) $('#base-note').textContent = D.baseNota;
+
   if ($('#db-diagnostic')) {
+    const options = [
+      ['', 'Selecione sua familiaridade'],
+      ['nao-estudei', 'Ainda não estudei'],
+      ['nao-lembro', 'Já vi, mas não lembro como resolver'],
+      ['hipotese', 'Tenho uma hipótese ou resposta parcial'],
+      ['justifico', 'Consigo responder e justificar']
+    ];
     $('#db-questions').innerHTML = D.perguntas.map((q) => `<fieldset class="diagnostic-question">
       <legend>${esc(q.id)} / ${esc(q.area)} / ${esc(q.titulo)}</legend>
       <pre><code>${esc(q.codigo)}</code></pre><label for="resposta-${esc(q.id)}">${esc(q.enunciado)}</label>
-      <textarea id="resposta-${esc(q.id)}" name="${esc(q.id)}" rows="4"></textarea>
+      <textarea id="resposta-${esc(q.id)}" name="${esc(q.id)}" rows="6" placeholder="Minha explicação, desenho descrito, resultado previsto ou SQL..."></textarea>
+      <label for="familiaridade-${esc(q.id)}">Minha familiaridade com este assunto</label>
+      <select id="familiaridade-${esc(q.id)}" name="familiaridade-${esc(q.id)}">${options.map(([v,t]) => `<option value="${v}">${t}</option>`).join('')}</select>
     </fieldset>`).join('');
+    $('#db-practice-questions').innerHTML = D.praticas.map((t) => `<fieldset class="diagnostic-question">
+      <legend>${esc(t.id)} / ${esc(t.titulo)}</legend><p>${esc(t.enunciado)}</p>
+      <label for="exec-${t.id}">Condição da tentativa</label><select id="exec-${t.id}" name="exec-${t.id}">
+        <option value="nao-informado">Ainda não registrei</option><option value="executado-mysql">Executei no MySQL</option>
+        <option value="parcial-mysql">Tentei no MySQL, com erro ou execução parcial</option>
+        <option value="sem-acesso">Escrevi sem executar por falta de acesso</option>
+        <option value="nao-soube">Não soube elaborar a consulta</option></select>
+      <label for="pratica-${t.id}">Previsão, SQL escrito, resultado observado e apoio recebido</label>
+      <textarea id="pratica-${t.id}" name="pratica-${t.id}" rows="8"></textarea></fieldset>`).join('');
     $('#db-diagnostic').addEventListener('submit', (event) => {
       event.preventDefault();
       const data = new FormData(event.currentTarget);
@@ -94,15 +115,21 @@
         $('#diagnostic-status').textContent = 'Informe nome e turma antes de baixar.';
         return;
       }
-      const text = ['DADOSLAB - DIAGNÓSTICO DE BANCO DE DADOS', '19/10/2026 - Prof. Fabrício Rodrigues',
+      const etapa = data.get('etapa') === 'final' ? 'final' : 'inicial';
+      const text = ['DADOSLAB - DIAGNÓSTICO DE CONHECIMENTOS EM BANCO DE DADOS - MYSQL',
+        '19/10/2026 - Prof. Fabrício Rodrigues', 'Cópia: ' + etapa,
         'Nome: ' + nome, 'Turma: ' + turma, 'Experiência: ' + (data.get('experiencia') || '(sem registro)'), '',
-        ...D.perguntas.flatMap((q) => [q.id + ' - ' + q.enunciado, String(data.get(q.id) || '(sem resposta)'), '']),
-        'REGISTRO DA PRÁTICA', String(data.get('pratica') || '(sem registro)'), '',
-        'Facilidade: ' + (data.get('facilidade') || ''), 'Dúvida: ' + (data.get('duvida') || ''),
-        'O que uma chave primária identifica? ' + (data.get('chave') || '')].join('\n');
-      const name = `diagnostico-bd-${slug(turma)}-${slug(nome)}.txt`;
+        ...D.perguntas.flatMap((q) => [q.id + ' - ' + q.titulo, q.codigo, q.enunciado,
+          'Minha resposta: ' + String(data.get(q.id) || '(sem resposta)'),
+          'Familiaridade declarada: ' + (data.get('familiaridade-' + q.id) || '(não informada)'), '']),
+        'PRODUÇÃO DE SQL', ...D.praticas.flatMap((t) => [t.id + ' - ' + t.enunciado,
+          'Condição: ' + (data.get('exec-' + t.id) || '(não informada)'),
+          String(data.get('pratica-' + t.id) || '(sem registro)'), '']),
+        'APOIO RECEBIDO: ' + (data.get('apoio') || '(sem registro)'),
+        'DECISÃO JUSTIFICADA E DÚVIDA: ' + (data.get('saida') || '(sem registro)')].join('\n');
+      const name = `diagnostico-${etapa}-mysql-${slug(turma)}-${slug(nome)}.txt`;
       save(name, text);
-      $('#diagnostic-status').textContent = `Download preparado: ${name}. Confira em Downloads e entregue ao professor na aula. Não há envio automático.`;
+      $('#diagnostic-status').textContent = `Cópia ${etapa} preparada: ${name}. Confira em Downloads e entregue ao professor na aula. Não há envio automático.`;
     });
   }
 
@@ -131,96 +158,28 @@
     show();
   }
 
+  if ($('#db-practice-tasks')) {
+    $('#db-practice-tasks').innerHTML = D.praticas.map((t) =>
+      `<section><h3>${esc(t.id)} · ${esc(t.titulo)}</h3><p>${esc(t.enunciado)}</p></section>`).join('');
+  }
   if ($('#sql-editor')) {
-    let worker;
-    let timer;
-    let history = [];
-    let ready = false;
-    let activeSQL = '';
-    const status = (message, error = false) => {
-      $('#db-status').textContent = message;
-      $('#db-status').classList.toggle('db-error', error);
-    };
-    const enable = (value) => {
-      ready = value;
-      $('#run-sql').disabled = !value;
-      $('#reset-db').disabled = !value;
-    };
-    const renderHistory = () => {
-      $('#db-log').innerHTML = history.map((x) => `<li><pre><code>${esc(x.sql)}</code></pre><p>${esc(x.summary)}</p></li>`).join('');
-    };
-    const start = () => {
-      if (worker) worker.terminate();
-      clearTimeout(timer);
-      enable(false);
-      worker = new Worker('sql-worker.js');
-      worker.onmessage = ({ data }) => {
-        clearTimeout(timer);
-        if (data.type === 'ready') {
-          enable(true);
-          status('Base pronta: 4 livros e 3 empréstimos fictícios. Escreva sua previsão antes de executar.');
-          return;
-        }
-        if (data.type === 'fatal') {
-          enable(false);
-          status('O SQLite não carregou. Abra o portal publicado ou use o pacote com Live Server. ' + data.error, true);
-          return;
-        }
-        enable(true);
-        if (data.type === 'error') {
-          history.push({ sql: activeSQL, summary: 'Erro do SQLite: ' + data.error });
-          status('Erro do SQLite: ' + data.error + '. Leia a mensagem e compare com os campos da base.', true);
-          $('#db-results').innerHTML = '';
-        } else {
-          $('#db-results').innerHTML = data.results.length ? data.results.map((r, i) =>
-            `<h2>Resultado ${i + 1}</h2>${table(r.columns, r.values)}<p>${r.values.length} linha(s) exibida(s)${r.truncated ? ' — limite de 200 linhas atingido' : ''}.</p>`).join('')
-            : '<p>Comando executado sem tabela de resultado. Verifique os efeitos com uma consulta.</p>';
-          const summary = data.results.length ? data.results.map((r) => `${r.values.length} linha(s) exibida(s): ` + JSON.stringify(r.values)).join('\n') : 'Comando executado sem tabela de resultado.';
-          history.push({ sql: activeSQL, summary });
-          status('Execução concluída. Compare com sua previsão e registre o teste na ficha.');
-        }
-        renderHistory();
-      };
-      worker.onerror = () => {
-        clearTimeout(timer);
-        enable(false);
-        status('O laboratório não carregou. Use o portal publicado ou abra o pacote com Live Server.', true);
-      };
-      worker.postMessage({ type: 'init', sql: D.baseSQL });
-    };
-    $('#run-sql').addEventListener('click', () => {
-      if (!ready) return;
-      activeSQL = $('#sql-editor').value.trim();
-      if (!activeSQL) return status('Escreva uma consulta antes de executar.', true);
-      if (activeSQL.length > 20000) return status('Use até 20 mil caracteres por execução.', true);
-      enable(false);
-      status('Executando…');
-      timer = setTimeout(() => {
-        history.push({ sql: activeSQL, summary: 'Tempo de execução excedido. A base foi restaurada.' });
-        renderHistory();
-        start();
-        status('Tempo excedido. A base está sendo restaurada; o texto do editor foi mantido.', true);
-      }, 4000);
-      worker.postMessage({ type: 'run', sql: activeSQL });
-    });
-    $('#reset-db').addEventListener('click', () => {
-      history = [];
-      renderHistory();
-      $('#db-results').innerHTML = '';
-      start();
-    });
+    $('#sql-editor').value = D.rascunhoSQL;
     $('#save-sql').addEventListener('click', () => {
       const nome = $('#nome-lab').value.trim();
       const turma = $('#turma-lab').value.trim();
-      if (!nome || !turma) return status('Informe nome e turma para identificar o arquivo SQL.', true);
-      const text = ['-- DADOSLAB - 19/10/2026', '-- Nome: ' + nome, '-- Turma: ' + turma,
-        '-- Consultas e histórico da sessão. Entregue este arquivo ao professor.', '',
-        ...history.flatMap((h) => [h.sql, ...h.summary.split('\n').map((x) => '-- ' + x), '']),
-        '-- Texto atual do editor:', $('#sql-editor').value].join('\n');
-      const name = `consultas-bd-${slug(turma)}-${slug(nome)}.sql`;
-      save(name, text, 'text/plain;charset=utf-8');
-      status(`Download preparado: ${name}. Entregue junto do TXT da ficha durante a aula.`);
+      if (!nome || !turma) {
+        $('#db-status').textContent = 'Informe nome e turma para identificar o SQL.';
+        return;
+      }
+      const comments = (text) => String(text).split('\n').map((x) => '-- ' + x);
+      const text = ['-- DADOSLAB - MYSQL - 19/10/2026', ...comments('Nome: ' + nome),
+        ...comments('Turma: ' + turma), ...comments('Ambiente/execução: ' + ($('#ambiente-lab').value || 'não informado')),
+        '-- Esta página registra a tentativa. A execução ocorre no MySQL do laboratório.', '',
+        $('#sql-editor').value, '', '-- REGISTRO DE EVIDÊNCIAS DA TENTATIVA',
+        ...comments($('#sql-evidence').value || '(sem registro)')].join('\n');
+      const name = `tentativa-mysql-${slug(turma)}-${slug(nome)}.sql`;
+      save(name, text);
+      $('#db-status').textContent = `Arquivo preparado: ${name}. Entregue o SQL e os TXT da ficha ao professor.`;
     });
-    start();
   }
 })();

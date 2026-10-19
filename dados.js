@@ -5,61 +5,86 @@ window.WEBLAB_BD = {
   "fim": "2026-12-14",
   "semAula": "2026-11-02",
   "avaliacao": "2026-12-07",
-  "planejamento": "Proposta ajustável conforme o diagnóstico e o calendário da turma.",
+  "planejamento": "Encontros confirmados: 19/10 a 14/12/2026, às segundas, duas aulas de 50 minutos. A sequência será ajustada às evidências do diagnóstico.",
   "referencias": [
     {
       "id": "conceitos",
-      "titulo": "PostgreSQL: conceitos relacionais (em inglês)",
-      "url": "https://www.postgresql.org/docs/current/tutorial-concepts.html"
+      "titulo": "MySQL: conceitos e tutorial (em inglês)",
+      "url": "https://dev.mysql.com/doc/refman/8.4/en/tutorial.html"
     },
     {
       "id": "tabelas",
-      "titulo": "PostgreSQL: criação de tabelas (em inglês)",
-      "url": "https://www.postgresql.org/docs/current/ddl-basics.html"
+      "titulo": "MySQL: CREATE TABLE e tipos (em inglês)",
+      "url": "https://dev.mysql.com/doc/refman/8.4/en/create-table.html"
     },
     {
       "id": "chaves",
-      "titulo": "PostgreSQL: restrições e chaves (em inglês)",
-      "url": "https://www.postgresql.org/docs/current/ddl-constraints.html"
+      "titulo": "MySQL: chaves estrangeiras e integridade (em inglês)",
+      "url": "https://dev.mysql.com/doc/refman/8.4/en/create-table-foreign-keys.html"
     },
     {
       "id": "select",
-      "titulo": "SQLite: SELECT e consultas (em inglês)",
-      "url": "https://sqlite.org/lang_select.html"
-    },
-    {
-      "id": "null",
-      "titulo": "SQLite: expressões, operadores e NULL (em inglês)",
-      "url": "https://sqlite.org/lang_expr.html"
-    },
-    {
-      "id": "insert",
-      "titulo": "SQLite: INSERT (em inglês)",
-      "url": "https://sqlite.org/lang_insert.html"
-    },
-    {
-      "id": "update",
-      "titulo": "SQLite: UPDATE (em inglês)",
-      "url": "https://sqlite.org/lang_update.html"
-    },
-    {
-      "id": "mysql",
-      "titulo": "MySQL: manual de SELECT (em inglês)",
+      "titulo": "MySQL: SELECT (em inglês)",
       "url": "https://dev.mysql.com/doc/refman/8.4/en/select.html"
     },
     {
-      "id": "sqlite",
-      "titulo": "SQLite: primeiros passos (em inglês)",
-      "url": "https://sqlite.org/quickstart.html"
+      "id": "null",
+      "titulo": "MySQL: comparação com NULL (em inglês)",
+      "url": "https://dev.mysql.com/doc/refman/8.4/en/problems-with-null.html"
     },
     {
-      "id": "sqljs",
-      "titulo": "sql.js: SQLite no navegador e licença",
-      "url": "https://github.com/sql-js/sql.js"
+      "id": "insert",
+      "titulo": "MySQL: INSERT (em inglês)",
+      "url": "https://dev.mysql.com/doc/refman/8.4/en/insert.html"
+    },
+    {
+      "id": "update",
+      "titulo": "MySQL: UPDATE (em inglês)",
+      "url": "https://dev.mysql.com/doc/refman/8.4/en/update.html"
+    },
+    {
+      "id": "grupos",
+      "titulo": "MySQL: GROUP BY e HAVING (em inglês)",
+      "url": "https://dev.mysql.com/doc/refman/8.4/en/group-by-handling.html"
+    },
+    {
+      "id": "join",
+      "titulo": "MySQL: JOIN e LEFT JOIN (em inglês)",
+      "url": "https://dev.mysql.com/doc/refman/8.4/en/join.html"
+    },
+    {
+      "id": "transacoes",
+      "titulo": "MySQL: transações, COMMIT e ROLLBACK (em inglês)",
+      "url": "https://dev.mysql.com/doc/refman/8.4/en/commit.html"
+    },
+    {
+      "id": "backup",
+      "titulo": "MySQL: backup e recuperação (em inglês)",
+      "url": "https://dev.mysql.com/doc/refman/8.4/en/backup-and-recovery.html"
+    },
+    {
+      "id": "indices",
+      "titulo": "MySQL: índices (em inglês)",
+      "url": "https://dev.mysql.com/doc/refman/8.4/en/mysql-indexes.html"
+    },
+    {
+      "id": "seguranca",
+      "titulo": "MySQL: prevenção de injeção SQL (em inglês)",
+      "url": "https://dev.mysql.com/doc/refman/8.4/en/secure-client-programming.html"
+    },
+    {
+      "id": "tipos",
+      "titulo": "MySQL: tipos de dados (em inglês)",
+      "url": "https://dev.mysql.com/doc/refman/8.4/en/data-types.html"
+    },
+    {
+      "id": "workbench",
+      "titulo": "MySQL Workbench: executar consultas (em inglês)",
+      "url": "https://dev.mysql.com/doc/workbench/en/wb-sql-editor.html"
     },
     {
       "id": "feriado",
-      "titulo": "Calendário oficial de feriados de 2026",
+      "titulo": "Calendário nacional de 2026",
       "url": "https://www.gov.br/gestao/pt-br/assuntos/noticias/2025/dezembro/confira-o-calendario-oficial-de-feriados-nacionais-e-pontos-facultativos-em-2026"
     }
   ],
@@ -87,94 +112,222 @@ window.WEBLAB_BD = {
       "Lógica de Programação",
       "Programação",
       2
+    ],
+    [
+      5,
+      "Linux em Redes",
+      "Redes",
+      1
     ]
   ],
   "emprestimos": [
     [
       101,
       1,
-      "Ana",
+      1,
       "2026-10-10",
       null
     ],
     [
       102,
       3,
-      "Bruno",
+      2,
       "2026-10-11",
       "2026-10-15"
     ],
     [
       103,
       1,
-      "Caio",
+      3,
       "2026-10-12",
+      null
+    ],
+    [
+      104,
+      2,
+      1,
+      "2026-10-13",
+      "2026-10-16"
+    ],
+    [
+      105,
+      3,
+      1,
+      "2026-10-17",
       null
     ]
   ],
   "perguntas": [
     {
-      "id": "D1",
-      "area": "Dados e organização",
-      "titulo": "Dado e informação",
-      "codigo": "Registro: livro_id = 1\nPergunta: quais livros estão emprestados sem devolução?",
-      "enunciado": "O que esse registro informa sozinho? Que outros dados você consultaria para responder à pergunta?"
+      "id": "F1",
+      "area": "Fundamentos e ambiente",
+      "titulo": "Banco, servidor e ferramenta",
+      "codigo": "MySQL Server / MySQL Workbench / SQL / banco biblioteca",
+      "enunciado": "Explique o papel de cada item. Fechar o Workbench apaga as tabelas? Onde ficam os dados? Relate uma ação que já fez nesse ambiente.",
+      "refs": [
+        "conceitos",
+        "workbench"
+      ]
     },
     {
-      "id": "D2",
-      "area": "Dados e organização",
-      "titulo": "Campos e registros",
-      "codigo": "Tabela livros: id | titulo | area | quantidade\nExemplo: 1 | Redes de Computadores | Redes | 2",
-      "enunciado": "O que representa uma linha? O que representa uma coluna? Quantos registros de livros aparecem na base da aula?"
-    },
-    {
-      "id": "D3",
-      "area": "Dados e organização",
-      "titulo": "Identificação de um registro",
-      "codigo": "livros(id, titulo, area, quantidade)",
-      "enunciado": "Qual campo você escolheria para identificar um registro sem ambiguidade? Por que só o título pode não bastar?"
+      "id": "F2",
+      "area": "Fundamentos e ambiente",
+      "titulo": "Estrutura e manipulação",
+      "codigo": "CREATE TABLE / INSERT / SELECT\nUPDATE / DELETE / DROP TABLE",
+      "enunciado": "Dê a finalidade de cada comando. Explique a diferença entre DELETE FROM leitores e DROP TABLE leitores, considerando o efeito pretendido e possíveis restrições.",
+      "refs": [
+        "tabelas",
+        "select",
+        "update",
+        "transacoes"
+      ]
     },
     {
       "id": "M1",
       "area": "Modelagem e relações",
-      "titulo": "Repetição de dados",
-      "codigo": "Imagine copiar titulo e area do livro\nem cada linha de emprestimo.",
-      "enunciado": "Que problema pode ocorrer se o nome da área mudar? Como você organizaria os dados para evitar cópias inconsistentes?"
+      "titulo": "Regras em um modelo",
+      "codigo": "Uma escola oferece cursos.\nUm aluno pode cursar vários cursos.\nUm curso recebe vários alunos.\nCada matrícula tem uma data.",
+      "enunciado": "Desenhe ou descreva três tabelas para esse caso. Marque PK e FK, indique as cardinalidades e explique o que representa cada linha de matrícula. Justifique como evita uma lista de cursos em um único campo.",
+      "refs": [
+        "conceitos",
+        "chaves"
+      ]
     },
     {
       "id": "M2",
       "area": "Modelagem e relações",
-      "titulo": "Ligação entre tabelas",
-      "codigo": "livros.id = 1\nemprestimos.livro_id = 1",
-      "enunciado": "Como essas colunas ligam um empréstimo a um livro? O que significa tentar cadastrar livro_id = 99, se esse livro não existe?"
+      "titulo": "Repetição e normalização",
+      "codigo": "emprestimo_id | leitor_id | nome_leitor | turma\n101           | 1         | Ana         | 1A\n104           | 1         | Ana         | 1A",
+      "enunciado": "Se Ana mudar de turma, que problema pode aparecer nessa tabela? Proponha uma reorganização e explique de qual chave nome e turma dependem. Não basta citar uma forma normal.",
+      "refs": [
+        "conceitos",
+        "chaves"
+      ]
     },
     {
       "id": "M3",
       "area": "Modelagem e relações",
-      "titulo": "Ausência de valor",
-      "codigo": "Campo: data_devolucao\nValor exibido: NULL",
-      "enunciado": "Nesta base, o que foi combinado que NULL em data_devolucao representa? Você o trataria como uma data de verdade? Explique."
+      "titulo": "N:N e identificação ao longo do tempo",
+      "codigo": "Ana pode pegar o mesmo livro novamente,\nem outra data.",
+      "enunciado": "Como livros e leitores se relacionam ao longo do tempo? A dupla (leitor_id, livro_id) pode ser a única PK de emprestimos nessa regra? Justifique e proponha um identificador.",
+      "refs": [
+        "conceitos",
+        "chaves"
+      ]
+    },
+    {
+      "id": "I1",
+      "area": "Estrutura e integridade",
+      "titulo": "Tipos e definição de tabela",
+      "codigo": "CREATE TABLE devolucoes (\n  id VARCHAR(10),\n  data_devolucao VARCHAR(10),\n  multa FLOAT\n);",
+      "enunciado": "Proponha uma definição melhor para uma devolução identificada, com data e multa monetária. Justifique PK, tipos e nulabilidade. Escreva pelo menos parte do CREATE TABLE em MySQL.",
+      "refs": [
+        "tipos",
+        "tabelas"
+      ]
+    },
+    {
+      "id": "I2",
+      "area": "Estrutura e integridade",
+      "titulo": "Restrições em ação",
+      "codigo": "Restrições em emprestimos:\nPRIMARY KEY (id)\nFOREIGN KEY (livro_id) REFERENCES livros(id)\nleitor_id INT NOT NULL\nA. id = 101 em novo empréstimo\nB. livro_id = 99 em novo empréstimo\nC. leitor_id = NULL em novo empréstimo",
+      "enunciado": "Quais restrições rejeitam A, B e C, considerando a base inicial? Por que a aplicação e o banco podem validar a mesma regra? Considere as restrições acima.",
+      "refs": [
+        "chaves",
+        "tabelas"
+      ]
     },
     {
       "id": "Q1",
-      "area": "Leitura de SQL",
-      "titulo": "Seleção e filtro",
-      "codigo": "SELECT titulo\nFROM livros\nWHERE area = 'Redes';",
-      "enunciado": "Qual coluna aparece no resultado e quais registros entram? Escreva o resultado que espera encontrar."
+      "area": "Consultas e resultados",
+      "titulo": "Filtro, precedência e ordenação",
+      "codigo": "SELECT id, titulo, quantidade\nFROM livros\nWHERE quantidade >= 2\n  AND (area = 'Redes' OR area = 'Web')\nORDER BY quantidade DESC, id;",
+      "enunciado": "Escreva as linhas na ordem esperada. Explique a condição e o risco de retirar os parênteses, mantendo o restante do WHERE.",
+      "refs": [
+        "select"
+      ]
     },
     {
       "id": "Q2",
-      "area": "Leitura de SQL",
-      "titulo": "Condição e ordenação",
-      "codigo": "SELECT titulo, quantidade\nFROM livros\nWHERE quantidade >= 2\nORDER BY quantidade DESC, titulo;",
-      "enunciado": "Quais livros entram e em que ordem? O que >= e DESC mudam nessa consulta?"
+      "area": "Consultas e resultados",
+      "titulo": "Ausência de valor",
+      "codigo": "SELECT id\nFROM emprestimos\nWHERE data_devolucao = NULL;",
+      "enunciado": "A consulta encontra empréstimos sem devolução? Corrija o SQL e indique os IDs esperados. Explique por que NULL, zero e texto vazio não significam a mesma coisa.",
+      "refs": [
+        "null"
+      ]
     },
     {
       "id": "Q3",
-      "area": "Leitura de SQL",
-      "titulo": "Consulta com relacionamento",
-      "codigo": "SELECT l.titulo, e.leitor\nFROM livros AS l\nJOIN emprestimos AS e ON e.livro_id = l.id\nWHERE e.data_devolucao IS NULL\nORDER BY e.id;",
-      "enunciado": "O que o JOIN combina? Por que o mesmo título pode aparecer em duas linhas? Se conseguir, escreva o resultado."
+      "area": "Consultas e resultados",
+      "titulo": "JOIN e linhas repetidas",
+      "codigo": "SELECT l.titulo, r.nome\nFROM emprestimos AS e\nJOIN livros AS l ON l.id = e.livro_id\nJOIN leitores AS r ON r.id = e.leitor_id\nWHERE e.data_devolucao IS NULL\nORDER BY e.id;",
+      "enunciado": "Escreva o resultado. Por que um título aparece mais de uma vez? O que pode acontecer se faltar uma condição de relacionamento?",
+      "refs": [
+        "join"
+      ]
+    },
+    {
+      "id": "Q4",
+      "area": "Consultas e resultados",
+      "titulo": "LEFT JOIN e contagem",
+      "codigo": "SELECT r.id, r.nome, COUNT(*) AS total\nFROM leitores AS r\nLEFT JOIN emprestimos AS e\n  ON e.leitor_id = r.id\nGROUP BY r.id, r.nome\nORDER BY r.id;",
+      "enunciado": "Preveja o total mostrado para Duda. Como contar os empréstimos incluindo leitores com zero? Corrija a expressão e informe os quatro totais.",
+      "refs": [
+        "join",
+        "grupos"
+      ]
+    },
+    {
+      "id": "Q5",
+      "area": "Consultas e resultados",
+      "titulo": "Agrupamento e filtro de grupos",
+      "codigo": "SELECT area, COUNT(*) AS titulos,\n       SUM(quantidade) AS exemplares\nFROM livros\nGROUP BY area\nHAVING COUNT(*) >= 2\nORDER BY area;",
+      "enunciado": "Qual resultado será produzido? Explique a diferença entre titulos e exemplares e por que esse filtro usa HAVING, em vez de WHERE COUNT(*) >= 2.",
+      "refs": [
+        "grupos"
+      ]
+    },
+    {
+      "id": "T1",
+      "area": "Transações e operação",
+      "titulo": "Uma operação completa",
+      "codigo": "Um cadastro e seu primeiro empréstimo devem\nser confirmados juntos em tabelas InnoDB.\nA segunda gravação falha.",
+      "enunciado": "Que sequência de controle usaria no MySQL para manter a operação inteira ou desfazê-la? Explique START TRANSACTION, COMMIT, ROLLBACK e o efeito de autocommit. O erro garante que toda a transação foi desfeita?",
+      "refs": [
+        "transacoes"
+      ]
+    },
+    {
+      "id": "O1",
+      "area": "Transações e operação",
+      "titulo": "Backup que pode ser recuperado",
+      "codigo": "Um aluno salvou consultas.sql e disse:\n“Já tenho backup do banco.”",
+      "enunciado": "Isso basta para recuperar o banco inteiro? O que precisaria preservar e como verificaria a recuperação sem depender apenas da existência de um arquivo?",
+      "refs": [
+        "backup"
+      ]
+    },
+    {
+      "id": "O2",
+      "area": "Segurança e desempenho",
+      "titulo": "Entrada do usuário e permissões",
+      "codigo": "Uma aplicação concatena o texto digitado\npelo usuário dentro de uma consulta SQL.",
+      "enunciado": "Que risco isso traz e como você reduziria esse risco? Um usuário usado apenas em relatórios precisa de permissão para apagar tabelas? Justifique.",
+      "refs": [
+        "seguranca"
+      ]
+    },
+    {
+      "id": "O3",
+      "area": "Segurança e desempenho",
+      "titulo": "Índice e custo de escrita",
+      "codigo": "A busca por titulo em livros ficou lenta\nquando a base cresceu muito.",
+      "enunciado": "Que papel um índice poderia ter? Ele sempre melhora tudo? Como verificaria o plano com EXPLAIN e a diferença entre índice comum, UNIQUE e PRIMARY KEY?",
+      "refs": [
+        "indices",
+        "tabelas"
+      ]
     }
   ],
   "aulas": [
@@ -184,109 +337,61 @@ window.WEBLAB_BD = {
       "data": "2026-10-19",
       "dataCurta": "19/10",
       "eixo": "Diagnóstico",
-      "titulo": "O que já sabemos sobre dados?",
-      "subtitulo": "Diagnóstico individual, leitura de tabelas e consultas e fundamentos de banco de dados",
-      "produto": "TXT identificado com respostas, registro da prática e bilhete de saída; consultas em SQL.",
+      "titulo": "O quanto entendemos de Banco de Dados?",
+      "subtitulo": "Diagnóstico de fundamentos, modelagem, integridade, SQL e operação em MySQL",
+      "produto": "TXT/ficha com 16 respostas justificadas e registro de três tarefas SQL, incluindo os limites e apoios da tentativa.",
       "objetivos": [
-        "Explicar como interpreta dados de uma tabela.",
-        "Justificar uma forma de identificar e relacionar registros.",
-        "Ler ou construir uma consulta e registrar como verificou o resultado.",
-        "Reconhecer a função de um banco de dados e de um SGBD."
+        "Distinguir o que já estudou, o que consegue explicar e o que consegue produzir.",
+        "Justificar chaves, relações e regras de integridade em um cenário.",
+        "Interpretar resultados de consultas e escrever SQL em MySQL.",
+        "Registrar previsões, erros observados e apoio recebido."
       ],
-      "retomada": "O diagnóstico verifica a base real da turma. Não presume quais ferramentas ou comandos cada estudante já estudou. Se um assunto for novo, registre isso junto da tentativa.",
+      "retomada": "Faça primeiro a tentativa individual, sem consultar o caderno ou soluções. Use “não estudei”, “não lembro” ou uma hipótese explicada. Isso ajuda o professor a distinguir exposição anterior, compreensão e autonomia.",
       "secoes": [
         {
-          "titulo": "Primeira tentativa individual",
+          "titulo": "Como o diagnóstico funciona",
           "texto": [
-            "Abra a ficha e informe nome e turma. Observe a base fictícia da biblioteca. Responda antes de consultar o material de fundamentos ou discutir as soluções. Esta atividade orienta a continuidade e não recebe nota somativa.",
-            "Uma dúvida explicada também é uma evidência útil. Identifique o que você já estudou e justifique o que conseguir. Não invente uma resposta só para preencher tudo."
-          ],
-          "codigo": ""
-        },
-        {
-          "titulo": "A base da biblioteca",
-          "texto": [
-            "Cada linha de livros representa um cadastro de livro. quantidade indica exemplares cadastrados, não o saldo disponível depois dos empréstimos. Cada empréstimo guarda o código do livro e uma data de devolução, quando registrada.",
-            "Nesta base, NULL em data_devolucao indica que a devolução ainda não foi registrada. Todos os nomes e registros são fictícios."
-          ],
-          "codigo": "",
-          "tabela": [
-            [
-              "Tabela",
-              "Campos"
-            ],
-            [
-              "livros",
-              "id, titulo, area, quantidade"
-            ],
-            [
-              "emprestimos",
-              "id, livro_id, leitor, data_emprestimo, data_devolucao"
-            ]
+            "São 16 situações, com níveis variados, e três tarefas de produção de SQL. O objetivo é localizar evidências por assunto, sem transformar a primeira aula em nota classificatória.",
+            "Responda antes de consultar os materiais. Questões ainda não estudadas também são informação. O professor observará raciocínio, justificativa e autonomia."
           ]
         },
         {
-          "titulo": "Prática de diagnóstico",
+          "titulo": "Base inicial e ferramentas",
           "texto": [
-            "Abra o Laboratório SQL pelo botão da aula. O banco já vem carregado e funciona no navegador. Antes de executar, escreva o que espera encontrar. Depois, compare com o resultado e registre a diferença na ficha.",
-            "Corrija a consulta que usa uma coluna inexistente. Em seguida, escreva uma consulta que mostre título e quantidade dos livros com pelo menos dois exemplares. Quem já domina pode relacionar livros e empréstimos em aberto.",
-            "Baixe suas consultas em SQL antes de fechar a aba. Os resultados e a digitação não são salvos automaticamente. O laboratório usa SQLite; a instalação e as particularidades do SGBD da turma serão alinhadas pelo professor."
-          ],
-          "codigo": "SELECT titulo\nFROM livros\nWHERE categoria = 'Redes';"
+            "Dados fictícios. quantidade é o total cadastrado, não o saldo disponível. Cada empréstimo registra um livro e um leitor. NULL em data_devolucao significa que a devolução ainda não foi registrada. As consultas da biblioteca usam esta base inicial, sem as alterações da prática. Os demais casos descrevem seu próprio cenário.",
+            "Use MySQL Server com o cliente que já existir no laboratório, como Workbench ou phpMyAdmin. O portal organiza a atividade e baixa arquivos; ele não executa MySQL. VS Code edita SQL e Live Server exibe a cópia do portal.",
+            "O professor prepara o esquema de estudo antes da prática. Sem acesso ao servidor, escreva as consultas e previsões, marcando que não executou. Isso não equivale a desconhecer o conteúdo."
+          ]
         },
         {
-          "titulo": "Fundamentos: para que serve um banco de dados?",
+          "titulo": "Depois da coleta",
           "texto": [
-            "Um banco de dados organiza dados para que possam ser consultados e mantidos conforme regras. Na biblioteca, precisamos saber quais livros existem e quais empréstimos ainda não têm devolução registrada.",
-            "Um SGBD é o software que gerencia o banco. SQLite, MySQL e PostgreSQL são exemplos. A interface de edição é uma ferramenta para trabalhar com o sistema; ela não é a própria coleção de dados."
-          ],
-          "codigo": ""
-        },
-        {
-          "titulo": "Tabelas, chaves e relações",
-          "texto": [
-            "No modelo relacional, tabelas organizam registros em campos. Uma chave primária identifica uma linha. Uma chave estrangeira referencia um registro de outra tabela e permite aplicar uma regra de integridade.",
-            "livros.id ← emprestimos.livro_id: um livro cadastrado pode participar de vários empréstimos, e cada empréstimo desta base corresponde a um livro. O título pode aparecer mais de uma vez em um relatório porque os empréstimos são diferentes."
-          ],
-          "codigo": ""
-        },
-        {
-          "titulo": "O caminho de uma consulta",
-          "texto": [
-            "Pergunta sobre a biblioteca → consulta SQL → processamento pelo SGBD → tabela de resultado → interpretação.",
-            "SELECT escolhe o que será apresentado, FROM indica a origem e WHERE define uma condição. SQL também tem comandos para criar estruturas e alterar dados. Nesta primeira aula, a prática prioriza consultas."
-          ],
-          "codigo": "SELECT titulo, area\nFROM livros\nWHERE quantidade >= 2\nORDER BY titulo;"
+            "O professor compara explicações, SQL escrito e resultados. Na devolutiva, a turma discute os pontos que precisam de retomada. As referências e o caderno servem ao estudo posterior."
+          ]
         }
       ],
       "atividade": [
-        "Responder individualmente às nove questões da ficha.",
-        "Abrir o laboratório, prever um resultado e executar a consulta inicial.",
-        "Corrigir a consulta com categoria e escrever a consulta com quantidade >= 2.",
-        "Registrar consulta, previsão, resultado e uma dúvida na ficha.",
-        "Baixar o TXT identificado e suas consultas SQL; entregar os arquivos na aula."
+        "Responder F1 a O3 e indicar a familiaridade em cada item.",
+        "Desenhar ou descrever o modelo pedido em M1 e a reorganização de M2.",
+        "Guardar o TXT da primeira tentativa antes de abrir os scripts de apoio.",
+        "Realizar P1 a P3 no MySQL disponível e guardar o SQL identificado.",
+        "Registrar o resultado observado ou “não executado por falta de acesso”.",
+        "Entregar os arquivos e explicar ao professor uma decisão e uma dificuldade."
       ],
       "checklist": [
-        "Expliquei como interpretei uma tabela.",
-        "Justifiquei uma identificação ou relação entre registros.",
-        "Comparei minha previsão com o resultado de uma consulta.",
-        "Baixei minhas respostas e consultas antes de fechar."
+        "Identifiquei nome, turma e o ambiente que conheço.",
+        "Registrei justificativas, não apenas nomes de comandos.",
+        "Guardei a primeira tentativa e minhas consultas.",
+        "Informei o que executei, os apoios e eventuais barreiras de acesso."
       ],
-      "curiosidade": "Um resultado com títulos repetidos pode estar correto quando cada linha corresponde a um empréstimo diferente. A pergunta determina o que cada linha do relatório deve representar.",
-      "extensao": "Relacionar os empréstimos sem devolução registrada com o título do livro e o nome fictício do leitor.",
+      "curiosidade": "Uma consulta pode executar sem erro e ainda contar a coisa errada. A previsão e a explicação mostram se o resultado faz sentido.",
+      "extensao": "Se concluir as tarefas, proponha um teste que revele erro de contagem ou de relacionamento. Aguarde a coleta antes de consultar a solução.",
       "refs": [
         "conceitos",
-        "select",
         "chaves",
-        "sqlite"
-      ],
-      "etapas": [
-        "Acolhida e abertura da ficha, nome e turma.",
-        "Primeira tentativa individual nas nove questões.",
-        "Prática no laboratório e registro dos testes.",
-        "Discussão de estratégias e evidências.",
-        "Fundamentos de banco, SGBD, tabelas e consultas.",
-        "Bilhete de saída, download e entrega."
+        "select",
+        "grupos",
+        "transacoes"
       ]
     },
     {
@@ -367,7 +472,7 @@ window.WEBLAB_BD = {
           "texto": [
             "Escolha os tipos conforme o dado. Um código identificador e uma quantidade têm papéis diferentes. Declare obrigatoriedade onde a regra exigir. Verifique a sintaxe e a aplicação das restrições no SGBD usado."
           ],
-          "codigo": "CREATE TABLE leitores (\n  id INTEGER PRIMARY KEY,\n  nome VARCHAR(80) NOT NULL,\n  turma VARCHAR(20) NOT NULL\n);"
+          "codigo": "CREATE TABLE leitores (\n  id INT NOT NULL PRIMARY KEY,\n  nome VARCHAR(80) NOT NULL,\n  turma VARCHAR(20) NOT NULL\n) ENGINE = InnoDB;"
         },
         {
           "titulo": "Carga e integridade",
@@ -379,7 +484,7 @@ window.WEBLAB_BD = {
         {
           "titulo": "Alterações com critério",
           "texto": [
-            "UPDATE e DELETE devem ser discutidos em um banco de estudo. Antes de alterar, use SELECT com a mesma condição para conferir quais linhas seriam atingidas. O laboratório do portal é temporário e pode ser reiniciado."
+            "Use SELECT com a mesma condição para conferir o alcance antes de um UPDATE ou DELETE no esquema de estudo. Em tabelas InnoDB, teste DML em transação explícita e desfaça com ROLLBACK. Comandos DDL como CREATE e DROP têm regras de commit implícito no MySQL."
           ],
           "codigo": ""
         }
@@ -395,13 +500,13 @@ window.WEBLAB_BD = {
         "PK e FK estão declaradas e foram testadas.",
         "O script documenta a ordem de criação e carga."
       ],
-      "curiosidade": "Declarar uma regra e verificar que o SGBD a aplica são etapas diferentes. No SQLite do laboratório, as chaves estrangeiras ficam ativadas explicitamente.",
+      "curiosidade": "No MySQL/InnoDB, uma FK protege a referência e NOT NULL protege a obrigatoriedade. São regras diferentes. Confira a versão instalada antes de adotar restrições com comportamento dependente de versão.",
       "extensao": "Acrescentar uma restrição para quantidade não negativa e testá-la.",
       "refs": [
         "tabelas",
+        "tipos",
         "chaves",
-        "insert",
-        "update"
+        "transacoes"
       ]
     },
     {
@@ -457,8 +562,7 @@ window.WEBLAB_BD = {
       "extensao": "Comparar DISTINCT com uma consulta que mantém as ocorrências de empréstimo.",
       "refs": [
         "select",
-        "null",
-        "mysql"
+        "null"
       ]
     },
     {
@@ -482,7 +586,7 @@ window.WEBLAB_BD = {
           "texto": [
             "JOIN combina registros segundo uma condição. Relacione a FK com a PK esperada. Uma linha de livro pode aparecer em vários empréstimos."
           ],
-          "codigo": "SELECT l.titulo, e.leitor\nFROM livros AS l\nJOIN emprestimos AS e ON e.livro_id = l.id\nORDER BY e.id;"
+          "codigo": "SELECT l.titulo, r.nome\nFROM emprestimos AS e\nJOIN livros AS l ON l.id = e.livro_id\nJOIN leitores AS r ON r.id = e.leitor_id\nORDER BY e.id;"
         },
         {
           "titulo": "Contar o que interessa",
@@ -497,6 +601,13 @@ window.WEBLAB_BD = {
             "Confira primeiro um grupo pequeno. Compare a contagem com os registros de origem e diga se o relatório representa títulos, exemplares, leitores ou empréstimos."
           ],
           "codigo": ""
+        },
+        {
+          "titulo": "Leitores com zero empréstimos",
+          "texto": [
+            "LEFT JOIN mantém leitores sem correspondência. Para contar empréstimos, use COUNT(e.id). Ao contar somente abertos e preservar leitores com zero, posicione a condição de devolução no ON e confira quem tem apenas devolvidos."
+          ],
+          "codigo": "SELECT r.id, r.nome, COUNT(e.id) AS abertos\nFROM leitores AS r\nLEFT JOIN emprestimos AS e\n  ON e.leitor_id = r.id\n  AND e.data_devolucao IS NULL\nGROUP BY r.id, r.nome\nORDER BY r.id;"
         }
       ],
       "atividade": [
@@ -513,9 +624,9 @@ window.WEBLAB_BD = {
       "curiosidade": "COUNT(*) e COUNT(data_devolucao) podem produzir números diferentes porque o segundo ignora os valores nulos.",
       "extensao": "Investigar LEFT JOIN para localizar livros sem nenhum empréstimo.",
       "refs": [
-        "select",
-        "null",
-        "chaves"
+        "join",
+        "grupos",
+        "null"
       ]
     },
     {
@@ -554,6 +665,12 @@ window.WEBLAB_BD = {
             "Use poucos arquivos: modelo.pdf ou imagem do modelo, biblioteca.sql e testes.txt. O SQL pode conter seções comentadas para estrutura, carga e consultas. Identifique a versão e use somente dados fictícios."
           ],
           "codigo": ""
+        },
+        {
+          "titulo": "Transações e cópia de segurança",
+          "texto": [
+            "Pratique START TRANSACTION, COMMIT e ROLLBACK em DML sobre tabelas InnoDB. Demonstre uma cópia e restauração no esquema de teste, conferindo estrutura e dados. O script de consultas não substitui um backup."
+          ]
         }
       ],
       "atividade": [
@@ -570,9 +687,9 @@ window.WEBLAB_BD = {
       "curiosidade": "Uma consulta que executa sem erro ainda pode responder à pergunta errada. Conferir o significado do resultado faz parte do teste.",
       "extensao": "Propor um relatório novo e explicar por que ele seria útil à biblioteca.",
       "refs": [
-        "select",
-        "chaves",
-        "sqlite"
+        "transacoes",
+        "backup",
+        "indices"
       ]
     },
     {
@@ -683,42 +800,39 @@ window.WEBLAB_BD = {
       "curiosidade": "Repetir um teste depois da correção ajuda a verificar o problema resolvido e a preservar comportamentos que já funcionavam.",
       "extensao": "Planejar como uma aplicação poderia consultar a biblioteca sem conceder acesso irrestrito ao banco.",
       "refs": [
-        "sqlite",
         "conceitos"
       ]
     }
   ],
-  "baseSQL": "PRAGMA foreign_keys = ON;\nCREATE TABLE livros (\n  id INTEGER PRIMARY KEY,\n  titulo TEXT NOT NULL,\n  area TEXT NOT NULL,\n  quantidade INTEGER NOT NULL CHECK (quantidade >= 0)\n);\nCREATE TABLE emprestimos (\n  id INTEGER PRIMARY KEY,\n  livro_id INTEGER NOT NULL REFERENCES livros(id),\n  leitor TEXT NOT NULL,\n  data_emprestimo TEXT NOT NULL,\n  data_devolucao TEXT\n);\nINSERT INTO livros (id, titulo, area, quantidade) VALUES\n  (1, 'Redes de Computadores', 'Redes', 2),\n  (2, 'Banco de Dados', 'Dados', 1),\n  (3, 'HTML e CSS', 'Web', 3),\n  (4, 'Lógica de Programação', 'Programação', 2);\nINSERT INTO emprestimos\n  (id, livro_id, leitor, data_emprestimo, data_devolucao) VALUES\n  (101, 1, 'Ana', '2026-10-10', NULL),\n  (102, 3, 'Bruno', '2026-10-11', '2026-10-15'),\n  (103, 1, 'Caio', '2026-10-12', NULL);\n",
   "slides": [
     {
       "titulo": "Banco de Dados",
       "texto": [
-        "Diagnóstico e fundamentos",
+        "Diagnóstico de conhecimentos em MySQL",
         "Prof. Fabrício Rodrigues"
       ],
-      "label": "WEBLAB / 19 DE OUTUBRO DE 2026"
+      "label": "19 DE OUTUBRO DE 2026"
     },
     {
-      "titulo": "Etapas do nosso encontro",
+      "titulo": "O que vamos observar",
       "texto": [
-        "Primeira tentativa individual",
-        "Prática com tabelas e consultas",
-        "Conversa sobre as estratégias",
-        "Fundamentos e percurso do período",
-        "Download e entrega dos arquivos"
-      ]
+        "Fundamentos e funcionamento do ambiente",
+        "Modelagem e integridade dos dados",
+        "Consultas, transações e decisões de operação"
+      ],
+      "label": "DADOSLAB / DIAGNÓSTICO MYSQL"
     },
     {
-      "titulo": "Como registrar o que você sabe",
+      "titulo": "Primeira tentativa individual",
       "texto": [
-        "Responda com suas palavras.",
-        "Se um assunto for novo, registre isso.",
-        "Na prática, compare previsão e resultado.",
-        "Baixar um arquivo não envia a atividade ao professor."
-      ]
+        "Abra a ficha e preencha nome, turma e experiência.",
+        "Responda sem consultar materiais ou colegas.",
+        "Registre hipóteses e assuntos ainda não estudados."
+      ],
+      "label": "DADOSLAB / DIAGNÓSTICO MYSQL"
     },
     {
-      "titulo": "A biblioteca desta atividade",
+      "titulo": "Livros da biblioteca",
       "texto": [],
       "tabela": [
         [
@@ -750,248 +864,367 @@ window.WEBLAB_BD = {
           "Lógica de Programação",
           "Programação",
           2
+        ],
+        [
+          5,
+          "Linux em Redes",
+          "Redes",
+          1
         ]
       ],
-      "label": "BASE FICTÍCIA / TABELA LIVROS"
+      "label": "DADOSLAB / DIAGNÓSTICO MYSQL"
     },
     {
-      "titulo": "Dado e informação",
+      "titulo": "Leitores e empréstimos",
       "texto": [
-        "O que esse registro informa sozinho? Que outros dados você consultaria para responder à pergunta?"
+        "Um empréstimo tem livro_id, leitor_id e datas.",
+        "Há quatro leitores e cinco empréstimos na ficha.",
+        "NULL em data_devolucao indica devolução não registrada."
       ],
-      "codigo": "Registro: livro_id = 1\nPergunta: quais livros estão emprestados sem devolução?",
-      "label": "DIAGNÓSTICO / D1 / DADOS E ORGANIZAÇÃO"
+      "label": "DADOSLAB / DIAGNÓSTICO MYSQL"
     },
     {
-      "titulo": "Campos e registros",
+      "titulo": "F1 · Banco, servidor e ferramenta",
       "texto": [
-        "O que representa uma linha? O que representa uma coluna? Quantos registros de livros aparecem na base da aula?"
+        "Explique o papel de cada item. Fechar o Workbench apaga as tabelas? Onde ficam os dados? Relate uma ação que já fez nesse ambiente."
       ],
-      "codigo": "Tabela livros: id | titulo | area | quantidade\nExemplo: 1 | Redes de Computadores | Redes | 2",
-      "label": "DIAGNÓSTICO / D2 / DADOS E ORGANIZAÇÃO"
-    },
-    {
-      "titulo": "Identificação de um registro",
-      "texto": [
-        "Qual campo você escolheria para identificar um registro sem ambiguidade? Por que só o título pode não bastar?"
-      ],
-      "codigo": "livros(id, titulo, area, quantidade)",
-      "label": "DIAGNÓSTICO / D3 / DADOS E ORGANIZAÇÃO"
-    },
-    {
-      "titulo": "Repetição de dados",
-      "texto": [
-        "Que problema pode ocorrer se o nome da área mudar? Como você organizaria os dados para evitar cópias inconsistentes?"
-      ],
-      "codigo": "Imagine copiar titulo e area do livro\nem cada linha de emprestimo.",
-      "label": "DIAGNÓSTICO / M1 / MODELAGEM E RELAÇÕES"
-    },
-    {
-      "titulo": "Ligação entre tabelas",
-      "texto": [
-        "Como essas colunas ligam um empréstimo a um livro? O que significa tentar cadastrar livro_id = 99, se esse livro não existe?"
-      ],
-      "codigo": "livros.id = 1\nemprestimos.livro_id = 1",
-      "label": "DIAGNÓSTICO / M2 / MODELAGEM E RELAÇÕES"
-    },
-    {
-      "titulo": "Ausência de valor",
-      "texto": [
-        "Nesta base, o que foi combinado que NULL em data_devolucao representa? Você o trataria como uma data de verdade? Explique."
-      ],
-      "codigo": "Campo: data_devolucao\nValor exibido: NULL",
-      "label": "DIAGNÓSTICO / M3 / MODELAGEM E RELAÇÕES"
-    },
-    {
-      "titulo": "Seleção e filtro",
-      "texto": [
-        "Qual coluna aparece no resultado e quais registros entram? Escreva o resultado que espera encontrar."
-      ],
-      "codigo": "SELECT titulo\nFROM livros\nWHERE area = 'Redes';",
-      "label": "DIAGNÓSTICO / Q1 / LEITURA DE SQL"
-    },
-    {
-      "titulo": "Condição e ordenação",
-      "texto": [
-        "Quais livros entram e em que ordem? O que >= e DESC mudam nessa consulta?"
-      ],
-      "codigo": "SELECT titulo, quantidade\nFROM livros\nWHERE quantidade >= 2\nORDER BY quantidade DESC, titulo;",
-      "label": "DIAGNÓSTICO / Q2 / LEITURA DE SQL"
-    },
-    {
-      "titulo": "Consulta com relacionamento",
-      "texto": [
-        "O que o JOIN combina? Por que o mesmo título pode aparecer em duas linhas? Se conseguir, escreva o resultado."
-      ],
-      "codigo": "SELECT l.titulo, e.leitor\nFROM livros AS l\nJOIN emprestimos AS e ON e.livro_id = l.id\nWHERE e.data_devolucao IS NULL\nORDER BY e.id;",
-      "label": "DIAGNÓSTICO / Q3 / LEITURA DE SQL"
-    },
-    {
-      "titulo": "Prática no Laboratório SQL",
-      "texto": [
-        "1. Abra o laboratório em outra aba.",
-        "2. Preveja e execute a consulta inicial.",
-        "3. Investigue a coluna categoria e escreva uma consulta.",
-        "4. Registre o teste e baixe suas consultas SQL."
-      ]
-    },
-    {
-      "titulo": "Evidências para nossa conversa",
-      "texto": [
-        "Que diferença apareceu entre sua previsão e o resultado?",
-        "Como você identificou o problema da consulta?",
-        "O que cada linha do resultado representa?",
-        "Qual mudança você consegue explicar?"
-      ]
-    },
-    {
-      "titulo": "Para que serve um banco de dados?",
-      "texto": [
-        "Organiza dados para consulta e manutenção.",
-        "Mantém registros conforme regras.",
-        "Ajuda a responder perguntas sobre uma situação.",
-        "Na biblioteca: quais empréstimos ainda estão abertos?"
-      ],
-      "refs": [
-        "conceitos"
-      ]
-    },
-    {
-      "titulo": "Banco, SGBD e ferramenta",
-      "texto": [
-        "Banco: a coleção organizada de dados.",
-        "SGBD: o software que gerencia o banco.",
-        "Ferramenta: a interface usada para trabalhar com ele.",
-        "No laboratório do portal, usamos SQLite."
-      ],
+      "codigo": "MySQL Server / MySQL Workbench / SQL / banco biblioteca",
+      "label": "FUNDAMENTOS E AMBIENTE",
       "refs": [
         "conceitos",
-        "sqlite"
+        "workbench"
       ]
     },
     {
-      "titulo": "Campos e registros",
-      "texto": [],
-      "tabela": [
-        [
-          "Elemento",
-          "Papel na biblioteca"
-        ],
-        [
-          "Tabela livros",
-          "Conjunto de registros de livros"
-        ],
-        [
-          "Uma linha",
-          "Um registro cadastrado"
-        ],
-        [
-          "Coluna titulo",
-          "Um campo do registro"
-        ],
-        [
-          "Resultado de SELECT",
-          "Linhas e colunas produzidas pela consulta"
-        ]
+      "titulo": "F2 · Estrutura e manipulação",
+      "texto": [
+        "Dê a finalidade de cada comando. Explique a diferença entre DELETE FROM leitores e DROP TABLE leitores, considerando o efeito pretendido e possíveis restrições."
       ],
+      "codigo": "CREATE TABLE / INSERT / SELECT\nUPDATE / DELETE / DROP TABLE",
+      "label": "FUNDAMENTOS E AMBIENTE",
+      "refs": [
+        "tabelas",
+        "select",
+        "update",
+        "transacoes"
+      ]
+    },
+    {
+      "titulo": "M1 · Regras em um modelo",
+      "texto": [
+        "Desenhe ou descreva três tabelas para esse caso. Marque PK e FK, indique as cardinalidades e explique o que representa cada linha de matrícula. Justifique como evita uma lista de cursos em um único campo."
+      ],
+      "codigo": "Uma escola oferece cursos.\nUm aluno pode cursar vários cursos.\nUm curso recebe vários alunos.\nCada matrícula tem uma data.",
+      "label": "MODELAGEM E RELAÇÕES",
       "refs": [
         "conceitos",
-        "select"
-      ]
-    },
-    {
-      "titulo": "Chaves e relacionamentos",
-      "texto": [
-        "PK: identifica um registro sem ambiguidade.",
-        "FK: referencia um registro de outra tabela.",
-        "livros.id ← emprestimos.livro_id",
-        "Um livro cadastrado pode participar de vários empréstimos."
-      ],
-      "refs": [
         "chaves"
       ]
     },
     {
-      "titulo": "O caminho de uma consulta",
+      "titulo": "M2 · Repetição e normalização",
       "texto": [
-        "Pergunta → SQL → SGBD → resultado",
-        "O que queremos descobrir?",
-        "Quais colunas, origem e condição expressam a pergunta?",
-        "Como vamos conferir o significado do resultado?"
+        "Se Ana mudar de turma, que problema pode aparecer nessa tabela? Proponha uma reorganização e explique de qual chave nome e turma dependem. Não basta citar uma forma normal."
       ],
+      "codigo": "emprestimo_id | leitor_id | nome_leitor | turma\n101           | 1         | Ana         | 1A\n104           | 1         | Ana         | 1A",
+      "label": "MODELAGEM E RELAÇÕES",
+      "refs": [
+        "conceitos",
+        "chaves"
+      ]
+    },
+    {
+      "titulo": "M3 · N:N e identificação ao longo do tempo",
+      "texto": [
+        "Como livros e leitores se relacionam ao longo do tempo? A dupla (leitor_id, livro_id) pode ser a única PK de emprestimos nessa regra? Justifique e proponha um identificador."
+      ],
+      "codigo": "Ana pode pegar o mesmo livro novamente,\nem outra data.",
+      "label": "MODELAGEM E RELAÇÕES",
+      "refs": [
+        "conceitos",
+        "chaves"
+      ]
+    },
+    {
+      "titulo": "I1 · Tipos e definição de tabela",
+      "texto": [
+        "Proponha uma definição melhor para uma devolução identificada, com data e multa monetária. Justifique PK, tipos e nulabilidade. Escreva pelo menos parte do CREATE TABLE em MySQL."
+      ],
+      "codigo": "CREATE TABLE devolucoes (\n  id VARCHAR(10),\n  data_devolucao VARCHAR(10),\n  multa FLOAT\n);",
+      "label": "ESTRUTURA E INTEGRIDADE",
+      "refs": [
+        "tipos",
+        "tabelas"
+      ]
+    },
+    {
+      "titulo": "I2 · Restrições em ação",
+      "texto": [
+        "Quais restrições rejeitam A, B e C, considerando a base inicial? Por que a aplicação e o banco podem validar a mesma regra? Considere as restrições acima."
+      ],
+      "codigo": "Restrições em emprestimos:\nPRIMARY KEY (id)\nFOREIGN KEY (livro_id) REFERENCES livros(id)\nleitor_id INT NOT NULL\nA. id = 101 em novo empréstimo\nB. livro_id = 99 em novo empréstimo\nC. leitor_id = NULL em novo empréstimo",
+      "label": "ESTRUTURA E INTEGRIDADE",
+      "refs": [
+        "chaves",
+        "tabelas"
+      ]
+    },
+    {
+      "titulo": "Q1 · Filtro, precedência e ordenação",
+      "texto": [
+        "Escreva as linhas na ordem esperada. Explique a condição e o risco de retirar os parênteses, mantendo o restante do WHERE."
+      ],
+      "codigo": "SELECT id, titulo, quantidade\nFROM livros\nWHERE quantidade >= 2\n  AND (area = 'Redes' OR area = 'Web')\nORDER BY quantidade DESC, id;",
+      "label": "CONSULTAS E RESULTADOS",
       "refs": [
         "select"
       ]
     },
     {
-      "titulo": "SELECT no laboratório",
+      "titulo": "Q2 · Ausência de valor",
       "texto": [
-        "Escolha as colunas, a origem e a condição."
+        "A consulta encontra empréstimos sem devolução? Corrija o SQL e indique os IDs esperados. Explique por que NULL, zero e texto vazio não significam a mesma coisa."
       ],
-      "codigo": "SELECT titulo, area\nFROM livros\nWHERE area = 'Dados'\nORDER BY titulo;",
+      "codigo": "SELECT id\nFROM emprestimos\nWHERE data_devolucao = NULL;",
+      "label": "CONSULTAS E RESULTADOS",
       "refs": [
-        "select"
+        "null"
       ]
     },
     {
-      "titulo": "Mapa do período",
+      "titulo": "Q3 · JOIN e linhas repetidas",
+      "texto": [
+        "Escreva o resultado. Por que um título aparece mais de uma vez? O que pode acontecer se faltar uma condição de relacionamento?"
+      ],
+      "codigo": "SELECT l.titulo, r.nome\nFROM emprestimos AS e\nJOIN livros AS l ON l.id = e.livro_id\nJOIN leitores AS r ON r.id = e.leitor_id\nWHERE e.data_devolucao IS NULL\nORDER BY e.id;",
+      "label": "CONSULTAS E RESULTADOS",
+      "refs": [
+        "join"
+      ]
+    },
+    {
+      "titulo": "Q4 · LEFT JOIN e contagem",
+      "texto": [
+        "Preveja o total mostrado para Duda. Como contar os empréstimos incluindo leitores com zero? Corrija a expressão e informe os quatro totais."
+      ],
+      "codigo": "SELECT r.id, r.nome, COUNT(*) AS total\nFROM leitores AS r\nLEFT JOIN emprestimos AS e\n  ON e.leitor_id = r.id\nGROUP BY r.id, r.nome\nORDER BY r.id;",
+      "label": "CONSULTAS E RESULTADOS",
+      "refs": [
+        "join",
+        "grupos"
+      ]
+    },
+    {
+      "titulo": "Q5 · Agrupamento e filtro de grupos",
+      "texto": [
+        "Qual resultado será produzido? Explique a diferença entre titulos e exemplares e por que esse filtro usa HAVING, em vez de WHERE COUNT(*) >= 2."
+      ],
+      "codigo": "SELECT area, COUNT(*) AS titulos,\n       SUM(quantidade) AS exemplares\nFROM livros\nGROUP BY area\nHAVING COUNT(*) >= 2\nORDER BY area;",
+      "label": "CONSULTAS E RESULTADOS",
+      "refs": [
+        "grupos"
+      ]
+    },
+    {
+      "titulo": "T1 · Uma operação completa",
+      "texto": [
+        "Que sequência de controle usaria no MySQL para manter a operação inteira ou desfazê-la? Explique START TRANSACTION, COMMIT, ROLLBACK e o efeito de autocommit. O erro garante que toda a transação foi desfeita?"
+      ],
+      "codigo": "Um cadastro e seu primeiro empréstimo devem\nser confirmados juntos em tabelas InnoDB.\nA segunda gravação falha.",
+      "label": "TRANSAÇÕES E OPERAÇÃO",
+      "refs": [
+        "transacoes"
+      ]
+    },
+    {
+      "titulo": "O1 · Backup que pode ser recuperado",
+      "texto": [
+        "Isso basta para recuperar o banco inteiro? O que precisaria preservar e como verificaria a recuperação sem depender apenas da existência de um arquivo?"
+      ],
+      "codigo": "Um aluno salvou consultas.sql e disse:\n“Já tenho backup do banco.”",
+      "label": "TRANSAÇÕES E OPERAÇÃO",
+      "refs": [
+        "backup"
+      ]
+    },
+    {
+      "titulo": "O2 · Entrada do usuário e permissões",
+      "texto": [
+        "Que risco isso traz e como você reduziria esse risco? Um usuário usado apenas em relatórios precisa de permissão para apagar tabelas? Justifique."
+      ],
+      "codigo": "Uma aplicação concatena o texto digitado\npelo usuário dentro de uma consulta SQL.",
+      "label": "SEGURANÇA E DESEMPENHO",
+      "refs": [
+        "seguranca"
+      ]
+    },
+    {
+      "titulo": "O3 · Índice e custo de escrita",
+      "texto": [
+        "Que papel um índice poderia ter? Ele sempre melhora tudo? Como verificaria o plano com EXPLAIN e a diferença entre índice comum, UNIQUE e PRIMARY KEY?"
+      ],
+      "codigo": "A busca por titulo em livros ficou lenta\nquando a base cresceu muito.",
+      "label": "SEGURANÇA E DESEMPENHO",
+      "refs": [
+        "indices",
+        "tabelas"
+      ]
+    },
+    {
+      "titulo": "Registro da primeira tentativa",
+      "texto": [
+        "Baixe o TXT com nome e turma antes da prática.",
+        "Mantenha a ficha aberta para o registro final.",
+        "O arquivo será entregue ao professor na aula."
+      ],
+      "label": "DADOSLAB / DIAGNÓSTICO MYSQL"
+    },
+    {
+      "titulo": "Ambiente de prática MySQL",
+      "texto": [
+        "MySQL Server executa os comandos.",
+        "Workbench ou phpMyAdmin é o cliente usado no laboratório.",
+        "VS Code edita o SQL. Live Server exibe o portal."
+      ],
+      "label": "DADOSLAB / DIAGNÓSTICO MYSQL"
+    },
+    {
+      "titulo": "P1 · Consulta escrita por você",
+      "texto": [
+        "Escreva uma consulta que mostre id, titulo e quantidade dos livros com pelo menos dois exemplares, em ordem de quantidade decrescente e id crescente. Preveja o resultado antes de executar.",
+        "Registre previsão, SQL, resultado observado e apoio recebido."
+      ],
+      "label": "DADOSLAB / DIAGNÓSTICO MYSQL"
+    },
+    {
+      "titulo": "P2 · Relatório com zero",
+      "texto": [
+        "Escreva uma consulta que mostre cada leitor e a quantidade de seus empréstimos ainda sem devolução. Inclua quem tem zero e ordene por id do leitor. Explique onde colocou o teste de NULL.",
+        "Registre previsão, SQL, resultado observado e apoio recebido."
+      ],
+      "label": "DADOSLAB / DIAGNÓSTICO MYSQL"
+    },
+    {
+      "titulo": "P3 · Alteração com conferência",
+      "texto": [
+        "No esquema fictício, escreva uma transação que registre a devolução do empréstimo 103 em 19/10/2026. Confira somente esse registro antes e depois. Desfaça o teste com ROLLBACK e confira novamente. Não inclua CREATE ou DROP nessa transação.",
+        "Registre previsão, SQL, resultado observado e apoio recebido."
+      ],
+      "label": "DADOSLAB / DIAGNÓSTICO MYSQL"
+    },
+    {
+      "titulo": "Entrega e evidências",
+      "texto": [
+        "Baixe o SQL identificado e a versão final do TXT.",
+        "Informe se executou no MySQL e qual apoio recebeu.",
+        "Explique uma decisão e uma dificuldade ao professor."
+      ],
+      "label": "DADOSLAB / DIAGNÓSTICO MYSQL"
+    },
+    {
+      "titulo": "Discussão depois da coleta",
+      "texto": [
+        "Qual pergunta exigiu rever uma hipótese?",
+        "Como você conferiu o resultado de sua consulta?",
+        "Que assunto precisa ser retomado primeiro?"
+      ],
+      "label": "DADOSLAB / DIAGNÓSTICO MYSQL"
+    },
+    {
+      "titulo": "Mapa para a continuidade",
       "texto": [],
       "tabela": [
         [
-          "Segunda",
-          "Tema"
+          "Data",
+          "Foco"
         ],
         [
           "19/10",
-          "Diagnóstico e fundamentos"
+          "Diagnóstico"
         ],
         [
           "26/10",
-          "Cada dado no lugar certo"
+          "Modelagem"
         ],
         [
           "09/11",
-          "O modelo vira tabelas"
+          "Estrutura e dados"
         ],
         [
           "16/11",
-          "Perguntas que viram consultas"
+          "Consultas"
         ],
         [
           "23/11",
-          "As tabelas contam uma história"
+          "Relatórios"
         ],
         [
           "30/11",
-          "Uma biblioteca pronta para testar"
+          "Integração"
         ],
         [
           "07/12",
-          "Avaliação prática da biblioteca"
+          "Avaliação"
         ],
         [
           "14/12",
-          "Corrigir, recuperar e concluir"
+          "Devolutiva"
         ]
-      ]
+      ],
+      "label": "DADOSLAB / DIAGNÓSTICO MYSQL"
     },
     {
-      "titulo": "Arquivos e entrega",
+      "titulo": "Próxima intervenção",
       "texto": [
-        "TXT: identificação, respostas e registro da prática.",
-        "SQL: suas consultas e o histórico da tentativa.",
-        "Confira os dois arquivos na pasta Downloads.",
-        "Entregue os arquivos ao professor durante a aula."
-      ]
-    },
-    {
-      "titulo": "Bilhete de saída",
-      "texto": [
-        "Uma facilidade de hoje.",
-        "Uma dúvida para a próxima aula.",
-        "O que uma chave primária identifica?",
-        "Baixe o TXT final e entregue os arquivos."
-      ]
+        "O diagnóstico mostra evidências por assunto.",
+        "As próximas aulas retomam as lacunas observadas.",
+        "Caderno e referências ficam disponíveis após a tentativa."
+      ],
+      "label": "DADOSLAB / DIAGNÓSTICO MYSQL"
     }
-  ]
+  ],
+  "sgbd": "MySQL",
+  "versao": "Revisão MySQL - diagnóstico ampliado",
+  "leitores": [
+    [
+      1,
+      "Ana",
+      "1A"
+    ],
+    [
+      2,
+      "Bruno",
+      "1A"
+    ],
+    [
+      3,
+      "Caio",
+      "1B"
+    ],
+    [
+      4,
+      "Duda",
+      "1B"
+    ]
+  ],
+  "baseNota": "Dados fictícios. quantidade é o total cadastrado, não o saldo disponível. Cada empréstimo registra um livro e um leitor. NULL em data_devolucao significa que a devolução ainda não foi registrada. As consultas da biblioteca usam esta base inicial, sem as alterações da prática. Os demais casos descrevem seu próprio cenário.",
+  "praticas": [
+    {
+      "id": "P1",
+      "titulo": "Consulta escrita por você",
+      "enunciado": "Escreva uma consulta que mostre id, titulo e quantidade dos livros com pelo menos dois exemplares, em ordem de quantidade decrescente e id crescente. Preveja o resultado antes de executar."
+    },
+    {
+      "id": "P2",
+      "titulo": "Relatório com zero",
+      "enunciado": "Escreva uma consulta que mostre cada leitor e a quantidade de seus empréstimos ainda sem devolução. Inclua quem tem zero e ordene por id do leitor. Explique onde colocou o teste de NULL."
+    },
+    {
+      "id": "P3",
+      "titulo": "Alteração com conferência",
+      "enunciado": "No esquema fictício, escreva uma transação que registre a devolução do empréstimo 103 em 19/10/2026. Confira somente esse registro antes e depois. Desfaça o teste com ROLLBACK e confira novamente. Não inclua CREATE ou DROP nessa transação."
+    }
+  ],
+  "saida": "Que decisão de modelagem ou de SQL você consegue justificar agora? Qual dúvida precisa retomar?",
+  "rascunhoSQL": "-- DADOSLAB - MySQL - 19/10/2026\n-- Use o esquema de estudo indicado pelo professor.\n-- Registre suas previsões na ficha antes de executar.\n\n-- P1: livros com pelo menos dois exemplares, ordenados.\n\n\n-- P2: leitores e empréstimos abertos, incluindo zero.\n\n\n-- P3: devolução do empréstimo 103 em transação,\n--     conferência antes/depois e ROLLBACK.\n\n"
 };

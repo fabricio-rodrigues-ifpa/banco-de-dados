@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#183e35">
-    <title>Laboratório SQL · DadosLab · Prof. Fabrício Rodrigues</title>
+    <title>Prática em MySQL · DadosLab · Prof. Fabrício Rodrigues</title>
     <meta name="description" content="Banco de Dados no curso técnico em Informática: diagnóstico, aulas às segundas, consultas e materiais para estudar.">
     <link rel="icon" href="favicon.svg">
     <link rel="stylesheet" href="styles.css">
@@ -25,23 +25,15 @@
     </div>
   </header>
     <main id="conteudo" class="detail-wrap">
-      <header class="detail-hero"><p class="eyebrow">SQL NO NAVEGADOR / SQLITE</p><h1>Laboratório da biblioteca</h1><p class="lead">O banco fictício já vem carregado. Preveja um resultado, execute uma consulta e confira. O banco é temporário: baixe suas consultas antes de fechar ou reiniciar.</p><div class="detail-actions"><a class="button secondary" href="aulas.html?id=aula-01">← Voltar à aula</a><a class="button secondary" href="diagnostico.html" target="_blank" rel="noopener">Ficha em outra aba ↗</a><a class="button secondary" href="Pratica-Banco-de-Dados.zip" download>Baixar os dois scripts SQL ↓</a></div></header>
-      <article class="lesson-content">
-        <h2>Base inicial</h2><p>livros(id, titulo, area, quantidade) e emprestimos(id, livro_id, leitor, data_emprestimo, data_devolucao). PK: id em cada tabela. FK: emprestimos.livro_id referencia livros.id. As datas são textos ISO nesta base SQLite.</p><div id="db-base"></div>
-        <h2>Prática de diagnóstico</h2><ol><li>Execute a consulta inicial e compare o resultado com sua previsão.</li><li>Investigue: <code>SELECT titulo FROM livros WHERE categoria = 'Redes';</code></li><li>Escreva uma consulta que mostre título e quantidade dos livros com pelo menos dois exemplares.</li><li>Registre a tentativa e os testes na ficha. Desafio opcional: relacione os livros aos empréstimos ainda sem devolução.</li></ol>
-        <fieldset class="diagnostic-question"><legend>Identificação do arquivo SQL</legend><label for="nome-lab">Nome do estudante</label><input id="nome-lab" autocomplete="name"><label for="turma-lab">Turma</label><input id="turma-lab"></fieldset>
-        <label class="db-label" for="sql-editor">Sua consulta SQL</label><textarea class="db-editor" id="sql-editor" spellcheck="false">SELECT *
-FROM livros;
-</textarea>
-        <div class="detail-actions lab-controls"><button class="button primary" id="run-sql" disabled>Executar SQL</button><button class="button secondary" id="save-sql">Baixar minhas consultas ↓</button><button class="button secondary" id="reset-db" disabled>Reiniciar base fictícia</button></div>
-        <p id="db-status" class="db-status" role="status" aria-live="polite">Preparando o SQLite local…</p>
-        <section id="db-results" aria-live="polite" aria-label="Resultado da consulta"></section>
-        <h2>Meu histórico desta sessão</h2><p>O download inclui o texto atual do editor e as consultas executadas, com resultado ou erro em comentários. A página não entrega o arquivo ao professor.</p><ol id="db-log" class="db-log"></ol>
-        <p class="proposal-note">Cada execução tem limite de tempo e exibe até 200 linhas por resultado. Consultas e alterações afetam somente a cópia temporária desta aba. Reiniciar restaura a base e limpa o histórico desta sessão.</p>
-        <h2>Referências para consultar depois da primeira tentativa</h2><ul><li><a href="https://sqlite.org/lang_select.html" target="_blank" rel="noopener">SQLite: SELECT ↗</a></li><li><a href="https://sqlite.org/lang_expr.html" target="_blank" rel="noopener">SQLite: operadores e NULL ↗</a></li><li><a href="guia.html">Como estudar e entregar ↗</a></li></ul>
-      </article>
-      <nav class="return-nav"><a class="button secondary" href="aulas.html?id=aula-01">← Voltar à aula</a><a class="button secondary" href="index.html">← Voltar ao início</a></nav>
-    </main>
+      <header class="detail-hero"><p class="eyebrow">BANCO DE DADOS / MYSQL</p><h1>Prática da biblioteca em MySQL</h1><p class="lead">Use o MySQL Server disponível no laboratório, pelo Workbench, phpMyAdmin ou cliente já utilizado pela turma. Esta página orienta a prática e prepara o arquivo da tentativa; ela não executa SQL nem se conecta ao servidor.</p><div class="detail-actions"><a class="button secondary" href="aulas.html?id=aula-01">← Voltar à aula</a><a class="button secondary" href="diagnostico.html" target="_blank" rel="noopener">Abrir a ficha em outra aba ↗</a><a class="button primary" href="Pratica-Banco-de-Dados.zip" download>Baixar os dois scripts MySQL ↓</a></div></header>
+      <article class="lesson-content"><h2>Abertura dos arquivos</h2><ol><li>Guarde a cópia inicial do diagnóstico antes de consultar os scripts.</li><li>Baixe e extraia o ZIP: <code>01-base-mysql.sql</code> e <code>02-diagnostico.sql</code>.</li><li>Abra o cliente MySQL e a conexão de estudo indicada pelo professor. A conta e o esquema são os do laboratório.</li><li>Com orientação do professor, execute <code>01-base-mysql.sql</code> uma vez em um esquema de estudo vazio. O script cria tabelas InnoDB e carrega dados fictícios. Se não houver permissão para criar o esquema, o professor indica um esquema individual e ajusta o cabeçalho.</li><li>Abra <code>02-diagnostico.sql</code> e escreva suas consultas. No Workbench, confira o trecho selecionado antes de executar. Salve o arquivo da tentativa.</li></ol>
+        <div class="soft-box"><h3>VS Code e Live Server</h3><p>Você pode editar os arquivos SQL no VS Code. O Live Server exibe a cópia offline do portal; os comandos SQL devem ser executados no MySQL. Sem acesso ao servidor, escreva as consultas, preveja os resultados e registre “não executado”.</p></div>
+        <h2>Tarefas de produção</h2><div id="db-practice-tasks"></div><h2>Rascunho e entrega do SQL</h2><p>Se escreveu as consultas no cliente MySQL ou no VS Code, salve o arquivo por lá. Você também pode colar sua tentativa aqui para gerar um SQL identificado. O download desta página não comprova que a consulta foi executada.</p>
+        <fieldset class="diagnostic-question"><legend>Identificação da tentativa</legend><label for="nome-lab">Nome do estudante</label><input id="nome-lab" autocomplete="name"><label for="turma-lab">Turma</label><input id="turma-lab"><label for="ambiente-lab">Onde você executou ou tentou executar?</label><input id="ambiente-lab" placeholder="Ex.: MySQL no Workbench; ou não executei por falta de acesso"></fieldset>
+        <label class="db-label" for="sql-editor">Minhas consultas MySQL</label><textarea class="db-editor" id="sql-editor" spellcheck="false"></textarea>
+        <label class="db-label" for="sql-evidence">Previsões, resultados reais, mensagens e apoio recebido</label><textarea class="db-editor" id="sql-evidence" rows="6" placeholder="P1: previsão / resultado observado / apoio&#10;P2: previsão / resultado observado / apoio&#10;P3: antes / alteração / depois do ROLLBACK"></textarea><button class="button primary" id="save-sql">Baixar minha tentativa SQL ↓</button><p id="db-status" class="db-status" role="status" aria-live="polite"></p>
+        <h2>Base de referência</h2><p id="base-note"></p><div id="db-base"></div><h2>Referências para depois da tentativa</h2><ul><li><a href="https://dev.mysql.com/doc/workbench/en/wb-sql-editor.html" target="_blank" rel="noopener">MySQL Workbench: editor SQL ↗</a></li><li><a href="https://dev.mysql.com/doc/refman/8.4/en/select.html" target="_blank" rel="noopener">MySQL: SELECT ↗</a></li><li><a href="https://dev.mysql.com/doc/refman/8.4/en/commit.html" target="_blank" rel="noopener">MySQL: transações ↗</a></li><li><a href="guia.html">Como abrir e entregar ↗</a></li></ul>
+      </article><nav class="return-nav"><a class="button secondary" href="aulas.html?id=aula-01">← Voltar à aula</a><a class="button secondary" href="index.html">← Voltar ao início</a></nav></main>
     <footer class="site-footer">
       <div class="wrap footer-inner">
         <a class="button secondary" href="index.html">← Voltar ao início</a>
