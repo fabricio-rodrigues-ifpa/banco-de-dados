@@ -55,7 +55,7 @@
         ${s.codigo ? `<pre><code>${esc(s.codigo)}</code></pre>` : ''}</section>`).join('')}</section>
       <section id="atividade"><h2>Prática da aula</h2><ol>${a.atividade.map((x) => `<li>${esc(x)}</li>`).join('')}</ol>
       <p><strong>Resultado esperado:</strong> ${esc(a.produto)}</p>
-      <div class="detail-actions"><a class="button primary" href="laboratorio.html">Abrir a prática MySQL ↗</a><a class="button secondary" href="Pratica-Banco-de-Dados.zip" download>Baixar os dois scripts SQL ↓</a></div></section>
+      ${a.id === 'aula-01' ? '<div class="detail-actions"><a class="button primary" href="laboratorio.html">Abrir a prática SQL ↗</a><a class="button secondary" href="Pratica-Banco-de-Dados.zip" download>Baixar os dois arquivos da prática ↓</a></div>' : '<p>Use o ambiente e os arquivos de trabalho indicados pelo professor para este encontro. A configuração do SGBD será confirmada em aula.</p>'}</section>
       ${a.etapas ? `<section><h2>Etapas da aula</h2><ol>${a.etapas.map((x) => `<li>${esc(x)}</li>`).join('')}</ol></section>` : ''}
       <section id="conferencia"><h2>Checklist de conferência</h2><div class="checklist">${a.checklist.map((x) => `<label class="check-item"><input type="checkbox"><span>${esc(x)}</span></label>`).join('')}</div><p class="storage-note">As marcações não são salvas e não enviam uma entrega.</p></section>
       <section class="soft-box"><h3>Uma descoberta útil</h3><p>${esc(a.curiosidade)}</p></section>
@@ -93,18 +93,18 @@
     $('#db-questions').innerHTML = D.perguntas.map((q) => `<fieldset class="diagnostic-question">
       <legend>${esc(q.id)} / ${esc(q.area)} / ${esc(q.titulo)}</legend>
       <pre><code>${esc(q.codigo)}</code></pre><label for="resposta-${esc(q.id)}">${esc(q.enunciado)}</label>
-      <textarea id="resposta-${esc(q.id)}" name="${esc(q.id)}" rows="6" placeholder="Minha explicação, desenho descrito, resultado previsto ou SQL..."></textarea>
+      <textarea id="resposta-${esc(q.id)}" name="${esc(q.id)}" rows="6" placeholder="Minha explicação, resultado previsto ou SQL..."></textarea>
       <label for="familiaridade-${esc(q.id)}">Minha familiaridade com este assunto</label>
       <select id="familiaridade-${esc(q.id)}" name="familiaridade-${esc(q.id)}">${options.map(([v,t]) => `<option value="${v}">${t}</option>`).join('')}</select>
     </fieldset>`).join('');
     $('#db-practice-questions').innerHTML = D.praticas.map((t) => `<fieldset class="diagnostic-question">
       <legend>${esc(t.id)} / ${esc(t.titulo)}</legend><p>${esc(t.enunciado)}</p>
       <label for="exec-${t.id}">Condição da tentativa</label><select id="exec-${t.id}" name="exec-${t.id}">
-        <option value="nao-informado">Ainda não registrei</option><option value="executado-mysql">Executei no MySQL</option>
-        <option value="parcial-mysql">Tentei no MySQL, com erro ou execução parcial</option>
-        <option value="sem-acesso">Escrevi sem executar por falta de acesso</option>
+        <option value="nao-informado">Ainda não registrei</option><option value="escrita-autonoma">Escrevi e previ o resultado com autonomia</option>
+        <option value="escrita-com-apoio">Escrevi parte ou tudo com apoio</option>
+        <option value="hipotese">Registrei somente uma hipótese ou previsão</option>
         <option value="nao-soube">Não soube elaborar a consulta</option></select>
-      <label for="pratica-${t.id}">Previsão, SQL escrito, resultado observado e apoio recebido</label>
+      <label for="pratica-${t.id}">SQL escrito, resultado previsto, justificativa e apoio recebido</label>
       <textarea id="pratica-${t.id}" name="pratica-${t.id}" rows="8"></textarea></fieldset>`).join('');
     $('#db-diagnostic').addEventListener('submit', (event) => {
       event.preventDefault();
@@ -116,7 +116,7 @@
         return;
       }
       const etapa = data.get('etapa') === 'final' ? 'final' : 'inicial';
-      const text = ['DADOSLAB - DIAGNÓSTICO DE CONHECIMENTOS EM BANCO DE DADOS - MYSQL',
+      const text = ['DADOSLAB - DIAGNÓSTICO DE CONHECIMENTOS EM BANCO DE DADOS',
         '19/10/2026 - Prof. Fabrício Rodrigues', 'Cópia: ' + etapa,
         'Nome: ' + nome, 'Turma: ' + turma, 'Experiência: ' + (data.get('experiencia') || '(sem registro)'), '',
         ...D.perguntas.flatMap((q) => [q.id + ' - ' + q.titulo, q.codigo, q.enunciado,
@@ -127,7 +127,7 @@
           String(data.get('pratica-' + t.id) || '(sem registro)'), '']),
         'APOIO RECEBIDO: ' + (data.get('apoio') || '(sem registro)'),
         'DECISÃO JUSTIFICADA E DÚVIDA: ' + (data.get('saida') || '(sem registro)')].join('\n');
-      const name = `diagnostico-${etapa}-mysql-${slug(turma)}-${slug(nome)}.txt`;
+      const name = `diagnostico-${etapa}-bd-${slug(turma)}-${slug(nome)}.txt`;
       save(name, text);
       $('#diagnostic-status').textContent = `Cópia ${etapa} preparada: ${name}. Confira em Downloads e entregue ao professor na aula. Não há envio automático.`;
     });
@@ -172,12 +172,12 @@
         return;
       }
       const comments = (text) => String(text).split('\n').map((x) => '-- ' + x);
-      const text = ['-- DADOSLAB - MYSQL - 19/10/2026', ...comments('Nome: ' + nome),
-        ...comments('Turma: ' + turma), ...comments('Ambiente/execução: ' + ($('#ambiente-lab').value || 'não informado')),
-        '-- Esta página registra a tentativa. A execução ocorre no MySQL do laboratório.', '',
+      const text = ['-- DADOSLAB - BANCO DE DADOS - 19/10/2026', ...comments('Nome: ' + nome),
+        ...comments('Turma: ' + turma), ...comments('Ambiente de escrita/apoio: ' + ($('#ambiente-lab').value || 'não informado')),
+        '-- SGBD a confirmar. Diagnóstico por leitura, previsão e escrita; execução não exigida.', '',
         $('#sql-editor').value, '', '-- REGISTRO DE EVIDÊNCIAS DA TENTATIVA',
         ...comments($('#sql-evidence').value || '(sem registro)')].join('\n');
-      const name = `tentativa-mysql-${slug(turma)}-${slug(nome)}.sql`;
+      const name = `tentativa-bd-${slug(turma)}-${slug(nome)}.sql`;
       save(name, text);
       $('#db-status').textContent = `Arquivo preparado: ${name}. Entregue o SQL e os TXT da ficha ao professor.`;
     });

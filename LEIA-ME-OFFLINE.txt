@@ -1,20 +1,17 @@
-DADOSLAB - BANCO DE DADOS COM MYSQL - Prof. Fabrício Rodrigues
+DADOSLAB - BANCO DE DADOS - Prof. Fabrício Rodrigues
 1. Extraia todo o pacote para uma pasta do computador ou pendrive.
 2. Abra a pasta no VS Code e index.html com Live Server previamente instalado.
 3. A primeira aula está em aulas.html?id=aula-01 e a ficha em diagnostico.html.
-4. Responda F1 a O3 antes de consultar scripts ou referências. Baixe o TXT inicial.
-5. Depois abra laboratorio.html, a área de prática MySQL.
-6. O ZIP de prática contém somente 01-base-mysql.sql e 02-diagnostico.sql.
-7. MySQL Server executa SQL. Workbench ou phpMyAdmin é o cliente do servidor.
-8. Use a conexão e o esquema fictício de estudo indicados pelo professor.
-9. Execute a base uma vez em esquema vazio, com orientação do professor.
-10. Escreva P1 a P3 no cliente MySQL ou VS Code. Salve seu SQL identificado.
-11. Live Server exibe o portal. O pacote não instala nem inclui MySQL Server.
-12. Sem acesso ao MySQL, escreva SQL e previsões e indique que não executou.
-13. Complete a ficha, escolha cópia final, baixe o TXT e entregue junto do inicial e do SQL.
-14. As páginas não salvam automaticamente nem enviam respostas ao professor.
-15. PDFs e arquivos locais funcionam sem internet; referências externas precisam de conexão.
-16. Para executar SQL sem internet, o MySQL deve estar disponível no computador ou rede local.
+4. Responda F1 a D2 individualmente antes de consultar referências. Baixe o TXT inicial.
+5. Depois abra laboratorio.html e baixe o ZIP da prática, com somente dois arquivos.
+6. Abra 01-base-referencia.html no navegador e 02-diagnostico.sql no VS Code.
+7. O SGBD da turma ainda será confirmado. Não é necessário instalar, conectar ou executar SQL.
+8. Escreva P1 a P3 e as previsões. P3 é somente escrita e não deve ser executada.
+9. Salve o SQL com nome e turma. O rascunho do portal também permite baixar SQL identificado.
+10. Complete a ficha, escolha versão final, baixe o TXT e entregue junto do inicial e do SQL.
+11. O professor informa a pasta ou dispositivo de coleta durante a aula.
+12. As páginas não salvam automaticamente nem enviam respostas ao professor.
+13. PDFs e arquivos são locais; referências externas precisam de internet.
 Calendário: oito segundas, de 19/10 a 14/12/2026, sem 02/11.
 Duas aulas de 50 minutos. Avaliação em 07/12; devolutiva e recuperação em 14/12.
-Este pacote do aluno não contém roteiro privado, notas do professor ou gabarito.
+O pacote do aluno não contém roteiro privado, notas do professor ou gabarito.
