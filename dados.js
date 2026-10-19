@@ -164,132 +164,29 @@ window.WEBLAB_BD = {
   ],
   "perguntas": [
     {
-      "id": "F1",
-      "area": "Fundamentos",
-      "titulo": "Banco, SGBD e SQL",
-      "codigo": "Uma biblioteca guarda dados em um banco.\nUm programa gerencia esses dados.\nUma pessoa escreve SQL em um editor.",
-      "enunciado": "Explique a diferença entre banco de dados, SGBD, SQL e editor/cliente. Fechar o editor apaga os dados já gravados? Justifique sem depender do nome de um programa.",
-      "refs": [
-        "conceitos",
-        "sql"
-      ]
+      "id": "1",
+      "titulo": "Programa utilizado",
+      "enunciado": "Qual programa vocês usaram nas aulas de banco de dados? Se não lembrar, escreva “não lembro”."
     },
     {
-      "id": "F2",
-      "area": "Fundamentos",
-      "titulo": "Efeito dos comandos",
-      "codigo": "SELECT nome FROM leitores;\nINSERT INTO leitores (id, nome, turma)\nVALUES (5, 'Eva', '1A');\nUPDATE leitores SET turma = '1C' WHERE id = 4;\nDELETE FROM leitores WHERE id = 5;",
-      "enunciado": "Descreva o efeito de cada comando. Qual apenas consulta? Considerando a sequência na base fictícia, quantos leitores ficam ao final e qual é a turma de Duda?",
-      "refs": [
-        "select",
-        "insert",
-        "update"
-      ]
+      "id": "2",
+      "titulo": "Conteúdos já estudados",
+      "enunciado": "Para cada conteúdo, marque: não estudei; já estudei e preciso revisar; consigo fazer."
     },
     {
-      "id": "F3",
-      "area": "Leitura de tabelas",
-      "titulo": "Linhas, campos e valores",
-      "codigo": "Observe livros e emprestimos na base inicial.\nO título do livro 1 é Redes de Computadores.\nA devolução do empréstimo 101 é NULL.",
-      "enunciado": "Quantos registros e campos há em livros? Dê um exemplo de campo textual e de campo numérico. O NULL do empréstimo 101 equivale a zero ou a uma data vazia? Explique o significado neste cenário.",
-      "refs": [
-        "conceitos",
-        "null"
-      ]
+      "id": "3",
+      "titulo": "O que já fizeram em aula",
+      "enunciado": "Qual atividade com banco de dados você já fez? Cite algo que consegue fazer sozinho."
     },
     {
-      "id": "Q1",
-      "area": "Consultas",
-      "titulo": "Filtros e ordem do resultado",
-      "codigo": "SELECT id, titulo, quantidade\nFROM livros\nWHERE (area = 'Redes' OR area = 'Web')\n  AND quantidade >= 2\nORDER BY quantidade DESC, id;",
-      "enunciado": "Quais IDs aparecem e em que ordem? Explique o papel dos parênteses e o critério de desempate. O que pode mudar se retirarmos os parênteses?",
-      "refs": [
-        "select"
-      ]
+      "id": "4",
+      "titulo": "Uma consulta simples",
+      "enunciado": "Na tabela livros abaixo, como listar somente os títulos com quantidade >= 2? Escreva o SQL ou explique os passos. Se não souber, registre isso."
     },
     {
-      "id": "Q2",
-      "area": "Consultas",
-      "titulo": "Comparação com NULL",
-      "codigo": "SELECT id\nFROM emprestimos\nWHERE data_devolucao = NULL\nORDER BY id;",
-      "enunciado": "A intenção é listar empréstimos sem devolução registrada. Essa comparação atende? Corrija a condição e liste os IDs esperados. Explique por que a mudança importa.",
-      "refs": [
-        "null"
-      ]
-    },
-    {
-      "id": "Q3",
-      "area": "Consultas",
-      "titulo": "Leitura de JOIN",
-      "codigo": "SELECT e.id, l.titulo, r.nome\nFROM emprestimos e\nJOIN livros l ON l.id = e.livro_id\nJOIN leitores r ON r.id = e.leitor_id\nWHERE e.data_devolucao IS NULL\nORDER BY e.id;",
-      "enunciado": "Escreva as linhas esperadas. Por que um título ou um nome pode se repetir? Se retirarmos a condição que liga leitores a emprestimos e combinarmos todos os leitores com cada empréstimo selecionado, quantas linhas aparecerão?",
-      "refs": [
-        "join"
-      ]
-    },
-    {
-      "id": "Q4",
-      "area": "Consultas",
-      "titulo": "LEFT JOIN e contagem",
-      "codigo": "SELECT r.nome, COUNT(*) AS total\nFROM leitores r\nLEFT JOIN emprestimos e ON e.leitor_id = r.id\nGROUP BY r.id, r.nome\nORDER BY r.id;",
-      "enunciado": "A intenção é contar todos os empréstimos de cada leitor, incluindo quem tem zero. Qual total essa consulta mostra para Duda? Corrija a contagem e escreva o total correto dos quatro leitores.",
-      "refs": [
-        "join",
-        "grupos",
-        "null"
-      ]
-    },
-    {
-      "id": "Q5",
-      "area": "Consultas",
-      "titulo": "Agrupamento e filtros",
-      "codigo": "SELECT area, COUNT(*) AS titulos,\n       SUM(quantidade) AS exemplares\nFROM livros\nGROUP BY area\nHAVING COUNT(*) >= 2\nORDER BY area;",
-      "enunciado": "Qual linha aparece? Explique a diferença entre titulos e exemplares. Para considerar somente livros com quantidade >= 2 antes do agrupamento, onde entraria esse filtro? Por que HAVING e WHERE têm papéis diferentes?",
-      "refs": [
-        "grupos"
-      ]
-    },
-    {
-      "id": "Q6",
-      "area": "Consultas",
-      "titulo": "Repetições e DISTINCT",
-      "codigo": "SELECT DISTINCT l.id, l.titulo\nFROM livros l\nJOIN emprestimos e ON e.livro_id = l.id\nORDER BY l.id;",
-      "enunciado": "Quais livros aparecem? Quantas linhas haveria sem DISTINCT? Explique por que contar empréstimos pode dar um número diferente de contar livros que já foram emprestados.",
-      "refs": [
-        "select",
-        "join"
-      ]
-    },
-    {
-      "id": "Q7",
-      "area": "Consultas",
-      "titulo": "Subconsulta e média",
-      "codigo": "SELECT id, quantidade\nFROM livros\nWHERE quantidade > (\n  SELECT AVG(quantidade) FROM livros\n)\nORDER BY id;",
-      "enunciado": "Calcule a média usada na condição e liste os IDs selecionados. O que a consulta interna devolve e como a consulta externa usa esse valor?",
-      "refs": [
-        "subconsultas",
-        "grupos"
-      ]
-    },
-    {
-      "id": "D1",
-      "area": "Interpretação de alterações",
-      "titulo": "Alcance de UPDATE",
-      "codigo": "A: UPDATE leitores SET turma = '1C' WHERE id = 4;\nB: UPDATE leitores SET turma = '1C';\nConsidere A e B separadamente na base inicial.",
-      "enunciado": "Sem executar, indique quantos registros cada comando alcança e como ficam as turmas. Qual comando corresponde a alterar somente Duda? Explique o papel de WHERE.",
-      "refs": [
-        "update"
-      ]
-    },
-    {
-      "id": "D2",
-      "area": "Análise de erros",
-      "titulo": "Erro de coluna e erro de resultado",
-      "codigo": "A: SELECT titulo FROM livros WHERE categoria = 'Web';\nB: SELECT titulo FROM livros WHERE quantidade > 2;\nPedido de B: livros com pelo menos dois exemplares.",
-      "enunciado": "Qual consulta usa um campo que não existe na base? Corrija-a. A consulta B pode funcionar e ainda responder errado ao pedido? Corrija e informe os IDs que deveriam aparecer, sem exigir a ordem.",
-      "refs": [
-        "select"
-      ]
+      "id": "5",
+      "titulo": "Principal dúvida",
+      "enunciado": "Qual conteúdo você precisa revisar primeiro?"
     }
   ],
   "aulas": [
@@ -299,63 +196,55 @@ window.WEBLAB_BD = {
       "data": "2026-10-19",
       "dataCurta": "19/10",
       "eixo": "Diagnóstico",
-      "titulo": "O quanto entendemos de Banco de Dados?",
-      "subtitulo": "Fundamentos, leitura de tabelas, interpretação e escrita de SQL",
-      "produto": "TXT/ficha com 12 respostas justificadas, três tentativas SQL e registro do apoio recebido.",
+      "titulo": "O que a turma já estudou?",
+      "subtitulo": "Diagnóstico breve de conteúdos e experiências anteriores",
+      "produto": "Um TXT ou uma ficha identificada com cinco respostas e a marcação dos conteúdos já estudados.",
       "objetivos": [
-        "Distinguir banco de dados, SGBD, SQL e editor/cliente.",
-        "Interpretar tabelas e prever resultados de consultas.",
-        "Identificar erros e escrever SQL com justificativa.",
-        "Registrar familiaridade e apoio separadamente do conhecimento demonstrado."
+        "Identificar os conteúdos já abordados nas aulas anteriores.",
+        "Registrar o programa utilizado e as atividades que os alunos já fizeram.",
+        "Observar uma consulta simples para orientar a retomada."
       ],
-      "retomada": "Faça primeiro a tentativa individual, sem consultar o caderno ou soluções. Use “não estudei”, “não lembro” ou uma hipótese explicada. Isso ajuda o professor a distinguir exposição anterior, compreensão e autonomia.",
+      "retomada": "Responda com sinceridade, sem consultar materiais. O objetivo é conhecer o percurso da turma e escolher o que precisamos revisar.",
       "secoes": [
         {
-          "titulo": "Como o diagnóstico funciona",
+          "titulo": "Cinco perguntas diretas",
           "texto": [
-            "São 12 situações e três tarefas de escrita de SQL, do básico a desafios de consulta. Faça a primeira tentativa individual antes de consultar o caderno e as referências. A atividade orienta as retomadas e não recebe nota somativa.",
-            "Um assunto ainda não estudado também é informação. Registre sua hipótese e explique como pensou. Não é necessário acertar todos os desafios."
+            "Informe o programa utilizado, marque os conteúdos já estudados e conte uma atividade que já fez. Depois tente uma consulta simples e indique sua principal dúvida.",
+            "Você pode escrever “não lembro”, “não estudei” ou explicar os passos com suas palavras. O diagnóstico não recebe nota."
           ]
         },
         {
-          "titulo": "Base e ambiente",
+          "titulo": "Como responder e entregar",
           "texto": [
-            "Dados fictícios. quantidade é o total cadastrado, não o saldo disponível. NULL em data_devolucao significa que a devolução ainda não foi registrada. Use a base inicial em todas as questões e tarefas; considere cada alteração isoladamente.",
-            "O SGBD e a versão da turma ainda serão confirmados. O diagnóstico exige somente leitura, previsão e escrita de SQL. Não exige instalação, conexão ou execução.",
-            "Depois de salvar a tentativa inicial, baixe os dois arquivos da prática: 01-base-referencia.html e 02-diagnostico.sql. Leia a base no navegador e escreva o SQL no VS Code, no portal ou em papel. Live Server serve apenas para exibir o portal local."
+            "Abra a ficha, preencha nome e turma e responda às cinco perguntas. Ao terminar, baixe um único TXT e entregue ao professor durante a aula. Em papel, entregue a ficha identificada.",
+            "O SGBD da turma ainda será confirmado. Não é preciso instalar ou executar um banco de dados. A consulta pode ser escrita na ficha. O projeto com dois arquivos é opcional para quem preferir escrever no VS Code."
           ]
         },
         {
           "titulo": "Depois da coleta",
           "texto": [
-            "O professor compara as justificativas, as consultas escritas e uma explicação individual. As referências apresentam conceitos SQL em documentação de fornecedores, mas não definem o SGBD da turma. A sintaxe de atividades futuras será conferida no ambiente escolhido."
+            "A turma conversa sobre as atividades anteriores e retoma os conteúdos mais indicados nas respostas. O professor confirma o ambiente utilizado antes das próximas práticas."
           ]
         }
       ],
       "atividade": [
-        "Responder F1 a D2 com justificativas e familiaridade.",
-        "Guardar o TXT da tentativa inicial antes de abrir a prática.",
-        "Baixar e extrair os dois arquivos; abrir a referência no navegador e o SQL no VS Code.",
-        "Escrever P1 a P3 e prever os resultados; P3 é somente escrita, sem execução.",
-        "Completar o registro final e baixar o TXT final e o SQL identificado.",
-        "Entregar os arquivos ao professor durante a aula e explicar uma decisão e uma dúvida."
+        "Preencher nome e turma.",
+        "Responder às cinco perguntas e marcar os conteúdos estudados.",
+        "Baixar o TXT e entregar ao professor na aula; em papel, entregar a ficha.",
+        "Participar da retomada dos conteúdos mais citados."
       ],
       "checklist": [
-        "Identifiquei nome, turma e experiência anterior, mesmo sem lembrar o programa.",
-        "Registrei meu raciocínio e diferenciei resposta de familiaridade.",
-        "Guardei o TXT inicial, o TXT final e meu SQL identificado.",
-        "Informei se escrevi com autonomia ou precisei de ajuda."
+        "Informei o programa usado ou registrei que não lembro.",
+        "Marquei os conteúdos e relatei uma atividade anterior.",
+        "Tentei a consulta simples ou indiquei minha dificuldade.",
+        "Entreguei um único TXT ou a ficha identificada."
       ],
-      "curiosidade": "Uma consulta pode executar sem erro e ainda contar a coisa errada. A previsão e a explicação mostram se o resultado faz sentido.",
-      "extensao": "Se concluir, escreva outra consulta que responda à mesma pergunta de P2 e compare o resultado previsto. Aguarde a coleta antes de consultar soluções.",
+      "curiosidade": "Lembrar o nome de um comando e conseguir usá-lo são informações diferentes. Uma pequena tentativa ajuda a escolher a revisão.",
+      "extensao": "Depois da entrega, explique ao professor um exemplo de atividade que já fez.",
       "refs": [
         "conceitos",
         "sql",
-        "select",
-        "null",
-        "join",
-        "grupos",
-        "subconsultas"
+        "select"
       ]
     },
     {
@@ -772,284 +661,131 @@ window.WEBLAB_BD = {
     {
       "titulo": "Banco de Dados",
       "texto": [
-        "Diagnóstico de conhecimentos",
+        "O que a turma já estudou?",
         "Prof. Fabrício Rodrigues"
       ],
-      "label": "19 DE OUTUBRO DE 2026"
+      "label": "DADOSLAB / DIAGNÓSTICO BREVE"
     },
     {
-      "titulo": "O foco deste encontro",
+      "titulo": "Programa utilizado",
       "texto": [
-        "Conceitos de banco de dados e leitura das tabelas.",
-        "Consultas SQL: previsão, explicação e escrita.",
-        "SGBD da turma: a confirmar. Não precisamos instalar ou conectar um banco."
+        "Qual programa vocês usaram nas aulas de banco de dados? Se não lembrar, escreva “não lembro”.",
+        "A ficha está no portal. Preencha nome e turma."
       ],
-      "label": "DADOSLAB / DIAGNÓSTICO"
+      "label": "DADOSLAB / DIAGNÓSTICO BREVE"
     },
     {
-      "titulo": "Respostas individuais",
+      "titulo": "Conteúdos já estudados",
       "texto": [
-        "Abrir a ficha no portal e preencher nome, turma e experiência.",
-        "Responder F1 a D2 antes de consultar referências ou soluções.",
-        "Registrar a hipótese e a familiaridade. Guardar a cópia inicial antes da prática."
+        "Não estudei / Já estudei, preciso revisar / Consigo fazer"
       ],
-      "label": "DADOSLAB / DIAGNÓSTICO"
+      "label": "DADOSLAB / DIAGNÓSTICO BREVE",
+      "tabela": [
+        [
+          "Conteúdo",
+          "Minha situação na ficha"
+        ],
+        [
+          "Banco de dados e SGBD",
+          "Marcar uma opção"
+        ],
+        [
+          "Tabelas, linhas e colunas",
+          "Marcar uma opção"
+        ],
+        [
+          "Tipos de dados",
+          "Marcar uma opção"
+        ],
+        [
+          "Criar tabelas (CREATE TABLE)",
+          "Marcar uma opção"
+        ],
+        [
+          "Inserir dados (INSERT)",
+          "Marcar uma opção"
+        ],
+        [
+          "Consultar dados (SELECT)",
+          "Marcar uma opção"
+        ],
+        [
+          "Filtrar e ordenar (WHERE / ORDER BY)",
+          "Marcar uma opção"
+        ],
+        [
+          "Alterar e excluir (UPDATE / DELETE)",
+          "Marcar uma opção"
+        ],
+        [
+          "Consultar mais de uma tabela (JOIN)",
+          "Marcar uma opção"
+        ],
+        [
+          "Agrupar e contar (GROUP BY / COUNT)",
+          "Marcar uma opção"
+        ]
+      ]
     },
     {
-      "titulo": "Base inicial: livros",
-      "texto": [],
-      "label": "DADOSLAB / DIAGNÓSTICO",
+      "titulo": "Atividades anteriores",
+      "texto": [
+        "Qual atividade com banco de dados você já fez? Cite algo que consegue fazer sozinho.",
+        "Pode ser criar uma tabela, cadastrar dados ou fazer uma consulta."
+      ],
+      "label": "DADOSLAB / DIAGNÓSTICO BREVE"
+    },
+    {
+      "titulo": "Uma consulta simples",
+      "texto": [
+        "Na tabela livros abaixo, como listar somente os títulos com quantidade >= 2? Escreva o SQL ou explique os passos. Se não souber, registre isso.",
+        "SQL ou explicação dos passos são aceitos. Não é preciso executar."
+      ],
+      "label": "DADOSLAB / DIAGNÓSTICO BREVE",
       "tabela": [
         [
           "id",
           "titulo",
-          "area",
           "quantidade"
         ],
         [
           1,
           "Redes de Computadores",
-          "Redes",
           2
         ],
         [
           2,
           "Banco de Dados",
-          "Dados",
           1
         ],
         [
           3,
           "HTML e CSS",
-          "Web",
           3
-        ],
-        [
-          4,
-          "Lógica de Programação",
-          "Programação",
-          2
-        ],
-        [
-          5,
-          "Linux em Redes",
-          "Redes",
-          1
         ]
       ]
     },
     {
-      "titulo": "Base inicial: leitores e empréstimos",
+      "titulo": "Dúvida e entrega",
       "texto": [
-        "A ficha mostra quatro leitores e cinco empréstimos.",
-        "Cada empréstimo tem livro, leitor e datas. NULL na devolução indica que ela ainda não foi registrada.",
-        "Todas as questões usam a base inicial. Cada alteração hipotética começa dessa base."
+        "Qual conteúdo você precisa revisar primeiro?",
+        "Ao terminar, baixar um único TXT e entregar ao professor na aula.",
+        "Em papel, entregar a ficha com nome e turma."
       ],
-      "label": "DADOSLAB / DIAGNÓSTICO"
+      "label": "DADOSLAB / DIAGNÓSTICO BREVE"
     },
     {
-      "titulo": "F1 - Banco, SGBD e SQL",
+      "titulo": "Retomada da aula",
       "texto": [
-        "Explique a diferença entre banco de dados, SGBD, SQL e editor/cliente. Fechar o editor apaga os dados já gravados? Justifique sem depender do nome de um programa."
+        "Quais conteúdos apareceram mais nas respostas?",
+        "Uma atividade anterior da turma como ponto de partida.",
+        "Programa de banco de dados utilizado: a confirmar."
       ],
-      "label": "FUNDAMENTOS",
-      "codigo": "Uma biblioteca guarda dados em um banco.\nUm programa gerencia esses dados.\nUma pessoa escreve SQL em um editor.",
-      "refs": [
-        "conceitos",
-        "sql"
-      ]
-    },
-    {
-      "titulo": "F2 - Efeito dos comandos",
-      "texto": [
-        "Descreva o efeito de cada comando. Qual apenas consulta? Considerando a sequência na base fictícia, quantos leitores ficam ao final e qual é a turma de Duda?"
-      ],
-      "label": "FUNDAMENTOS",
-      "codigo": "SELECT nome FROM leitores;\nINSERT INTO leitores (id, nome, turma)\nVALUES (5, 'Eva', '1A');\nUPDATE leitores SET turma = '1C' WHERE id = 4;\nDELETE FROM leitores WHERE id = 5;",
-      "refs": [
-        "select",
-        "insert",
-        "update"
-      ]
-    },
-    {
-      "titulo": "F3 - Linhas, campos e valores",
-      "texto": [
-        "Quantos registros e campos há em livros? Dê um exemplo de campo textual e de campo numérico. O NULL do empréstimo 101 equivale a zero ou a uma data vazia? Explique o significado neste cenário."
-      ],
-      "label": "LEITURA DE TABELAS",
-      "codigo": "Observe livros e emprestimos na base inicial.\nO título do livro 1 é Redes de Computadores.\nA devolução do empréstimo 101 é NULL.",
-      "refs": [
-        "conceitos",
-        "null"
-      ]
-    },
-    {
-      "titulo": "Q1 - Filtros e ordem do resultado",
-      "texto": [
-        "Quais IDs aparecem e em que ordem? Explique o papel dos parênteses e o critério de desempate. O que pode mudar se retirarmos os parênteses?"
-      ],
-      "label": "CONSULTAS",
-      "codigo": "SELECT id, titulo, quantidade\nFROM livros\nWHERE (area = 'Redes' OR area = 'Web')\n  AND quantidade >= 2\nORDER BY quantidade DESC, id;",
-      "refs": [
-        "select"
-      ]
-    },
-    {
-      "titulo": "Q2 - Comparação com NULL",
-      "texto": [
-        "A intenção é listar empréstimos sem devolução registrada. Essa comparação atende? Corrija a condição e liste os IDs esperados. Explique por que a mudança importa."
-      ],
-      "label": "CONSULTAS",
-      "codigo": "SELECT id\nFROM emprestimos\nWHERE data_devolucao = NULL\nORDER BY id;",
-      "refs": [
-        "null"
-      ]
-    },
-    {
-      "titulo": "Q3 - Leitura de JOIN",
-      "texto": [
-        "Escreva as linhas esperadas. Por que um título ou um nome pode se repetir? Se retirarmos a condição que liga leitores a emprestimos e combinarmos todos os leitores com cada empréstimo selecionado, quantas linhas aparecerão?"
-      ],
-      "label": "CONSULTAS",
-      "codigo": "SELECT e.id, l.titulo, r.nome\nFROM emprestimos e\nJOIN livros l ON l.id = e.livro_id\nJOIN leitores r ON r.id = e.leitor_id\nWHERE e.data_devolucao IS NULL\nORDER BY e.id;",
-      "refs": [
-        "join"
-      ]
-    },
-    {
-      "titulo": "Q4 - LEFT JOIN e contagem",
-      "texto": [
-        "A intenção é contar todos os empréstimos de cada leitor, incluindo quem tem zero. Qual total essa consulta mostra para Duda? Corrija a contagem e escreva o total correto dos quatro leitores."
-      ],
-      "label": "CONSULTAS",
-      "codigo": "SELECT r.nome, COUNT(*) AS total\nFROM leitores r\nLEFT JOIN emprestimos e ON e.leitor_id = r.id\nGROUP BY r.id, r.nome\nORDER BY r.id;",
-      "refs": [
-        "join",
-        "grupos",
-        "null"
-      ]
-    },
-    {
-      "titulo": "Q5 - Agrupamento e filtros",
-      "texto": [
-        "Qual linha aparece? Explique a diferença entre titulos e exemplares. Para considerar somente livros com quantidade >= 2 antes do agrupamento, onde entraria esse filtro? Por que HAVING e WHERE têm papéis diferentes?"
-      ],
-      "label": "CONSULTAS",
-      "codigo": "SELECT area, COUNT(*) AS titulos,\n       SUM(quantidade) AS exemplares\nFROM livros\nGROUP BY area\nHAVING COUNT(*) >= 2\nORDER BY area;",
-      "refs": [
-        "grupos"
-      ]
-    },
-    {
-      "titulo": "Q6 - Repetições e DISTINCT",
-      "texto": [
-        "Quais livros aparecem? Quantas linhas haveria sem DISTINCT? Explique por que contar empréstimos pode dar um número diferente de contar livros que já foram emprestados."
-      ],
-      "label": "CONSULTAS",
-      "codigo": "SELECT DISTINCT l.id, l.titulo\nFROM livros l\nJOIN emprestimos e ON e.livro_id = l.id\nORDER BY l.id;",
-      "refs": [
-        "select",
-        "join"
-      ]
-    },
-    {
-      "titulo": "Q7 - Subconsulta e média",
-      "texto": [
-        "Calcule a média usada na condição e liste os IDs selecionados. O que a consulta interna devolve e como a consulta externa usa esse valor?"
-      ],
-      "label": "CONSULTAS",
-      "codigo": "SELECT id, quantidade\nFROM livros\nWHERE quantidade > (\n  SELECT AVG(quantidade) FROM livros\n)\nORDER BY id;",
-      "refs": [
-        "subconsultas",
-        "grupos"
-      ]
-    },
-    {
-      "titulo": "D1 - Alcance de UPDATE",
-      "texto": [
-        "Sem executar, indique quantos registros cada comando alcança e como ficam as turmas. Qual comando corresponde a alterar somente Duda? Explique o papel de WHERE."
-      ],
-      "label": "INTERPRETAÇÃO DE ALTERAÇÕES",
-      "codigo": "A: UPDATE leitores SET turma = '1C' WHERE id = 4;\nB: UPDATE leitores SET turma = '1C';\nConsidere A e B separadamente na base inicial.",
-      "refs": [
-        "update"
-      ]
-    },
-    {
-      "titulo": "D2 - Erro de coluna e erro de resultado",
-      "texto": [
-        "Qual consulta usa um campo que não existe na base? Corrija-a. A consulta B pode funcionar e ainda responder errado ao pedido? Corrija e informe os IDs que deveriam aparecer, sem exigir a ordem."
-      ],
-      "label": "ANÁLISE DE ERROS",
-      "codigo": "A: SELECT titulo FROM livros WHERE categoria = 'Web';\nB: SELECT titulo FROM livros WHERE quantidade > 2;\nPedido de B: livros com pelo menos dois exemplares.",
-      "refs": [
-        "select"
-      ]
-    },
-    {
-      "titulo": "Cópia inicial do diagnóstico",
-      "texto": [
-        "Selecionar “Tentativa inicial” e baixar o TXT.",
-        "Conferir o arquivo em Downloads e manter a ficha aberta.",
-        "Depois desse registro, começar as tarefas P1 a P3."
-      ],
-      "label": "DADOSLAB / DIAGNÓSTICO"
-    },
-    {
-      "titulo": "Arquivos da prática e VS Code",
-      "texto": [
-        "Baixar e extrair o ZIP: somente dois arquivos.",
-        "Abrir 01-base-referencia.html no navegador e 02-diagnostico.sql no VS Code.",
-        "Escrever o SQL e prever resultados. Não é necessário executar ou instalar um SGBD."
-      ],
-      "label": "DADOSLAB / DIAGNÓSTICO"
-    },
-    {
-      "titulo": "P1 - Filtro com resultado previsto",
-      "texto": [
-        "Escreva uma consulta que mostre id, titulo e quantidade dos livros com pelo menos dois exemplares. Ordene por quantidade decrescente e, nos empates, por id crescente. Antes de consultar qualquer material, registre os IDs na ordem esperada.",
-        "Registrar a tentativa, a previsão e o apoio recebido."
-      ],
-      "label": "PRODUÇÃO DE SQL"
-    },
-    {
-      "titulo": "P2 - Relatório com zeros",
-      "texto": [
-        "Escreva uma consulta com nome e total de empréstimos sem devolução registrada por leitor, incluindo leitores com zero. Ordene pelo id do leitor. Preveja os quatro totais e explique onde colocou a condição de devolução.",
-        "Registrar a tentativa, a previsão e o apoio recebido."
-      ],
-      "label": "PRODUÇÃO DE SQL"
-    },
-    {
-      "titulo": "P3 - Alteração descrita em SQL",
-      "texto": [
-        "Somente no papel ou no arquivo SQL, escreva o comando para mudar a turma de Duda (id 4) de 1B para 1C. Indique a linha antes e depois e explique como restringiu a alteração. Considere a base inicial e não execute esse comando nesta atividade.",
-        "Registrar a tentativa, a previsão e o apoio recebido."
-      ],
-      "label": "PRODUÇÃO DE SQL"
-    },
-    {
-      "titulo": "Entrega dos registros",
-      "texto": [
-        "Salvar o SQL com nome e turma.",
-        "Na ficha, registrar a prática e a dúvida final. Selecionar “Versão final” e baixar o TXT.",
-        "Entregar TXT inicial, TXT final e SQL ao professor na aula. Em papel, entregar a ficha identificada."
-      ],
-      "label": "DADOSLAB / DIAGNÓSTICO"
-    },
-    {
-      "titulo": "Retomadas a partir das respostas",
-      "texto": [
-        "Conceitos: diferença entre dados, SGBD, SQL e ferramenta.",
-        "Consultas: o que cada linha significa e como conferir o resultado.",
-        "Escrita: transformar uma pergunta em SQL e explicar uma correção."
-      ],
-      "label": "DADOSLAB / DIAGNÓSTICO"
+      "label": "DADOSLAB / DIAGNÓSTICO BREVE"
     }
   ],
   "sgbd": "A confirmar",
-  "versao": "Diagnóstico sem SGBD definido - 18/10/2026",
+  "versao": "Diagnóstico resumido de conteúdos estudados - 18/10/2026",
   "leitores": [
     [
       1,
@@ -1072,24 +808,81 @@ window.WEBLAB_BD = {
       "1B"
     ]
   ],
-  "baseNota": "Dados fictícios. quantidade é o total cadastrado, não o saldo disponível. NULL em data_devolucao significa que a devolução ainda não foi registrada. Use a base inicial em todas as questões e tarefas; considere cada alteração isoladamente.",
-  "praticas": [
-    {
-      "id": "P1",
-      "titulo": "Filtro com resultado previsto",
-      "enunciado": "Escreva uma consulta que mostre id, titulo e quantidade dos livros com pelo menos dois exemplares. Ordene por quantidade decrescente e, nos empates, por id crescente. Antes de consultar qualquer material, registre os IDs na ordem esperada."
-    },
-    {
-      "id": "P2",
-      "titulo": "Relatório com zeros",
-      "enunciado": "Escreva uma consulta com nome e total de empréstimos sem devolução registrada por leitor, incluindo leitores com zero. Ordene pelo id do leitor. Preveja os quatro totais e explique onde colocou a condição de devolução."
-    },
-    {
-      "id": "P3",
-      "titulo": "Alteração descrita em SQL",
-      "enunciado": "Somente no papel ou no arquivo SQL, escreva o comando para mudar a turma de Duda (id 4) de 1B para 1C. Indique a linha antes e depois e explique como restringiu a alteração. Considere a base inicial e não execute esse comando nesta atividade."
-    }
+  "baseNota": "Tabela fictícia livros. Use somente os dados abaixo na pergunta 4. Não é necessário instalar ou executar um SGBD.",
+  "praticas": [],
+  "saida": "Qual conteúdo você precisa revisar primeiro?",
+  "rascunhoSQL": "-- DADOSLAB - Diagnóstico resumido - 19/10/2026\n-- Nome:\n-- Turma:\n-- SGBD da turma: a confirmar. Não é necessário executar.\n\n-- Pergunta 4: listar somente os títulos com quantidade >= 2.\n-- Consulte a tabela livros em 01-base-referencia.html.\n\n-- Minha tentativa SQL ou explicação:\n\n\n\n-- Registre esta tentativa na ficha e entregue um único TXT ao professor.\n",
+  "topicos": [
+    [
+      "T1",
+      "Banco de dados e SGBD"
+    ],
+    [
+      "T2",
+      "Tabelas, linhas e colunas"
+    ],
+    [
+      "T3",
+      "Tipos de dados"
+    ],
+    [
+      "T4",
+      "Criar tabelas (CREATE TABLE)"
+    ],
+    [
+      "T5",
+      "Inserir dados (INSERT)"
+    ],
+    [
+      "T6",
+      "Consultar dados (SELECT)"
+    ],
+    [
+      "T7",
+      "Filtrar e ordenar (WHERE / ORDER BY)"
+    ],
+    [
+      "T8",
+      "Alterar e excluir (UPDATE / DELETE)"
+    ],
+    [
+      "T9",
+      "Consultar mais de uma tabela (JOIN)"
+    ],
+    [
+      "T10",
+      "Agrupar e contar (GROUP BY / COUNT)"
+    ]
   ],
-  "saida": "Que decisão de SQL você consegue justificar agora? Qual dúvida precisa retomar?",
-  "rascunhoSQL": "-- DADOSLAB - Diagnóstico de Banco de Dados - 19/10/2026\n-- Nome:\n-- Turma:\n-- SGBD da turma: a confirmar.\n-- Escreva suas tentativas e as previsões. Não é preciso executar.\n\n-- P1 - Filtro com resultado previsto\n-- Minha tentativa:\n\n\n-- Resultado previsto / justificativa:\n\n\n-- P2 - Relatório com zeros\n-- Minha tentativa:\n\n\n-- Resultado previsto / justificativa:\n\n\n-- P3 - Alteração descrita em SQL\n-- Minha tentativa:\n\n\n-- Resultado previsto / justificativa:\n\n-- P3: somente escrita e previsão. Não executar.\n"
+  "niveis": [
+    [
+      "nao-estudei",
+      "Não estudei"
+    ],
+    [
+      "preciso-revisar",
+      "Já estudei, preciso revisar"
+    ],
+    [
+      "consigo-fazer",
+      "Consigo fazer"
+    ]
+  ],
+  "baseDiagnostico": [
+    [
+      1,
+      "Redes de Computadores",
+      2
+    ],
+    [
+      2,
+      "Banco de Dados",
+      1
+    ],
+    [
+      3,
+      "HTML e CSS",
+      3
+    ]
+  ]
 };

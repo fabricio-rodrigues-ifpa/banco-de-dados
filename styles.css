@@ -68,3 +68,6 @@
 .diagnostic-question select { display:block; width:100%; padding:12px; margin:8px 0 18px; color:var(--green); background:#fff; border:1px solid var(--line); border-radius:5px; font:inherit; }
 .diagnostic-question textarea { min-height:130px; }
 .db-question-index { position:sticky; top:0; z-index:2; padding:12px; background:#fafbf7; border:1px solid var(--line); }
+
+#db-questions textarea { min-height: 75px; }
+#resposta-4 { min-height: 120px; }

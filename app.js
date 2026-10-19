@@ -55,7 +55,7 @@
         ${s.codigo ? `<pre><code>${esc(s.codigo)}</code></pre>` : ''}</section>`).join('')}</section>
       <section id="atividade"><h2>Prática da aula</h2><ol>${a.atividade.map((x) => `<li>${esc(x)}</li>`).join('')}</ol>
       <p><strong>Resultado esperado:</strong> ${esc(a.produto)}</p>
-      ${a.id === 'aula-01' ? '<div class="detail-actions"><a class="button primary" href="laboratorio.html">Abrir a prática SQL ↗</a><a class="button secondary" href="Pratica-Banco-de-Dados.zip" download>Baixar os dois arquivos da prática ↓</a></div>' : '<p>Use o ambiente e os arquivos de trabalho indicados pelo professor para este encontro. A configuração do SGBD será confirmada em aula.</p>'}</section>
+      ${a.id === 'aula-01' ? '<div class="detail-actions"><a class="button primary" href="laboratorio.html">Consulta opcional ↗</a><a class="button secondary" href="Pratica-Banco-de-Dados.zip" download>Projeto opcional de dois arquivos ↓</a></div>' : '<p>Use o ambiente e os arquivos de trabalho indicados pelo professor para este encontro. A configuração do SGBD será confirmada em aula.</p>'}</section>
       ${a.etapas ? `<section><h2>Etapas da aula</h2><ol>${a.etapas.map((x) => `<li>${esc(x)}</li>`).join('')}</ol></section>` : ''}
       <section id="conferencia"><h2>Checklist de conferência</h2><div class="checklist">${a.checklist.map((x) => `<label class="check-item"><input type="checkbox"><span>${esc(x)}</span></label>`).join('')}</div><p class="storage-note">As marcações não são salvas e não enviam uma entrega.</p></section>
       <section class="soft-box"><h3>Uma descoberta útil</h3><p>${esc(a.curiosidade)}</p></section>
@@ -74,38 +74,19 @@
   }
 
   if ($('#db-references')) $('#db-references').innerHTML = referenceList(D.referencias.map((r) => r.id));
-  if ($('#db-base')) {
-    $('#db-base').innerHTML = '<h3>livros</h3>' + table(['id', 'titulo', 'area', 'quantidade'], D.livros)
-      + '<h3>leitores</h3>' + table(['id', 'nome', 'turma'], D.leitores)
-      + '<h3>emprestimos</h3>' + table(['id', 'livro_id', 'leitor_id', 'data_emprestimo', 'data_devolucao'], D.emprestimos);
-  }
+  if ($('#db-base')) $('#db-base').innerHTML = table(['id', 'titulo', 'quantidade'], D.baseDiagnostico);
 
   if ($('#base-note')) $('#base-note').textContent = D.baseNota;
 
   if ($('#db-diagnostic')) {
-    const options = [
-      ['', 'Selecione sua familiaridade'],
-      ['nao-estudei', 'Ainda não estudei'],
-      ['nao-lembro', 'Já vi, mas não lembro como resolver'],
-      ['hipotese', 'Tenho uma hipótese ou resposta parcial'],
-      ['justifico', 'Consigo responder e justificar']
-    ];
     $('#db-questions').innerHTML = D.perguntas.map((q) => `<fieldset class="diagnostic-question">
-      <legend>${esc(q.id)} / ${esc(q.area)} / ${esc(q.titulo)}</legend>
-      <pre><code>${esc(q.codigo)}</code></pre><label for="resposta-${esc(q.id)}">${esc(q.enunciado)}</label>
-      <textarea id="resposta-${esc(q.id)}" name="${esc(q.id)}" rows="6" placeholder="Minha explicação, resultado previsto ou SQL..."></textarea>
-      <label for="familiaridade-${esc(q.id)}">Minha familiaridade com este assunto</label>
-      <select id="familiaridade-${esc(q.id)}" name="familiaridade-${esc(q.id)}">${options.map(([v,t]) => `<option value="${v}">${t}</option>`).join('')}</select>
+      <legend>${esc(q.id)}. ${esc(q.titulo)}</legend><p>${esc(q.enunciado)}</p>
+      ${q.id === '2' ? D.topicos.map(([id, title]) => `<label for="topico-${id}">${esc(title)}</label>
+        <select id="topico-${id}" name="topico-${id}"><option value="">Selecione</option>
+        ${D.niveis.map(([value, label]) => `<option value="${value}">${esc(label)}</option>`).join('')}</select>`).join('') :
+        `${q.id === '4' ? table(['id', 'titulo', 'quantidade'], D.baseDiagnostico) : ''}
+        <label class="db-label" for="resposta-${q.id}">Minha resposta</label><textarea id="resposta-${q.id}" name="${q.id}" rows="${q.id === '4' ? '4' : '2'}" placeholder="${q.id === '4' ? 'Meu SQL, explicação ou dificuldade...' : 'Resposta curta...'}"></textarea>`}
     </fieldset>`).join('');
-    $('#db-practice-questions').innerHTML = D.praticas.map((t) => `<fieldset class="diagnostic-question">
-      <legend>${esc(t.id)} / ${esc(t.titulo)}</legend><p>${esc(t.enunciado)}</p>
-      <label for="exec-${t.id}">Condição da tentativa</label><select id="exec-${t.id}" name="exec-${t.id}">
-        <option value="nao-informado">Ainda não registrei</option><option value="escrita-autonoma">Escrevi e previ o resultado com autonomia</option>
-        <option value="escrita-com-apoio">Escrevi parte ou tudo com apoio</option>
-        <option value="hipotese">Registrei somente uma hipótese ou previsão</option>
-        <option value="nao-soube">Não soube elaborar a consulta</option></select>
-      <label for="pratica-${t.id}">SQL escrito, resultado previsto, justificativa e apoio recebido</label>
-      <textarea id="pratica-${t.id}" name="pratica-${t.id}" rows="8"></textarea></fieldset>`).join('');
     $('#db-diagnostic').addEventListener('submit', (event) => {
       event.preventDefault();
       const data = new FormData(event.currentTarget);
@@ -115,21 +96,18 @@
         $('#diagnostic-status').textContent = 'Informe nome e turma antes de baixar.';
         return;
       }
-      const etapa = data.get('etapa') === 'final' ? 'final' : 'inicial';
-      const text = ['DADOSLAB - DIAGNÓSTICO DE CONHECIMENTOS EM BANCO DE DADOS',
-        '19/10/2026 - Prof. Fabrício Rodrigues', 'Cópia: ' + etapa,
-        'Nome: ' + nome, 'Turma: ' + turma, 'Experiência: ' + (data.get('experiencia') || '(sem registro)'), '',
-        ...D.perguntas.flatMap((q) => [q.id + ' - ' + q.titulo, q.codigo, q.enunciado,
-          'Minha resposta: ' + String(data.get(q.id) || '(sem resposta)'),
-          'Familiaridade declarada: ' + (data.get('familiaridade-' + q.id) || '(não informada)'), '']),
-        'PRODUÇÃO DE SQL', ...D.praticas.flatMap((t) => [t.id + ' - ' + t.enunciado,
-          'Condição: ' + (data.get('exec-' + t.id) || '(não informada)'),
-          String(data.get('pratica-' + t.id) || '(sem registro)'), '']),
-        'APOIO RECEBIDO: ' + (data.get('apoio') || '(sem registro)'),
-        'DECISÃO JUSTIFICADA E DÚVIDA: ' + (data.get('saida') || '(sem registro)')].join('\n');
-      const name = `diagnostico-${etapa}-bd-${slug(turma)}-${slug(nome)}.txt`;
+      const text = ['DADOSLAB - DIAGNÓSTICO BREVE DE BANCO DE DADOS',
+        '19/10/2026 - Prof. Fabrício Rodrigues', 'Nome: ' + nome, 'Turma: ' + turma, '',
+        ...D.perguntas.flatMap((q) => [q.id + '. ' + q.titulo, q.enunciado,
+          ...(q.id === '4' ? ['Tabela livros: id | titulo | quantidade',
+            ...D.baseDiagnostico.map((row) => row.join(' | '))] : []),
+          ...(q.id === '2' ? D.topicos.map(([id, title]) => title + ': ' +
+            (D.niveis.find(([value]) => value === data.get('topico-' + id))?.[1] || '(não informado)')) :
+            [String(data.get(q.id) || '(sem resposta)')]), '']),
+        'SGBD da turma: a confirmar. Entregar este TXT ao professor na aula.'].join('\n');
+      const name = `diagnostico-breve-${slug(turma)}-${slug(nome)}.txt`;
       save(name, text);
-      $('#diagnostic-status').textContent = `Cópia ${etapa} preparada: ${name}. Confira em Downloads e entregue ao professor na aula. Não há envio automático.`;
+      $('#diagnostic-status').textContent = `Arquivo preparado: ${name}. Confira em Downloads e entregue ao professor. Não há envio automático.`;
     });
   }
 
@@ -179,7 +157,7 @@
         ...comments($('#sql-evidence').value || '(sem registro)')].join('\n');
       const name = `tentativa-bd-${slug(turma)}-${slug(nome)}.sql`;
       save(name, text);
-      $('#db-status').textContent = `Arquivo preparado: ${name}. Entregue o SQL e os TXT da ficha ao professor.`;
+      $('#db-status').textContent = `Arquivo preparado: ${name}. Copie sua tentativa na pergunta 4 e entregue somente o TXT do diagnóstico ao professor.`;
     });
   }
 })();
