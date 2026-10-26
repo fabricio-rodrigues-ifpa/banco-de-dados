@@ -1303,7 +1303,8 @@ window.WEBLAB_BD = {
         "Inserir",
         "Alterar",
         "Excluir"
-      ]
+      ],
+      "visualId": "1"
     },
     {
       "numero": 2,
@@ -1320,7 +1321,8 @@ window.WEBLAB_BD = {
         "Situação",
         "Comando SQL",
         "Resultado conferido"
-      ]
+      ],
+      "visualId": "2"
     },
     {
       "numero": 3,
@@ -1358,7 +1360,8 @@ window.WEBLAB_BD = {
           "Banco de Dados",
           2
         ]
-      ]
+      ],
+      "visualId": "3"
     },
     {
       "numero": 4,
@@ -1386,7 +1389,8 @@ window.WEBLAB_BD = {
           "Dados (DML)",
           "SELECT · INSERT · UPDATE · DELETE"
         ]
-      ]
+      ],
+      "visualId": "4"
     },
     {
       "numero": 5,
@@ -1426,7 +1430,8 @@ window.WEBLAB_BD = {
           "Excluir registros",
           "DELETE"
         ]
-      ]
+      ],
+      "visualId": "5"
     },
     {
       "numero": 6,
@@ -1445,7 +1450,8 @@ window.WEBLAB_BD = {
         "Workbench\nEscrever SQL",
         "Servidor MySQL\nExecutar SQL",
         "Resultado\nLer e conferir"
-      ]
+      ],
+      "visualId": "6"
     },
     {
       "numero": 7,
@@ -1457,7 +1463,8 @@ window.WEBLAB_BD = {
       ],
       "codigo": "",
       "refs": [],
-      "esperado": ""
+      "esperado": "",
+      "visualId": "7"
     },
     {
       "numero": 8,
@@ -1471,7 +1478,8 @@ window.WEBLAB_BD = {
       "refs": [
         "workbench"
       ],
-      "esperado": ""
+      "esperado": "",
+      "visualId": "8"
     },
     {
       "numero": 9,
@@ -1485,7 +1493,45 @@ window.WEBLAB_BD = {
       "refs": [
         "mysql-select"
       ],
-      "esperado": "banco_atual = dadoslab_dml · total = 6"
+      "esperado": "banco_atual = dadoslab_dml · total = 6",
+      "visualTabela": [
+        [
+          "id",
+          "titulo",
+          "quantidade"
+        ],
+        [
+          1,
+          "Redes de computadores",
+          4
+        ],
+        [
+          2,
+          "HTML e CSS",
+          5
+        ],
+        [
+          3,
+          "Introducao ao SQL",
+          2
+        ],
+        [
+          4,
+          "Logica de programacao",
+          0
+        ],
+        [
+          5,
+          "Sistemas operacionais",
+          3
+        ],
+        [
+          6,
+          "Manutencao de computadores",
+          1
+        ]
+      ],
+      "visualId": "9"
     },
     {
       "numero": 10,
@@ -1499,7 +1545,8 @@ window.WEBLAB_BD = {
       "refs": [
         "mysql-select"
       ],
-      "esperado": ""
+      "esperado": "",
+      "visualId": "10"
     },
     {
       "numero": 11,
@@ -1513,7 +1560,45 @@ window.WEBLAB_BD = {
       "refs": [
         "mysql-select"
       ],
-      "esperado": "6 linhas · colunas id, titulo e quantidade"
+      "esperado": "6 linhas · colunas id, titulo e quantidade",
+      "visualTabela": [
+        [
+          "id",
+          "titulo",
+          "quantidade"
+        ],
+        [
+          1,
+          "Redes de computadores",
+          4
+        ],
+        [
+          2,
+          "HTML e CSS",
+          5
+        ],
+        [
+          3,
+          "Introducao ao SQL",
+          2
+        ],
+        [
+          4,
+          "Logica de programacao",
+          0
+        ],
+        [
+          5,
+          "Sistemas operacionais",
+          3
+        ],
+        [
+          6,
+          "Manutencao de computadores",
+          1
+        ]
+      ],
+      "visualId": "11"
     },
     {
       "numero": 12,
@@ -1527,7 +1612,40 @@ window.WEBLAB_BD = {
       "refs": [
         "mysql-select"
       ],
-      "esperado": "5 linhas · ids 2, 1, 5, 3, 6, nessa ordem"
+      "esperado": "5 linhas · ids 2, 1, 5, 3, 6, nessa ordem",
+      "visualTabela": [
+        [
+          "id",
+          "titulo",
+          "quantidade"
+        ],
+        [
+          2,
+          "HTML e CSS",
+          5
+        ],
+        [
+          1,
+          "Redes de computadores",
+          4
+        ],
+        [
+          5,
+          "Sistemas operacionais",
+          3
+        ],
+        [
+          3,
+          "Introducao ao SQL",
+          2
+        ],
+        [
+          6,
+          "Manutencao de computadores",
+          1
+        ]
+      ],
+      "visualId": "12"
     },
     {
       "numero": 13,
@@ -1539,7 +1657,7 @@ window.WEBLAB_BD = {
       ],
       "codigo": "",
       "refs": [],
-      "esperado": "Uma linha: id 4 · Logica de programacao"
+      "visualId": "13"
     },
     {
       "numero": 14,
@@ -1553,7 +1671,8 @@ window.WEBLAB_BD = {
       "refs": [
         "mysql-insert"
       ],
-      "esperado": ""
+      "esperado": "",
+      "visualId": "14"
     },
     {
       "numero": 15,
@@ -1568,7 +1687,20 @@ window.WEBLAB_BD = {
         "mysql-insert",
         "mysql-select"
       ],
-      "esperado": "id 7 com quantidade 3 · total = 7"
+      "esperado": "id 7 com quantidade 3 · total = 7",
+      "visualTabela": [
+        [
+          "id",
+          "titulo",
+          "quantidade"
+        ],
+        [
+          7,
+          "Python para iniciantes",
+          3
+        ]
+      ],
+      "visualId": "15"
     },
     {
       "numero": 16,
@@ -1580,7 +1712,7 @@ window.WEBLAB_BD = {
       ],
       "codigo": "",
       "refs": [],
-      "esperado": "6 → 7 linhas · nova linha com quantidade 3 · repetição do id causa erro"
+      "visualId": "16"
     },
     {
       "numero": 17,
@@ -1594,7 +1726,8 @@ window.WEBLAB_BD = {
       "refs": [
         "mysql-update"
       ],
-      "esperado": ""
+      "esperado": "",
+      "visualId": "17"
     },
     {
       "numero": 18,
@@ -1628,7 +1761,8 @@ window.WEBLAB_BD = {
           "8",
           "7"
         ]
-      ]
+      ],
+      "visualId": "18"
     },
     {
       "numero": 19,
@@ -1648,7 +1782,8 @@ window.WEBLAB_BD = {
         "Prever\nSELECT + WHERE",
         "Alterar\nUPDATE + WHERE",
         "Verificar\nSELECT novamente"
-      ]
+      ],
+      "visualId": "19"
     },
     {
       "numero": 20,
@@ -1662,7 +1797,8 @@ window.WEBLAB_BD = {
       "refs": [
         "mysql-delete"
       ],
-      "esperado": ""
+      "esperado": "",
+      "visualId": "20"
     },
     {
       "numero": 21,
@@ -1677,7 +1813,8 @@ window.WEBLAB_BD = {
         "mysql-delete",
         "mysql-select"
       ],
-      "esperado": "Busca pelo id 7: 0 linhas · total = 6"
+      "esperado": "Busca pelo id 7: 0 linhas · total = 6",
+      "visualId": "21"
     },
     {
       "numero": 22,
@@ -1717,7 +1854,8 @@ window.WEBLAB_BD = {
           "6",
           "Não existe"
         ]
-      ]
+      ],
+      "visualId": "22"
     },
     {
       "numero": 23,
@@ -1731,7 +1869,8 @@ window.WEBLAB_BD = {
       "refs": [
         "workbench"
       ],
-      "esperado": ""
+      "esperado": "",
+      "visualId": "23"
     },
     {
       "numero": 24,
@@ -1743,7 +1882,7 @@ window.WEBLAB_BD = {
       ],
       "codigo": "",
       "refs": [],
-      "esperado": "Ao concluir: id 8 ausente · total = 6"
+      "visualId": "24"
     },
     {
       "numero": 25,
@@ -1755,7 +1894,8 @@ window.WEBLAB_BD = {
       ],
       "codigo": "",
       "refs": [],
-      "esperado": ""
+      "esperado": "",
+      "visualId": "25"
     },
     {
       "numero": 26,
@@ -1791,10 +1931,11 @@ window.WEBLAB_BD = {
         ],
         [
           "Sakila",
-          "schema, depois data",
+          "01-sakila-estrutura.sql\n02-sakila-dados.sql",
           "Exploração posterior"
         ]
-      ]
+      ],
+      "visualId": "26"
     },
     {
       "numero": 27,
@@ -1806,7 +1947,8 @@ window.WEBLAB_BD = {
       ],
       "codigo": "",
       "refs": [],
-      "esperado": ""
+      "esperado": "",
+      "visualId": "27"
     },
     {
       "numero": 28,
@@ -1824,7 +1966,8 @@ window.WEBLAB_BD = {
         "mysql-delete",
         "workbench"
       ],
-      "esperado": ""
+      "esperado": "",
+      "visualId": "28"
     }
   ]
 };

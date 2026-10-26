@@ -81,3 +81,18 @@
 .bases-page .button { margin: .4rem .4rem .8rem 0; }
 .db-deck .dml-expected { font-size: 18px; }
 @media (max-width: 700px) { .lesson-content pre { font-size: 13px; } .dml-map { display: grid; grid-template-columns: 1fr; } }
+
+/* Aula 02: mesmas faces visuais do PDF e da apresentacao editavel. */
+.detail-wrap.dml-presentation { width: calc(100% - 2rem); max-width: 1280px; }
+.db-deck.dml-visual-deck { width: 100%; max-width: 1280px; min-height: 0; padding: 0; border: 0; border-radius: 0; position: relative; }
+.dml-slide-image { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: contain; }
+.slide-readable { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; border: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.dml-presentation .db-slide-controls { background: #fafbf7; padding: .6rem; }
+@media print { .dml-visual-deck { break-inside: avoid; } }
+
+.db-deck.dml-visual-deck { height: min(720px, calc(100dvh - 260px)); min-height: 270px; display: flex; align-items: center; justify-content: center; margin: 1rem auto; }
+.dml-visual-deck .dml-slide-image { width: 100%; height: 100%; object-fit: contain; }
+.dml-presentation.is-presenting { position: fixed; inset: 0; z-index: 10000; width: 100vw; max-width: none; height: 100dvh; margin: 0; padding: 0; display: flex; flex-direction: column; background: #fafbf7; }
+.dml-presentation.is-presenting > .return-nav, .dml-presentation.is-presenting > .course-caption { display: none; }
+.dml-presentation.is-presenting .dml-visual-deck { flex: 1; min-height: 0; height: calc(100dvh - 65px); margin: 0; max-width: none; }
+.dml-presentation.is-presenting .db-slide-controls { flex: 0 0 65px; width: min(100%, 1280px); margin: 0 auto; }

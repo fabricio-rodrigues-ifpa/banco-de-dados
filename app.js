@@ -116,10 +116,17 @@
     let index = Math.min(slides.length - 1, Math.max(0, Number(location.hash.slice(1)) - 1 || 0));
     const show = () => {
       const s = slides[index];
+      const visual = s.visualId && window.DADOSLAB_SLIDES_DML?.[s.visualId];
+      if (visual) {
+        $('#db-slide').classList.add('dml-visual-deck');
+        $('#db-slide').innerHTML = `<img class="dml-slide-image" src="${visual}" width="1280" height="720" alt="Slide ${index + 1}: ${esc(s.titulo)}. IFPA Campus Breves.">
+          <div class="slide-readable"><h1>${esc(s.titulo)}</h1>${(s.texto || []).map(x => `<p>${esc(x)}</p>`).join('')}${s.codigo ? `<pre>${esc(s.codigo)}</pre>` : ''}${s.visualTabela ? table(s.visualTabela[0], s.visualTabela.slice(1)) : s.tabela ? table(s.tabela[0], s.tabela.slice(1)) : ''}</div>`;
+      } else {
       $('#db-slide').innerHTML = `<p class="eyebrow">${esc(s.label || 'DADOSLAB')}</p><h1>${esc(s.titulo)}</h1>
         ${(s.texto || []).map((x) => `<p>${esc(x)}</p>`).join('')}
         ${s.tabela ? table(s.tabela[0], s.tabela.slice(1)) : ''}
         ${s.mapa ? `<ol class="dml-map">${s.mapa.map(x => `<li>${esc(x)}</li>`).join('')}</ol>` : ''}${s.codigo ? `<pre><code>${esc(s.codigo)}</code></pre>` : ''}${s.esperado ? `<p class="dml-expected"><strong>Conferência:</strong> ${esc(s.esperado)}</p>` : ''}`;
+      }
       $('#slide-counter').textContent = `${index + 1} de ${slides.length}`;
       $('#slide-prev').disabled = index === 0;
       $('#slide-next').disabled = index === slides.length - 1;
@@ -128,6 +135,23 @@
       index = Math.max(0, Math.min(slides.length - 1, index + delta));
       show();
     };
+    if ($('#dml-present')) {
+      const main = document.querySelector('.dml-presentation');
+      let previousOverflow = '';
+      let previousScroll = 0;
+      const setPresenting = (active) => {
+        if (active) { previousOverflow = document.body.style.overflow; previousScroll = window.scrollY; }
+        main.classList.toggle('is-presenting', active);
+        document.body.style.overflow = active ? 'hidden' : previousOverflow;
+        $('#dml-present').textContent = active ? 'Sair da apresentação' : 'Apresentar';
+        $('#dml-present').setAttribute('aria-pressed', String(active));
+        if (!active) window.scrollTo(0, previousScroll);
+      };
+      $('#dml-present').addEventListener('click', () => setPresenting(!main.classList.contains('is-presenting')));
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && main.classList.contains('is-presenting')) setPresenting(false);
+      });
+    }
     $('#slide-prev').addEventListener('click', () => move(-1));
     $('#slide-next').addEventListener('click', () => move(1));
     document.addEventListener('keydown', (event) => {
