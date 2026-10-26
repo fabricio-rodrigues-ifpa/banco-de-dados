@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#183e35">
+    <title>Bases SQL para MySQL · DadosLab · Prof. Fabrício Rodrigues</title>
+    <meta name="description" content="Banco de Dados no curso técnico em Informática: diagnóstico, aulas às segundas, consultas e materiais para estudar.">
+    <link rel="icon" href="favicon.svg">
+    <link rel="stylesheet" href="styles.css">
+    <script src="dados.js" defer></script>
+    
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <a class="skip" href="#conteudo">Pular para o conteúdo</a>
+  <header class="site-header sub-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="index.html" aria-label="DadosLab, início">
+        <span class="brand-mark" aria-hidden="true">BD</span>
+        <span>Dados<span class="brand-light">Lab</span><small>BANCO DE DADOS</small></span>
+      </a>
+      <a class="button secondary" href="index.html">← Voltar ao início</a>
+      <span class="teacher">Prof. <strong>Fabrício Rodrigues</strong></span>
+    </div>
+  </header>
+    <main id="conteudo" class="detail-wrap bases-page">
+      <nav class="return-nav"><a class="button secondary" href="aulas.html?id=aula-02">← Voltar à Aula 02</a><a class="button secondary" href="index.html#materiais">← Voltar aos materiais</a></nav>
+      <header class="detail-hero"><p class="eyebrow">AULA 02 / 26/10/2026</p><h1>Bases SQL para praticar no MySQL</h1><p class="lead">Comece pela biblioteca da aula. World e Sakila são complementares, com origem identificada e instruções próprias.</p></header>
+      <article class="lesson-content">
+        <section class="soft-box"><h2>Antes de importar</h2><p>Abra o MySQL Workbench e a conexão indicada pelo professor. É preciso ter acesso a um servidor MySQL e permissão para criar os esquemas de treino. O Workbench é o cliente; o Live Server não executa SQL.</p><p>Os passos abaixo usam o editor SQL do Workbench 8. Os nomes de botões podem variar em outras versões. Nos downloads, leia os avisos antes de executar. Reimportar recria dados de treino e apaga alterações feitas neles.</p></section>
+        <section id="biblioteca"><h2>1. Biblioteca · base principal da aula</h2><p>Uma tabela, seis registros fictícios e quatro colunas. Todos os exemplos dos slides usam esta base.</p>
+          <div class="detail-actions"><a class="button primary" href="Aula-02-DML-Pratica.zip" download>Baixar prática · apenas 2 SQL ↓</a><a class="button secondary" href="01-base-dml.sql" download>Baixar só a base .sql ↓</a><a class="button secondary" href="02-pratica-dml.sql" download>Baixar só a prática .sql ↓</a></div>
+          <ol><li>Extraia o ZIP e conecte-se ao MySQL pelo Workbench.</li><li>Use <strong>File → Open SQL Script</strong> para abrir <code>01-base-dml.sql</code>.</li><li>Leia o aviso. O script cria <code>dadoslab_dml</code> e recria somente <code>livros</code> dentro desse esquema. Execute o arquivo inteiro uma vez, sem seleção.</li><li>Atualize <strong>Schemas</strong>. Confira o resultado das consultas finais: banco atual <code>dadoslab_dml</code>, total <strong>6</strong>.</li><li>Abra <code>02-pratica-dml.sql</code>. Execute <code>USE dadoslab_dml;</code>. Depois selecione e execute apenas a instrução indicada na aula.</li><li>Responda nos comentários do SQL e salve como <code>aula02-dml-TURMA-NOME.sql</code>. Entregue o arquivo ao professor na aula.</li></ol>
+          <pre><code>USE dadoslab_dml;
+SELECT DATABASE() AS banco_atual;
+SELECT COUNT(*) AS total FROM livros;</code></pre>
+          <p><strong>Durante a prática:</strong> o botão de executar seleção executa tudo quando não há seleção. Selecione só o comando desejado ou use a opção de executar a instrução sob o cursor. Consulte, altere e confira. Não execute a prática inteira de uma vez.</p>
+          <p>Para reiniciar, salve sua prática e execute novamente <code>01-base-dml.sql</code>. Isso restaura os seis registros iniciais e perde as alterações feitas nessa tabela fictícia.</p>
+        </section>
+        <section id="world"><h2>2. World · países, cidades e idiomas</h2><p>Boa opção para consultas complementares. São dados históricos de exemplo, não estatísticas atuais. A cópia didática contém <code>City</code>, <code>Country</code> e <code>CountryLanguage</code>, com as letras maiúsculas preservadas.</p>
+          <a class="button primary" href="World-MySQL-DadosLab.zip" download>Baixar World para MySQL ↓</a>
+          <ol><li>Extraia o pacote e leia <code>FONTES-E-LICENCAS.txt</code>.</li><li>Abra <code>world-aula.sql</code> no editor do Workbench. Leia o aviso: recria as três tabelas somente em <code>dadoslab_world</code>.</li><li>Execute o arquivo inteiro e atualize Schemas. A importação pode levar mais tempo que a biblioteca.</li><li>Confira: <strong>4.079 cidades, 239 países e 984 registros de idiomas por país</strong>.</li><li>Execute a consulta abaixo. Ela lista as cinco cidades brasileiras com maior população registrada nessa base histórica.</li></ol>
+          <pre><code>USE dadoslab_world;
+SELECT Name, Population
+FROM City
+WHERE CountryCode = 'BRA'
+ORDER BY Population DESC, ID
+LIMIT 5;</code></pre>
+          <p>Esta cópia foi obtida no repositório oficial MySQL, convertida de latin1 para UTF-8 e preparada com um esquema separado. <a href="https://dev.mysql.com/doc/world-setup/en/world-setup-installation.html" target="_blank" rel="noopener">Manual do World ↗</a></p>
+        </section>
+        <section id="sakila"><h2>3. Sakila · locadora</h2><p>Base com filmes, atores, clientes e empréstimos. Tem relações, views, rotinas e gatilhos; é indicada para exploração posterior. Não é necessário importá-la para concluir a Aula 02.</p>
+          <a class="button primary" href="Sakila-MySQL-DadosLab.zip" download>Baixar Sakila para MySQL ↓</a>
+          <ol><li>Extraia o pacote e leia a origem e as licenças.</li><li>Abra e execute primeiro <code>01-sakila-estrutura.sql</code>. Ele recria o esquema de treino <code>dadoslab_sakila</code> e apaga alterações anteriores desse esquema.</li><li>Depois abra e execute <code>02-sakila-dados.sql</code>, que preenche as tabelas. Não inverta a ordem.</li><li>Atualize Schemas e confira <strong>200 atores e 1.000 filmes</strong> com as consultas abaixo.</li></ol>
+          <pre><code>USE dadoslab_sakila;
+SELECT COUNT(*) AS atores FROM actor;
+SELECT COUNT(*) AS filmes FROM film;
+SELECT actor_id, first_name, last_name
+FROM actor
+ORDER BY actor_id
+LIMIT 10;</code></pre>
+          <p>Esta é uma cópia de exemplos mantida no repositório MySQL, com o nome do esquema adaptado. Os avisos de licença BSD estão preservados nos SQL. <a href="https://dev.mysql.com/doc/sakila/en/sakila-installation.html" target="_blank" rel="noopener">Manual do Sakila ↗</a></p>
+        </section>
+        <section><h2>Origem e downloads oficiais</h2><p>Os pacotes deste portal foram preparados a partir de arquivos do próprio projeto MySQL. O catálogo oficial também oferece World e Sakila para baixar. Durante a preparação, seus ZIPs retornaram erro de acesso; os exemplos do repositório oficial permitiram preparar e testar as cópias locais.</p><ul>
+          <li><a href="https://dev.mysql.com/doc/index-other.html" target="_blank" rel="noopener">Catálogo oficial MySQL · bases de exemplo ↗</a></li>
+          <li><a href="https://downloads.mysql.com/docs/world-db.zip">World · ZIP do catálogo oficial ↗</a></li>
+          <li><a href="https://downloads.mysql.com/docs/sakila-db.zip">Sakila · ZIP do catálogo oficial ↗</a></li>
+          <li><a href="https://github.com/mysql/mysql-workbench/tree/dc3590dbfbee29c87e201d4ef53607e5deb0e4f9/testing/test-suite/data/db" target="_blank" rel="noopener">Origem exata dos SQL usados nas cópias didáticas ↗</a></li>
+          <li><a href="FONTES-E-LICENCAS-BD.txt">Ler fontes, adaptações e licenças ↗</a></li></ul>
+          <p><strong>Compatibilidade verificada:</strong> os três pacotes foram importados em MySQL 8.0.46. A conexão e a versão dos computadores da turma ainda devem ser conferidas pelo professor. O roteiro usa os comandos básicos do MySQL 8.0/8.4.</p>
+        </section>
+        <section><h2>Se aparecer um erro</h2><ul><li><strong>Sem conexão:</strong> conferir com o professor o servidor e os dados da conexão.</li><li><strong>1046 ou tabela não encontrada:</strong> confirmar o script de preparação e executar o USE do esquema correto.</li><li><strong>1062:</strong> identificador duplicado; não repetir o INSERT já executado.</li><li><strong>1175:</strong> conferir WHERE usando o id, antes de mudar a configuração de atualização segura.</li></ul></section>
+      </article>
+      <nav class="return-nav"><a class="button secondary" href="aulas.html?id=aula-02">← Voltar à Aula 02</a><a class="button secondary" href="slides-dml.html">Voltar aos slides de DML ↗</a><a class="button secondary" href="index.html">← Voltar ao início</a></nav>
+    </main>
+    <footer class="site-footer">
+      <div class="wrap footer-inner">
+        <a class="button secondary" href="index.html">← Voltar ao início</a>
+        <p>Prof. Fabrício Rodrigues<br>Curso Técnico em Informática</p>
+        <a href="https://fabricio-rodrigues-ifpa.github.io/programacao-web/">Portal de Programação Web ↗</a>
+      </div>
+    </footer>
+  </body>
+</html>

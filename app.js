@@ -44,7 +44,7 @@
       <p class="eyebrow">AULA ${esc(a.numero)} / ${esc(a.dataCurta)}/2026 / ${esc(a.eixo)}</p>
       <h1>${esc(a.titulo)}</h1><p class="lead">${esc(a.subtitulo)}</p>
       <div class="detail-actions"><a class="button secondary" href="index.html#encontros">← Voltar às aulas</a>
-      ${a.id === 'aula-01' ? '<a class="button primary" href="slides.html">Abrir os slides ↗</a><a class="button primary" href="diagnostico.html">Responder ao diagnóstico ↗</a>' : ''}</div>
+      ${a.id === 'aula-01' ? '<a class="button primary" href="slides.html">Abrir os slides ↗</a><a class="button primary" href="diagnostico.html">Responder ao diagnóstico ↗</a>' : a.id === 'aula-02' ? '<a class="button primary" href="slides-dml.html">Abrir slides de DML ↗</a><a class="button primary" href="Aula-02-DML-Pratica.zip" download>Baixar prática · 2 SQL ↓</a><a class="button secondary" href="bases.html">Bases SQL e importação ↗</a>' : ''}</div>
     </header>
     <div class="detail-layout"><article class="lesson-content">
       <section id="objetivos"><h2>O que vamos aprender</h2><ul>${a.objetivos.map((x) => `<li>${esc(x)}</li>`).join('')}</ul>
@@ -52,19 +52,19 @@
       <section id="conteudo-aula">${a.secoes.map((s) => `<section><h2>${esc(s.titulo)}</h2>
         ${s.texto.map((p) => `<p>${esc(p)}</p>`).join('')}
         ${s.tabela ? table(s.tabela[0], s.tabela.slice(1)) : ''}
-        ${s.codigo ? `<pre><code>${esc(s.codigo)}</code></pre>` : ''}</section>`).join('')}</section>
+        ${s.mapa ? `<ol class="dml-map">${s.mapa.map(x => `<li>${esc(x)}</li>`).join('')}</ol>` : ''}${s.codigo ? `<pre><code>${esc(s.codigo)}</code></pre>` : ''}${s.esperado ? `<p class="dml-expected"><strong>Conferência:</strong> ${esc(s.esperado)}</p>` : ''}</section>`).join('')}</section>
       <section id="atividade"><h2>Prática da aula</h2><ol>${a.atividade.map((x) => `<li>${esc(x)}</li>`).join('')}</ol>
       <p><strong>Resultado esperado:</strong> ${esc(a.produto)}</p>
-      ${a.id === 'aula-01' ? '<div class="detail-actions"><a class="button primary" href="laboratorio.html">Consulta opcional ↗</a><a class="button secondary" href="Pratica-Banco-de-Dados.zip" download>Projeto opcional de dois arquivos ↓</a></div>' : '<p>Use o ambiente e os arquivos de trabalho indicados pelo professor para este encontro. A configuração do SGBD será confirmada em aula.</p>'}</section>
+      ${a.id === 'aula-01' ? '<div class="detail-actions"><a class="button primary" href="laboratorio.html">Consulta opcional ↗</a><a class="button secondary" href="Pratica-Banco-de-Dados.zip" download>Projeto opcional de dois arquivos ↓</a></div>' : a.id === 'aula-02' ? '<div class="soft-box"><h3>Como começar e entregar</h3><ol><li>Baixe e extraia Aula-02-DML-Pratica.zip.</li><li>No Workbench conectado ao MySQL, abra e execute 01-base-dml.sql inteiro uma vez. Ele recria somente a tabela fictícia de treino dadoslab_dml.livros.</li><li>Confira seis registros. Abra 02-pratica-dml.sql e execute só a instrução indicada pelo professor.</li><li>Responda P1–P4 e B1–B4 no SQL; salve como aula02-dml-TURMA-NOME.sql e entregue na aula.</li></ol><p>Não há envio automático. Reimportar a base apaga as alterações dessa tabela de treino.</p></div><div class="detail-actions"><a class="button primary" href="Aula-02-DML-Pratica.zip" download>Baixar prática · 2 SQL ↓</a><a class="button secondary" href="Caderno-Aula-02-DML.pdf">Caderno de DML em PDF ↗</a><a class="button secondary" href="bases.html">Importar e explorar outras bases ↗</a></div>' : '<p>Use os arquivos de trabalho indicados pelo professor. A prática do período utiliza MySQL e Workbench; confira a conexão do laboratório.</p>'}</section>
       ${a.etapas ? `<section><h2>Etapas da aula</h2><ol>${a.etapas.map((x) => `<li>${esc(x)}</li>`).join('')}</ol></section>` : ''}
       <section id="conferencia"><h2>Checklist de conferência</h2><div class="checklist">${a.checklist.map((x) => `<label class="check-item"><input type="checkbox"><span>${esc(x)}</span></label>`).join('')}</div><p class="storage-note">As marcações não são salvas e não enviam uma entrega.</p></section>
       <section class="soft-box"><h3>Uma descoberta útil</h3><p>${esc(a.curiosidade)}</p></section>
       <section><h2>Para ir além</h2><p>${esc(a.extensao)}</p></section>
-      <section id="referencias"><h2>Referências para consultar</h2>${referenceList(a.refs)}<p>Consulte depois da primeira tentativa do diagnóstico. Alguns materiais estão em inglês.</p></section>
+      <section id="referencias"><h2>Referências para consultar</h2>${referenceList(a.refs)}<p>${a.id === 'aula-01' ? 'Consulte depois da primeira tentativa do diagnóstico.' : 'Use os links para revisar a sintaxe e tirar dúvidas.'} Alguns materiais estão em inglês.</p></section>
       <div class="detail-actions"><a class="button secondary" href="index.html#encontros">← Voltar às aulas</a>${next ? `<a class="button primary" href="aulas.html?id=${esc(next.id)}">Próxima aula · ${esc(next.dataCurta)} →</a>` : ''}</div>
     </article><aside class="detail-aside">
       <p class="eyebrow">AULA ${esc(a.numero)} / ${esc(a.dataCurta)}</p>
-      <a class="button primary" href="Caderno-do-Estudante-BD.pdf">Caderno em PDF ↗</a>
+      <a class="button primary" href="${a.id === 'aula-02' ? 'Caderno-Aula-02-DML.pdf' : 'Caderno-do-Estudante-BD.pdf'}">Caderno em PDF ↗</a>${a.id === 'aula-02' ? '<a class="button secondary" href="Slides-Aula-02-DML.pdf">Slides em PDF ↗</a><a class="button secondary" href="Aula-02-DML-Pratica.zip" download>Prática · dois SQL ↓</a>' : ''}
       <a class="button secondary" href="guia.html">Como usar e entregar ↗</a>
       <button class="button secondary" id="print-lesson">Imprimir esta aula</button>
       <nav class="lesson-nav" aria-label="Sumário da aula"><a href="#objetivos">Objetivos</a><a href="#conteudo-aula">Conteúdo e exemplos</a><a href="#atividade">Atividade</a><a href="#conferencia">Checklist</a><a href="#referencias">Referências com links</a></nav>
@@ -112,19 +112,20 @@
   }
 
   if ($('#db-slide') && D.slides) {
-    let index = 0;
+    const slides = location.pathname.endsWith('slides-dml.html') ? D.slidesAula02 : D.slides;
+    let index = Math.min(slides.length - 1, Math.max(0, Number(location.hash.slice(1)) - 1 || 0));
     const show = () => {
-      const s = D.slides[index];
+      const s = slides[index];
       $('#db-slide').innerHTML = `<p class="eyebrow">${esc(s.label || 'DADOSLAB')}</p><h1>${esc(s.titulo)}</h1>
         ${(s.texto || []).map((x) => `<p>${esc(x)}</p>`).join('')}
         ${s.tabela ? table(s.tabela[0], s.tabela.slice(1)) : ''}
-        ${s.codigo ? `<pre><code>${esc(s.codigo)}</code></pre>` : ''}`;
-      $('#slide-counter').textContent = `${index + 1} de ${D.slides.length}`;
+        ${s.mapa ? `<ol class="dml-map">${s.mapa.map(x => `<li>${esc(x)}</li>`).join('')}</ol>` : ''}${s.codigo ? `<pre><code>${esc(s.codigo)}</code></pre>` : ''}${s.esperado ? `<p class="dml-expected"><strong>Conferência:</strong> ${esc(s.esperado)}</p>` : ''}`;
+      $('#slide-counter').textContent = `${index + 1} de ${slides.length}`;
       $('#slide-prev').disabled = index === 0;
-      $('#slide-next').disabled = index === D.slides.length - 1;
+      $('#slide-next').disabled = index === slides.length - 1;
     };
     const move = (delta) => {
-      index = Math.max(0, Math.min(D.slides.length - 1, index + delta));
+      index = Math.max(0, Math.min(slides.length - 1, index + delta));
       show();
     };
     $('#slide-prev').addEventListener('click', () => move(-1));

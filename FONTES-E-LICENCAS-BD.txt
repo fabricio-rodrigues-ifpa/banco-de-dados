@@ -1,0 +1,16 @@
+DADOSLAB - BASES COMPLEMENTARES
+
+Arquivos obtidos no repositorio oficial mysql/mysql-workbench.
+Commit: dc3590dbfbee29c87e201d4ef53607e5deb0e4f9
+Origem: https://raw.githubusercontent.com/mysql/mysql-workbench/dc3590dbfbee29c87e201d4ef53607e5deb0e4f9/testing/test-suite/data/db/
+
+World: dados de exemplo Copyright Statistics Finland.
+Fonte e contexto: https://dev.mysql.com/doc/world-setup/en/
+
+Adaptacoes World: esquema dadoslab_world, arquivo convertido de latin1 para UTF-8 e SET NAMES correspondente. Nomes de tabelas originais: City, Country, CountryLanguage. Dados historicos preservados.
+
+Sakila: cabecalhos de licenca BSD originais preservados integralmente nos dois SQL. Adaptacao: nome do esquema alterado para dadoslab_sakila. Arquivos de exemplo do repositorio, nao apresentados como ultima edicao do download do catalogo.
+
+Catalogo oficial: https://dev.mysql.com/doc/index-other.html
+Os downloads ZIP do catalogo retornaram erro HTTP 403 durante esta preparacao; usamos os SQL disponibilizados pelo proprio projeto MySQL no GitHub.
+A base Biblioteca e autoral do DadosLab, com dados ficticios, para uso educacional.

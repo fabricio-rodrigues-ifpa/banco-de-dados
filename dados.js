@@ -5,7 +5,7 @@ window.WEBLAB_BD = {
   "fim": "2026-12-14",
   "semAula": "2026-11-02",
   "avaliacao": "2026-12-07",
-  "planejamento": "Oito encontros de duas aulas de 50 minutos. O diagnóstico orienta as retomadas. SGBD e versão a confirmar com a turma.",
+  "planejamento": "Oito encontros de duas aulas de 50 minutos. Diagnóstico em 19/10; prática com MySQL e Workbench a partir de 26/10. Versão e conexão do laboratório serão conferidas em aula.",
   "referencias": [
     {
       "id": "conceitos",
@@ -91,6 +91,56 @@ window.WEBLAB_BD = {
       "id": "feriado",
       "titulo": "Calendário nacional de 2026",
       "url": "https://www.gov.br/gestao/pt-br/assuntos/noticias/2025/dezembro/confira-o-calendario-oficial-de-feriados-nacionais-e-pontos-facultativos-em-2026"
+    },
+    {
+      "id": "mysql-dml",
+      "titulo": "MySQL: comandos de manipulação de dados",
+      "url": "https://dev.mysql.com/doc/refman/8.4/en/sql-data-manipulation-statements.html"
+    },
+    {
+      "id": "mysql-select",
+      "titulo": "MySQL: SELECT",
+      "url": "https://dev.mysql.com/doc/refman/8.4/en/select.html"
+    },
+    {
+      "id": "mysql-insert",
+      "titulo": "MySQL: INSERT",
+      "url": "https://dev.mysql.com/doc/refman/8.4/en/insert.html"
+    },
+    {
+      "id": "mysql-update",
+      "titulo": "MySQL: UPDATE",
+      "url": "https://dev.mysql.com/doc/refman/8.4/en/update.html"
+    },
+    {
+      "id": "mysql-delete",
+      "titulo": "MySQL: DELETE",
+      "url": "https://dev.mysql.com/doc/refman/8.4/en/delete.html"
+    },
+    {
+      "id": "workbench",
+      "titulo": "Workbench 8: abrir, salvar e executar scripts SQL",
+      "url": "https://dev.mysql.com/doc/workbench/en/wb-sql-editor-toolbar.html"
+    },
+    {
+      "id": "mysql-bases",
+      "titulo": "MySQL: catálogo oficial de bases de exemplo",
+      "url": "https://dev.mysql.com/doc/index-other.html"
+    },
+    {
+      "id": "world",
+      "titulo": "World: instalação e tabelas",
+      "url": "https://dev.mysql.com/doc/world-setup/en/world-setup-installation.html"
+    },
+    {
+      "id": "sakila",
+      "titulo": "Sakila: instalação, estrutura e dados",
+      "url": "https://dev.mysql.com/doc/sakila/en/sakila-installation.html"
+    },
+    {
+      "id": "originais",
+      "titulo": "MySQL no GitHub: arquivos SQL de exemplo",
+      "url": "https://github.com/mysql/mysql-workbench/tree/dc3590dbfbee29c87e201d4ef53607e5deb0e4f9/testing/test-suite/data/db"
     }
   ],
   "livros": [
@@ -252,56 +302,398 @@ window.WEBLAB_BD = {
       "numero": "02",
       "data": "2026-10-26",
       "dataCurta": "26/10",
-      "eixo": "Modelagem",
-      "titulo": "Cada dado no lugar certo",
-      "subtitulo": "Entidades, atributos, cardinalidade e chaves",
-      "produto": "Modelo da biblioteca com livros, leitores e empréstimos e justificativa das chaves.",
+      "eixo": "DML com MySQL",
+      "titulo": "DML: consultar e modificar dados",
+      "subtitulo": "Fundamentos, importação no Workbench e prática de SELECT, INSERT, UPDATE e DELETE",
+      "produto": "Arquivo aula02-dml-TURMA-NOME.sql com comandos, respostas e comentários sobre os resultados, entregue ao professor na aula.",
       "objetivos": [
-        "Identificar o que cada tabela representa.",
-        "Escolher chaves e indicar relações de um para muitos.",
-        "Evitar grupos repetidos e cópias desnecessárias."
+        "Distinguir estrutura de tabela e dados armazenados.",
+        "Consultar registros com SELECT, WHERE e ORDER BY.",
+        "Inserir, alterar e excluir linhas, conferindo o resultado de cada comando.",
+        "Abrir uma base SQL no Workbench e salvar a prática identificada."
       ],
-      "retomada": "Usar as evidências do diagnóstico para retomar linha, coluna e identificação. O modelo novo separa leitores do texto guardado em cada empréstimo.",
+      "retomada": "Retomar linha, coluna e identificador conforme o diagnóstico. A prática desta segunda aula usa MySQL e Workbench; a primeira aula continua sendo um diagnóstico sem execução obrigatória.",
       "secoes": [
         {
-          "titulo": "Perguntas antes do desenho",
+          "titulo": "Uma biblioteca em funcionamento",
           "texto": [
-            "Que dados precisamos de um livro? O que identifica um leitor? Como registrar dois empréstimos da mesma pessoa sem confundi-los? Liste as regras antes de desenhar as tabelas."
+            "Chegou um novo livro: precisamos cadastrá-lo.",
+            "A quantidade mudou: precisamos corrigir o registro.",
+            "Um cadastro de teste será removido. Como conferir cada operação?"
+          ],
+          "codigo": "",
+          "mapa": [
+            "Situação",
+            "Comando SQL",
+            "Resultado conferido"
+          ]
+        },
+        {
+          "titulo": "Tabela, coluna, linha e identificador",
+          "texto": [
+            "Trecho da tabela livros: cada linha representa um título cadastrado.",
+            "Colunas descrevem os dados. O id identifica uma linha.",
+            "quantidade é o número de exemplares; não é o número de linhas."
+          ],
+          "codigo": "",
+          "tabela": [
+            [
+              "id",
+              "titulo",
+              "area",
+              "quantidade"
+            ],
+            [
+              1,
+              "Redes de computadores",
+              "Redes",
+              4
+            ],
+            [
+              2,
+              "HTML e CSS",
+              "Desenvolvimento Web",
+              5
+            ],
+            [
+              3,
+              "Introducao ao SQL",
+              "Banco de Dados",
+              2
+            ]
+          ]
+        },
+        {
+          "titulo": "SQL, DDL e DML",
+          "texto": [
+            "SQL é a linguagem usada para interagir com o banco relacional.",
+            "DML: Linguagem de Manipulação de Dados. DDL: Linguagem de Definição de Dados.",
+            "O manual do MySQL inclui SELECT em DML; alguns cursos o chamam de DQL."
+          ],
+          "codigo": "",
+          "tabela": [
+            [
+              "Objetivo",
+              "Exemplos"
+            ],
+            [
+              "Estrutura (DDL)",
+              "CREATE TABLE · ALTER TABLE"
+            ],
+            [
+              "Dados (DML)",
+              "SELECT · INSERT · UPDATE · DELETE"
+            ]
+          ]
+        },
+        {
+          "titulo": "As quatro operações do cadastro",
+          "texto": [
+            "CRUD é uma forma de nomear as operações de um cadastro.",
+            "A criação de um registro usa INSERT. CREATE TABLE cria a tabela."
+          ],
+          "codigo": "",
+          "tabela": [
+            [
+              "CRUD",
+              "Ação",
+              "SQL"
+            ],
+            [
+              "Create",
+              "Cadastrar registro",
+              "INSERT"
+            ],
+            [
+              "Read",
+              "Consultar registros",
+              "SELECT"
+            ],
+            [
+              "Update",
+              "Alterar registros",
+              "UPDATE"
+            ],
+            [
+              "Delete",
+              "Excluir registros",
+              "DELETE"
+            ]
+          ]
+        },
+        {
+          "titulo": "Workbench e servidor MySQL",
+          "texto": [
+            "Workbench é o programa em que escrevemos e executamos SQL.",
+            "O servidor MySQL mantém as tabelas e processa os comandos.",
+            "É preciso uma conexão funcionando. O Live Server não executa SQL."
+          ],
+          "codigo": "",
+          "mapa": [
+            "Workbench\nEscrever SQL",
+            "Servidor MySQL\nExecutar SQL",
+            "Resultado\nLer e conferir"
+          ]
+        },
+        {
+          "titulo": "Baixar a prática da aula",
+          "texto": [
+            "No portal, abra Aula 02 e baixe Aula-02-DML-Pratica.zip.",
+            "Extraia o ZIP: são apenas dois arquivos SQL.",
+            "01-base-dml.sql prepara a base; 02-pratica-dml.sql acompanha a aula."
           ],
           "codigo": ""
         },
         {
-          "titulo": "Modelo inicial",
+          "titulo": "Preparar a base no Workbench",
           "texto": [
-            "livros(id, titulo, area, quantidade); leitores(id, nome, turma); emprestimos(id, livro_id, leitor_id, data_emprestimo, data_devolucao).",
-            "Um leitor pode ter vários empréstimos. Cada empréstimo referencia um leitor e um livro. Nomes não precisam ser únicos. As chaves separam identificação de descrição."
+            "Use File → Open SQL Script para abrir 01-base-dml.sql.",
+            "Leia o aviso inicial: o script recria somente dadoslab_dml.livros.",
+            "Execute o arquivo inteiro uma vez. Depois, atualize Schemas."
           ],
           "codigo": ""
         },
         {
-          "titulo": "Conferência do modelo",
+          "titulo": "Conferência da importação",
           "texto": [
-            "Use um campo por informação necessária e uma linha por ocorrência. Evite uma lista de vários códigos dentro de um único campo. Explique a dependência dos dados em relação à chave antes de aplicar rótulos de normalização."
+            "O banco atual deve ser dadoslab_dml.",
+            "A tabela livros começa com 6 registros.",
+            "Se o resultado for diferente, pare e confira a preparação."
+          ],
+          "codigo": "USE dadoslab_dml;\nSELECT DATABASE() AS banco_atual;\nSELECT COUNT(*) AS total FROM livros;\nSELECT id, titulo, area, quantidade\nFROM livros\nORDER BY id;",
+          "esperado": "banco_atual = dadoslab_dml · total = 6"
+        },
+        {
+          "titulo": "Como ler um comando SQL",
+          "texto": [
+            "Palavras-chave mostram a operação. Os nomes indicam tabela e colunas.",
+            "Texto vai entre aspas simples. Números ficam sem aspas.",
+            "O ponto e vírgula encerra a instrução; a indentação ajuda a leitura."
+          ],
+          "codigo": "SELECT titulo\nFROM livros\nWHERE id = 1;"
+        },
+        {
+          "titulo": "SELECT: consultar dados",
+          "texto": [
+            "SELECT escolhe as colunas; FROM indica a tabela.",
+            "ORDER BY id organiza o resultado para facilitar a conferência.",
+            "A consulta não altera os registros."
+          ],
+          "codigo": "SELECT id, titulo, quantidade\nFROM livros\nORDER BY id;",
+          "esperado": "6 linhas · colunas id, titulo e quantidade"
+        },
+        {
+          "titulo": "WHERE: escolher as linhas",
+          "texto": [
+            "WHERE quantidade > 0 seleciona títulos com exemplares disponíveis.",
+            "DESC ordena do maior para o menor; id desempata.",
+            "O título com quantidade zero continua na tabela."
+          ],
+          "codigo": "SELECT id, titulo, quantidade\nFROM livros\nWHERE quantidade > 0\nORDER BY quantidade DESC, id;",
+          "esperado": "5 linhas · ids 2, 1, 5, 3, 6, nessa ordem"
+        },
+        {
+          "titulo": "Sua vez: primeira consulta",
+          "texto": [
+            "No bloco P1, escreva uma consulta para listar id e titulo dos livros com quantidade = 0.",
+            "Execute sua consulta e registre o resultado em comentário SQL.",
+            "Explique por que o registro continua cadastrado."
+          ],
+          "codigo": "",
+          "esperado": "Uma linha: id 4 · Logica de programacao"
+        },
+        {
+          "titulo": "INSERT: cadastrar uma linha",
+          "texto": [
+            "INSERT INTO indica a tabela e as colunas que receberão valores.",
+            "VALUES apresenta os valores na mesma ordem das colunas.",
+            "O novo id não pode repetir uma chave já cadastrada."
+          ],
+          "codigo": "INSERT INTO livros (id, titulo, area, quantidade)\nVALUES (7, 'Python para iniciantes', 'Programacao', 3);"
+        },
+        {
+          "titulo": "Executar INSERT e conferir",
+          "texto": [
+            "Execute somente A3, o INSERT do id 7.",
+            "Depois consulte o id 7 e conte as linhas.",
+            "O cadastro deve aparecer com quantidade 3."
+          ],
+          "codigo": "SELECT id, titulo, quantidade\nFROM livros\nWHERE id = 7;\n\nSELECT COUNT(*) AS total FROM livros;",
+          "esperado": "id 7 com quantidade 3 · total = 7"
+        },
+        {
+          "titulo": "Sua vez: ler o INSERT",
+          "texto": [
+            "No registro P2, anote o total de linhas antes e depois do INSERT.",
+            "Explique a diferença entre uma linha inserida e três exemplares.",
+            "Preveja o resultado de tentar inserir o id 7 novamente."
+          ],
+          "codigo": "",
+          "esperado": "6 → 7 linhas · nova linha com quantidade 3 · repetição do id causa erro"
+        },
+        {
+          "titulo": "UPDATE: alterar um registro",
+          "texto": [
+            "UPDATE escolhe a tabela. SET informa o novo valor.",
+            "WHERE id = 7 limita a alteração à linha escolhida.",
+            "Antes da alteração, consulte a mesma condição."
+          ],
+          "codigo": "UPDATE livros\nSET quantidade = 8\nWHERE id = 7;"
+        },
+        {
+          "titulo": "Executar UPDATE e conferir",
+          "texto": [
+            "Execute A5 depois de conferir o id 7.",
+            "Consulte novamente a linha e conte os registros.",
+            "A quantidade muda de 3 para 8; o total de linhas permanece 7."
+          ],
+          "codigo": "SELECT id, titulo, quantidade\nFROM livros\nWHERE id = 7;\n\nSELECT COUNT(*) AS total FROM livros;",
+          "tabela": [
+            [
+              "Momento",
+              "id",
+              "quantidade",
+              "linhas"
+            ],
+            [
+              "Antes",
+              "7",
+              "3",
+              "7"
+            ],
+            [
+              "Depois",
+              "7",
+              "8",
+              "7"
+            ]
+          ],
+          "esperado": "id 7 com quantidade 8 · total = 7"
+        },
+        {
+          "titulo": "Conferir, alterar, conferir",
+          "texto": [
+            "1. SELECT com o mesmo WHERE: qual linha será atingida?",
+            "2. UPDATE com WHERE na chave: aplicar a mudança.",
+            "3. SELECT novamente: o resultado corresponde à intenção?"
+          ],
+          "codigo": "",
+          "mapa": [
+            "Prever\nSELECT + WHERE",
+            "Alterar\nUPDATE + WHERE",
+            "Verificar\nSELECT novamente"
+          ]
+        },
+        {
+          "titulo": "DELETE: excluir uma linha",
+          "texto": [
+            "DELETE FROM indica de qual tabela remover registros.",
+            "WHERE id = 7 seleciona apenas o cadastro de teste.",
+            "DELETE remove linhas; não remove a estrutura da tabela."
+          ],
+          "codigo": "DELETE FROM livros\nWHERE id = 7;"
+        },
+        {
+          "titulo": "Executar DELETE e conferir",
+          "texto": [
+            "A7 consulta o alvo, exclui o id 7 e consulta novamente.",
+            "Selecione e execute cada instrução separadamente.",
+            "A busca pelo id 7 deve retornar zero linhas."
+          ],
+          "codigo": "SELECT id, titulo, quantidade\nFROM livros\nWHERE id = 7;\n\nSELECT COUNT(*) AS total FROM livros;",
+          "esperado": "Busca pelo id 7: 0 linhas · total = 6"
+        },
+        {
+          "titulo": "O que mudou em cada operação",
+          "texto": [
+            "Compare o número de linhas e os valores, não apenas a mensagem do Workbench.",
+            "Na sequência guiada, a base volta aos seis títulos iniciais."
+          ],
+          "codigo": "",
+          "tabela": [
+            [
+              "Etapa",
+              "Total de linhas",
+              "Situação do id 7"
+            ],
+            [
+              "Base / SELECT",
+              "6",
+              "Não existe"
+            ],
+            [
+              "INSERT",
+              "7",
+              "quantidade = 3"
+            ],
+            [
+              "UPDATE",
+              "7",
+              "quantidade = 8"
+            ],
+            [
+              "DELETE",
+              "6",
+              "Não existe"
+            ]
+          ]
+        },
+        {
+          "titulo": "Erros que ajudam a revisar",
+          "texto": [
+            "1064: confira sintaxe, vírgulas, aspas e ponto e vírgula.",
+            "1046 / 1146: confira USE dadoslab_dml e a criação de livros.",
+            "1062: id repetido. 1175: confira filtro por chave no UPDATE ou DELETE."
           ],
           "codigo": ""
+        },
+        {
+          "titulo": "Atividade individual: novo cadastro",
+          "texto": [
+            "No bloco B, cadastre id 8: Algoritmos, área Programacao, quantidade 4.",
+            "Consulte o id 8; depois altere sua quantidade para 5.",
+            "Consulte e exclua somente o id 8; confira a ausência e o total final."
+          ],
+          "codigo": "",
+          "esperado": "Ao concluir: id 8 ausente · total = 6"
         }
       ],
       "atividade": [
-        "Descrever as regras da biblioteca com dados fictícios.",
-        "Desenhar o modelo com três tabelas e marcar PK e FK.",
-        "Testar o desenho com dois empréstimos do mesmo leitor.",
-        "Explicar uma repetição que seu modelo evita."
+        "P1. Consultar id e titulo dos livros com quantidade = 0; registrar o resultado.",
+        "P2. Registrar os totais antes e depois do INSERT e explicar linha versus exemplares.",
+        "P3. Registrar quantidade anterior, nova quantidade e total de linhas após UPDATE.",
+        "P4. Explicar o resultado da busca pelo id 7 e o total após DELETE.",
+        "B1. Inserir id 8, titulo Algoritmos, area Programacao e quantidade 4; consultar e conferir.",
+        "B2. Alterar somente o id 8 para quantidade 5, consultando antes e depois.",
+        "B3. Consultar o alvo e excluir somente o id 8; conferir ausência e total final.",
+        "B4. Explicar em comentários o papel de SELECT, INSERT, UPDATE, DELETE e WHERE."
       ],
       "checklist": [
-        "Cada tabela tem um significado claro.",
-        "As chaves identificam registros e as relações têm sentido.",
-        "O desenho representa dois empréstimos distintos do mesmo leitor."
+        "Extraí os dois arquivos SQL e confirmei dadoslab_dml com seis registros iniciais.",
+        "Executei SELECT, INSERT, UPDATE e DELETE, uma instrução por vez.",
+        "Usei WHERE por id e consultei antes e depois das alterações.",
+        "Expliquei os resultados e salvei o SQL com nome e turma."
       ],
-      "curiosidade": "Duas pessoas podem ter o mesmo nome. Uma boa identificação não depende de supor que os nomes sejam únicos.",
-      "extensao": "Discutir a diferença entre cadastrar um título e cadastrar cada exemplar físico.",
+      "curiosidade": "Um UPDATE pode encontrar uma linha e não mudar nenhum valor se o novo conteúdo já for igual ao atual. Leia a mensagem e consulte o registro para interpretar o efeito.",
+      "extensao": "Opcional: importar World seguindo a página Bases SQL e consultar cidades brasileiras. Sakila fica para explorar relações em aulas posteriores.",
       "refs": [
-        "conceitos",
-        "chaves"
+        "mysql-dml",
+        "mysql-select",
+        "mysql-insert",
+        "mysql-update",
+        "mysql-delete",
+        "workbench",
+        "mysql-bases",
+        "world",
+        "sakila",
+        "originais"
+      ],
+      "etapas": [
+        "Revisar os conceitos e abrir o Workbench.",
+        "Baixar e extrair a prática; importar 01-base-dml.sql.",
+        "Executar os exemplos A1 a A7 com pausas para P1 a P4.",
+        "Resolver B1 a B4 individualmente e salvar a entrega.",
+        "Conferir o bilhete de saída e consultar os materiais complementares."
       ]
     },
     {
@@ -309,17 +701,25 @@ window.WEBLAB_BD = {
       "numero": "03",
       "data": "2026-11-09",
       "dataCurta": "09/11",
-      "eixo": "Estrutura e dados",
-      "titulo": "O modelo vira tabelas",
-      "subtitulo": "CREATE TABLE, tipos, restrições e inserção de dados",
+      "eixo": "Modelagem e estrutura",
+      "titulo": "Organizar o modelo e criar tabelas",
+      "subtitulo": "Livros, leitores e empréstimos: chaves, tipos e criação de tabelas no MySQL",
       "produto": "Script de criação e carga inicial testado em um banco de estudo.",
       "objetivos": [
+        "Identificar entidades, atributos, chaves e relações da biblioteca.",
         "Transformar o modelo em tabelas.",
         "Declarar PK, FK e restrições coerentes.",
         "Inserir dados de teste sem alterar bancos de uso real."
       ],
-      "retomada": "Depois do feriado de 02/11, retomar o modelo de 26/10 e conferir as chaves antes do script.",
+      "retomada": "Retomar os efeitos de INSERT, UPDATE e DELETE da aula de 26/10. Agora organizar as três tabelas da biblioteca e justificar as relações antes de criar a estrutura.",
       "secoes": [
+        {
+          "titulo": "Modelo da biblioteca",
+          "texto": [
+            "Cada tabela representa um assunto: livros, leitores ou empréstimos. Um leitor pode realizar vários empréstimos; cada empréstimo referencia um leitor e um livro. Desenhe as três tabelas e indique suas chaves antes de escrever o SQL."
+          ],
+          "codigo": "livros(id, titulo, area, quantidade)\nleitores(id, nome, turma)\nemprestimos(id, livro_id, leitor_id, data_emprestimo, data_devolucao)"
+        },
         {
           "titulo": "Estrutura e domínio",
           "texto": [
@@ -343,6 +743,7 @@ window.WEBLAB_BD = {
         }
       ],
       "atividade": [
+        "Desenhar o modelo com três tabelas, marcar PK/FK e testar dois empréstimos do mesmo leitor.",
         "Criar as três tabelas do modelo.",
         "Inserir dados fictícios de livros e leitores.",
         "Inserir empréstimos coerentes com as referências.",
@@ -884,5 +1285,546 @@ window.WEBLAB_BD = {
       "HTML e CSS",
       3
     ]
+  ],
+  "slidesAula02": [
+    {
+      "numero": 1,
+      "titulo": "DML na prática",
+      "texto": [
+        "Aula 02 · 26/10/2026",
+        "Consultar, inserir, alterar e excluir dados de uma biblioteca.",
+        "MySQL + MySQL Workbench · Prof. Fabrício Rodrigues"
+      ],
+      "codigo": "",
+      "refs": [],
+      "esperado": "",
+      "mapa": [
+        "Consultar",
+        "Inserir",
+        "Alterar",
+        "Excluir"
+      ]
+    },
+    {
+      "numero": 2,
+      "titulo": "Uma biblioteca em funcionamento",
+      "texto": [
+        "Chegou um novo livro: precisamos cadastrá-lo.",
+        "A quantidade mudou: precisamos corrigir o registro.",
+        "Um cadastro de teste será removido. Como conferir cada operação?"
+      ],
+      "codigo": "",
+      "refs": [],
+      "esperado": "",
+      "mapa": [
+        "Situação",
+        "Comando SQL",
+        "Resultado conferido"
+      ]
+    },
+    {
+      "numero": 3,
+      "titulo": "Tabela, coluna, linha e identificador",
+      "texto": [
+        "Trecho da tabela livros: cada linha representa um título cadastrado.",
+        "Colunas descrevem os dados. O id identifica uma linha.",
+        "quantidade é o número de exemplares; não é o número de linhas."
+      ],
+      "codigo": "",
+      "refs": [],
+      "esperado": "",
+      "tabela": [
+        [
+          "id",
+          "titulo",
+          "area",
+          "quantidade"
+        ],
+        [
+          1,
+          "Redes de computadores",
+          "Redes",
+          4
+        ],
+        [
+          2,
+          "HTML e CSS",
+          "Desenvolvimento Web",
+          5
+        ],
+        [
+          3,
+          "Introducao ao SQL",
+          "Banco de Dados",
+          2
+        ]
+      ]
+    },
+    {
+      "numero": 4,
+      "titulo": "SQL, DDL e DML",
+      "texto": [
+        "SQL é a linguagem usada para interagir com o banco relacional.",
+        "DML: Linguagem de Manipulação de Dados. DDL: Linguagem de Definição de Dados.",
+        "O manual do MySQL inclui SELECT em DML; alguns cursos o chamam de DQL."
+      ],
+      "codigo": "",
+      "refs": [
+        "mysql-dml"
+      ],
+      "esperado": "",
+      "tabela": [
+        [
+          "Objetivo",
+          "Exemplos"
+        ],
+        [
+          "Estrutura (DDL)",
+          "CREATE TABLE · ALTER TABLE"
+        ],
+        [
+          "Dados (DML)",
+          "SELECT · INSERT · UPDATE · DELETE"
+        ]
+      ]
+    },
+    {
+      "numero": 5,
+      "titulo": "As quatro operações do cadastro",
+      "texto": [
+        "CRUD é uma forma de nomear as operações de um cadastro.",
+        "A criação de um registro usa INSERT. CREATE TABLE cria a tabela."
+      ],
+      "codigo": "",
+      "refs": [
+        "mysql-dml"
+      ],
+      "esperado": "",
+      "tabela": [
+        [
+          "CRUD",
+          "Ação",
+          "SQL"
+        ],
+        [
+          "Create",
+          "Cadastrar registro",
+          "INSERT"
+        ],
+        [
+          "Read",
+          "Consultar registros",
+          "SELECT"
+        ],
+        [
+          "Update",
+          "Alterar registros",
+          "UPDATE"
+        ],
+        [
+          "Delete",
+          "Excluir registros",
+          "DELETE"
+        ]
+      ]
+    },
+    {
+      "numero": 6,
+      "titulo": "Workbench e servidor MySQL",
+      "texto": [
+        "Workbench é o programa em que escrevemos e executamos SQL.",
+        "O servidor MySQL mantém as tabelas e processa os comandos.",
+        "É preciso uma conexão funcionando. O Live Server não executa SQL."
+      ],
+      "codigo": "",
+      "refs": [
+        "workbench"
+      ],
+      "esperado": "",
+      "mapa": [
+        "Workbench\nEscrever SQL",
+        "Servidor MySQL\nExecutar SQL",
+        "Resultado\nLer e conferir"
+      ]
+    },
+    {
+      "numero": 7,
+      "titulo": "Baixar a prática da aula",
+      "texto": [
+        "No portal, abra Aula 02 e baixe Aula-02-DML-Pratica.zip.",
+        "Extraia o ZIP: são apenas dois arquivos SQL.",
+        "01-base-dml.sql prepara a base; 02-pratica-dml.sql acompanha a aula."
+      ],
+      "codigo": "",
+      "refs": [],
+      "esperado": ""
+    },
+    {
+      "numero": 8,
+      "titulo": "Preparar a base no Workbench",
+      "texto": [
+        "Use File → Open SQL Script para abrir 01-base-dml.sql.",
+        "Leia o aviso inicial: o script recria somente dadoslab_dml.livros.",
+        "Execute o arquivo inteiro uma vez. Depois, atualize Schemas."
+      ],
+      "codigo": "",
+      "refs": [
+        "workbench"
+      ],
+      "esperado": ""
+    },
+    {
+      "numero": 9,
+      "titulo": "Conferência da importação",
+      "texto": [
+        "O banco atual deve ser dadoslab_dml.",
+        "A tabela livros começa com 6 registros.",
+        "Se o resultado for diferente, pare e confira a preparação."
+      ],
+      "codigo": "USE dadoslab_dml;\nSELECT DATABASE() AS banco_atual;\nSELECT COUNT(*) AS total FROM livros;\nSELECT id, titulo, area, quantidade\nFROM livros\nORDER BY id;",
+      "refs": [
+        "mysql-select"
+      ],
+      "esperado": "banco_atual = dadoslab_dml · total = 6"
+    },
+    {
+      "numero": 10,
+      "titulo": "Como ler um comando SQL",
+      "texto": [
+        "Palavras-chave mostram a operação. Os nomes indicam tabela e colunas.",
+        "Texto vai entre aspas simples. Números ficam sem aspas.",
+        "O ponto e vírgula encerra a instrução; a indentação ajuda a leitura."
+      ],
+      "codigo": "SELECT titulo\nFROM livros\nWHERE id = 1;",
+      "refs": [
+        "mysql-select"
+      ],
+      "esperado": ""
+    },
+    {
+      "numero": 11,
+      "titulo": "SELECT: consultar dados",
+      "texto": [
+        "SELECT escolhe as colunas; FROM indica a tabela.",
+        "ORDER BY id organiza o resultado para facilitar a conferência.",
+        "A consulta não altera os registros."
+      ],
+      "codigo": "SELECT id, titulo, quantidade\nFROM livros\nORDER BY id;",
+      "refs": [
+        "mysql-select"
+      ],
+      "esperado": "6 linhas · colunas id, titulo e quantidade"
+    },
+    {
+      "numero": 12,
+      "titulo": "WHERE: escolher as linhas",
+      "texto": [
+        "WHERE quantidade > 0 seleciona títulos com exemplares disponíveis.",
+        "DESC ordena do maior para o menor; id desempata.",
+        "O título com quantidade zero continua na tabela."
+      ],
+      "codigo": "SELECT id, titulo, quantidade\nFROM livros\nWHERE quantidade > 0\nORDER BY quantidade DESC, id;",
+      "refs": [
+        "mysql-select"
+      ],
+      "esperado": "5 linhas · ids 2, 1, 5, 3, 6, nessa ordem"
+    },
+    {
+      "numero": 13,
+      "titulo": "Sua vez: primeira consulta",
+      "texto": [
+        "No bloco P1, escreva uma consulta para listar id e titulo dos livros com quantidade = 0.",
+        "Execute sua consulta e registre o resultado em comentário SQL.",
+        "Explique por que o registro continua cadastrado."
+      ],
+      "codigo": "",
+      "refs": [],
+      "esperado": "Uma linha: id 4 · Logica de programacao"
+    },
+    {
+      "numero": 14,
+      "titulo": "INSERT: cadastrar uma linha",
+      "texto": [
+        "INSERT INTO indica a tabela e as colunas que receberão valores.",
+        "VALUES apresenta os valores na mesma ordem das colunas.",
+        "O novo id não pode repetir uma chave já cadastrada."
+      ],
+      "codigo": "INSERT INTO livros (id, titulo, area, quantidade)\nVALUES (7, 'Python para iniciantes', 'Programacao', 3);",
+      "refs": [
+        "mysql-insert"
+      ],
+      "esperado": ""
+    },
+    {
+      "numero": 15,
+      "titulo": "Executar INSERT e conferir",
+      "texto": [
+        "Execute somente A3, o INSERT do id 7.",
+        "Depois consulte o id 7 e conte as linhas.",
+        "O cadastro deve aparecer com quantidade 3."
+      ],
+      "codigo": "SELECT id, titulo, quantidade\nFROM livros\nWHERE id = 7;\n\nSELECT COUNT(*) AS total FROM livros;",
+      "refs": [
+        "mysql-insert",
+        "mysql-select"
+      ],
+      "esperado": "id 7 com quantidade 3 · total = 7"
+    },
+    {
+      "numero": 16,
+      "titulo": "Sua vez: ler o INSERT",
+      "texto": [
+        "No registro P2, anote o total de linhas antes e depois do INSERT.",
+        "Explique a diferença entre uma linha inserida e três exemplares.",
+        "Preveja o resultado de tentar inserir o id 7 novamente."
+      ],
+      "codigo": "",
+      "refs": [],
+      "esperado": "6 → 7 linhas · nova linha com quantidade 3 · repetição do id causa erro"
+    },
+    {
+      "numero": 17,
+      "titulo": "UPDATE: alterar um registro",
+      "texto": [
+        "UPDATE escolhe a tabela. SET informa o novo valor.",
+        "WHERE id = 7 limita a alteração à linha escolhida.",
+        "Antes da alteração, consulte a mesma condição."
+      ],
+      "codigo": "UPDATE livros\nSET quantidade = 8\nWHERE id = 7;",
+      "refs": [
+        "mysql-update"
+      ],
+      "esperado": ""
+    },
+    {
+      "numero": 18,
+      "titulo": "Executar UPDATE e conferir",
+      "texto": [
+        "Execute A5 depois de conferir o id 7.",
+        "Consulte novamente a linha e conte os registros.",
+        "A quantidade muda de 3 para 8; o total de linhas permanece 7."
+      ],
+      "codigo": "SELECT id, titulo, quantidade\nFROM livros\nWHERE id = 7;\n\nSELECT COUNT(*) AS total FROM livros;",
+      "refs": [
+        "mysql-update"
+      ],
+      "esperado": "id 7 com quantidade 8 · total = 7",
+      "tabela": [
+        [
+          "Momento",
+          "id",
+          "quantidade",
+          "linhas"
+        ],
+        [
+          "Antes",
+          "7",
+          "3",
+          "7"
+        ],
+        [
+          "Depois",
+          "7",
+          "8",
+          "7"
+        ]
+      ]
+    },
+    {
+      "numero": 19,
+      "titulo": "Conferir, alterar, conferir",
+      "texto": [
+        "1. SELECT com o mesmo WHERE: qual linha será atingida?",
+        "2. UPDATE com WHERE na chave: aplicar a mudança.",
+        "3. SELECT novamente: o resultado corresponde à intenção?"
+      ],
+      "codigo": "",
+      "refs": [
+        "mysql-update",
+        "workbench"
+      ],
+      "esperado": "",
+      "mapa": [
+        "Prever\nSELECT + WHERE",
+        "Alterar\nUPDATE + WHERE",
+        "Verificar\nSELECT novamente"
+      ]
+    },
+    {
+      "numero": 20,
+      "titulo": "DELETE: excluir uma linha",
+      "texto": [
+        "DELETE FROM indica de qual tabela remover registros.",
+        "WHERE id = 7 seleciona apenas o cadastro de teste.",
+        "DELETE remove linhas; não remove a estrutura da tabela."
+      ],
+      "codigo": "DELETE FROM livros\nWHERE id = 7;",
+      "refs": [
+        "mysql-delete"
+      ],
+      "esperado": ""
+    },
+    {
+      "numero": 21,
+      "titulo": "Executar DELETE e conferir",
+      "texto": [
+        "A7 consulta o alvo, exclui o id 7 e consulta novamente.",
+        "Selecione e execute cada instrução separadamente.",
+        "A busca pelo id 7 deve retornar zero linhas."
+      ],
+      "codigo": "SELECT id, titulo, quantidade\nFROM livros\nWHERE id = 7;\n\nSELECT COUNT(*) AS total FROM livros;",
+      "refs": [
+        "mysql-delete",
+        "mysql-select"
+      ],
+      "esperado": "Busca pelo id 7: 0 linhas · total = 6"
+    },
+    {
+      "numero": 22,
+      "titulo": "O que mudou em cada operação",
+      "texto": [
+        "Compare o número de linhas e os valores, não apenas a mensagem do Workbench.",
+        "Na sequência guiada, a base volta aos seis títulos iniciais."
+      ],
+      "codigo": "",
+      "refs": [
+        "mysql-dml"
+      ],
+      "esperado": "",
+      "tabela": [
+        [
+          "Etapa",
+          "Total de linhas",
+          "Situação do id 7"
+        ],
+        [
+          "Base / SELECT",
+          "6",
+          "Não existe"
+        ],
+        [
+          "INSERT",
+          "7",
+          "quantidade = 3"
+        ],
+        [
+          "UPDATE",
+          "7",
+          "quantidade = 8"
+        ],
+        [
+          "DELETE",
+          "6",
+          "Não existe"
+        ]
+      ]
+    },
+    {
+      "numero": 23,
+      "titulo": "Erros que ajudam a revisar",
+      "texto": [
+        "1064: confira sintaxe, vírgulas, aspas e ponto e vírgula.",
+        "1046 / 1146: confira USE dadoslab_dml e a criação de livros.",
+        "1062: id repetido. 1175: confira filtro por chave no UPDATE ou DELETE."
+      ],
+      "codigo": "",
+      "refs": [
+        "workbench"
+      ],
+      "esperado": ""
+    },
+    {
+      "numero": 24,
+      "titulo": "Atividade individual: novo cadastro",
+      "texto": [
+        "No bloco B, cadastre id 8: Algoritmos, área Programacao, quantidade 4.",
+        "Consulte o id 8; depois altere sua quantidade para 5.",
+        "Consulte e exclua somente o id 8; confira a ausência e o total final."
+      ],
+      "codigo": "",
+      "refs": [],
+      "esperado": "Ao concluir: id 8 ausente · total = 6"
+    },
+    {
+      "numero": 25,
+      "titulo": "Salvar e entregar a prática",
+      "texto": [
+        "Preencha nome e turma no início do arquivo.",
+        "Salve como aula02-dml-TURMA-NOME.sql.",
+        "Entregue o SQL ao professor na aula, com comandos e comentários de resultados."
+      ],
+      "codigo": "",
+      "refs": [],
+      "esperado": ""
+    },
+    {
+      "numero": 26,
+      "titulo": "Outras bases para explorar",
+      "texto": [
+        "World: países, cidades e idiomas; boa opção para consultas.",
+        "Sakila: locadora com várias tabelas, relações e objetos SQL.",
+        "São materiais complementares. A prática obrigatória usa dadoslab_dml."
+      ],
+      "codigo": "",
+      "refs": [
+        "mysql-bases",
+        "world",
+        "sakila",
+        "originais"
+      ],
+      "esperado": "",
+      "tabela": [
+        [
+          "Base",
+          "Arquivo(s) para importar",
+          "Uso"
+        ],
+        [
+          "Biblioteca",
+          "01-base-dml.sql",
+          "Prática desta aula"
+        ],
+        [
+          "World",
+          "world-aula.sql",
+          "Consultas complementares"
+        ],
+        [
+          "Sakila",
+          "schema, depois data",
+          "Exploração posterior"
+        ]
+      ]
+    },
+    {
+      "numero": 27,
+      "titulo": "Bilhete de saída",
+      "texto": [
+        "Qual comando consulta? Qual acrescenta uma linha?",
+        "O que muda no UPDATE? O que desaparece no DELETE?",
+        "Para que serve WHERE antes de alterar ou excluir?"
+      ],
+      "codigo": "",
+      "refs": [],
+      "esperado": ""
+    },
+    {
+      "numero": 28,
+      "titulo": "Referências e continuidade",
+      "texto": [
+        "Consulte os links de SELECT, INSERT, UPDATE e DELETE na página da aula.",
+        "Guarde o ZIP e o caderno em PDF para estudar sem internet.",
+        "02/11: sem aula. Retorno em 09/11: modelagem e estrutura da biblioteca."
+      ],
+      "codigo": "",
+      "refs": [
+        "mysql-select",
+        "mysql-insert",
+        "mysql-update",
+        "mysql-delete",
+        "workbench"
+      ],
+      "esperado": ""
+    }
   ]
 };

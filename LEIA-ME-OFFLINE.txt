@@ -1,13 +1,12 @@
-DADOSLAB - DIAGNÓSTICO BREVE DE BANCO DE DADOS
-1. Extraia todo o pacote. Abra index.html com Live Server previamente instalado no VS Code.
-2. Abra a primeira aula e a ficha. Preencha nome e turma.
-3. Responda às cinco perguntas e marque os conteúdos que já estudou.
-4. A pergunta 4 tem somente uma consulta simples. Pode explicar os passos se preferir.
-5. Baixe um único TXT e entregue ao professor na aula. Em papel, entregue a ficha identificada.
-6. A página não salva nem envia respostas automaticamente.
-7. O projeto de dois arquivos é opcional: referência HTML e rascunho SQL para o VS Code.
-8. Não é preciso instalar, conectar ou executar um banco de dados. O SGBD será confirmado.
-9. Os PDFs são locais. Referências externas exigem internet.
-O pacote do aluno não contém gabarito, roteiro privado ou notas do professor.
-Calendário: oito segundas de 19/10 a 14/12/2026, sem 02/11. Duas aulas de 50 minutos.
-Avaliação em 07/12; devolutiva e recuperação em 14/12.
+DADOSLAB - PACOTE DO ALUNO
+1. Extraia a pasta. Abra index.html com Live Server previamente instalado no VS Code.
+2. Aula 01: diagnóstico sem execução, entrega de um TXT ou ficha em papel.
+3. Aula 02: siga a página da aula; extraia o ZIP de dois SQL.
+4. Abra os SQL no MySQL Workbench conectado a um servidor MySQL já preparado.
+5. Execute 01-base-dml.sql uma vez. Ele recria somente dadoslab_dml.livros.
+6. Execute 02-pratica-dml.sql por instrução, seguindo os exemplos e as pausas.
+7. Entregue aula02-dml-TURMA-NOME.sql identificado, com respostas e resultados.
+8. O Live Server exibe o portal; não executa SQL. Não há envio automático.
+9. PDFs, SQL e bases complementares são locais. Links externos exigem internet.
+10. Se usar servidor local já instalado, a prática SQL não exige internet.
+Não distribuir arquivos do professor, gabarito ou notas privadas.
