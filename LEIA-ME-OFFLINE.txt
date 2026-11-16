@@ -10,3 +10,8 @@ DADOSLAB - PACOTE DO ALUNO
 9. PDFs, SQL e bases complementares são locais. Links externos exigem internet.
 10. Se usar servidor local já instalado, a prática SQL não exige internet.
 Não distribuir arquivos do professor, gabarito ou notas privadas.
+
+Aula 04 (16/11): abra Aulas e escolha Perguntas que viram consultas.
+Extraia Aula04-Alunos.zip. Prepare a base uma vez e use os modelos da pratica
+e da avaliacao. Sem servidor, use as tabelas nas paginas 1 e 2 da pratica.
+Entregas: aula04-pratica-TURMA-NOME.sql e aula04-avaliacao-TURMA-NOME.sql.

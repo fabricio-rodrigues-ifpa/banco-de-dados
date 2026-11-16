@@ -18,3 +18,9 @@ Importação validada em instância isolada de MySQL 8.0.46.
 Calendário: segundas de 19/10 a 14/12/2026, sem 02/11, duas aulas de 50 minutos.
 Modelagem e estrutura em 09/11. Avaliação em 07/12; devolutiva em 14/12.
 Gabarito e roteiro do professor não são publicados no portal.
+
+Aula 04 (16/11): SELECT, filtros, ordenacao, limites, AND/OR e NULL.
+Cinco atividades praticas e avaliacao individual de seis questoes (10,0 pontos).
+Aula04-Alunos.zip contem dois PDFs, base, dois modelos SQL e instrucoes.
+Base exclusiva dadoslab_aula04_20261116, com 10 livros, 6 leitores e 8 emprestimos.
+Gabarito e roteiro continuam apenas na entrega privada do professor.

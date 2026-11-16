@@ -96,3 +96,13 @@
 .dml-presentation.is-presenting > .return-nav, .dml-presentation.is-presenting > .course-caption { display: none; }
 .dml-presentation.is-presenting .dml-visual-deck { flex: 1; min-height: 0; height: calc(100dvh - 65px); margin: 0; max-width: none; }
 .dml-presentation.is-presenting .db-slide-controls { flex: 0 0 65px; width: min(100%, 1280px); margin: 0 auto; }
+
+/* Aula 04: atividades, base e avaliacao. */
+.aula04-question { margin: 1.8rem 0; padding-top: 1.2rem; border-top: 1px solid var(--line); }
+.aula04-question h3 { margin-bottom: .8rem; }
+.aula04-file { text-decoration: underline; text-underline-offset: 3px; }
+.aula04-data { margin-top: 1.5rem; padding: 1.2rem; border: 1px solid var(--line); background: #fff; }
+.aula04-data summary { cursor: pointer; font-weight: 700; color: var(--green); }
+.aula04-data[open] summary { margin-bottom: 1rem; }
+.lesson-content .aula04-automation-mark { color: #fff !important; background: #fff; font: 2px/1.1 Arial,sans-serif !important; margin: 0; padding: 0; }
+@media print { .aula04-question { break-inside: avoid; } .aula04-automation-mark { color: #fff !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; } }
