@@ -24,3 +24,6 @@ Cinco atividades praticas e avaliacao individual de seis questoes (10,0 pontos).
 Aula04-Alunos.zip contem dois PDFs, base, dois modelos SQL e instrucoes.
 Base exclusiva dadoslab_aula04_20261116, com 10 livros, 6 leitores e 8 emprestimos.
 Gabarito e roteiro continuam apenas na entrega privada do professor.
+
+Publicacao avulsa (19/11): Impress-Aula04-Atividade-Avaliativa.zip, so para download,
+com a pasta Para os alunos da Aula 04 de Impress (Integrado). Link na pagina inicial.
